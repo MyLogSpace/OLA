@@ -1,0 +1,1152 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ask OLA | 홈</title>
+
+    <!-- 폰트 설정 (Pretendard) -->
+    <link rel="stylesheet" as="style" crossorigin
+        href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" />
+
+    <!-- 아이콘 라이브러리 (추후 assets/icons/ 내부의 svg 파일로 교체 가능) -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Tailwind CSS (CDN) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="js/tailwind-config.js"></script>
+
+    <!-- CSS 모음 -->
+    <!-- ola-2d-svg.css / ola-bot.css 뒤에 붙은 ?v=... 는 캐시 버스팅용이다: run_ola.bat이 띄우는
+         python http.server는 Cache-Control 헤더를 따로 안 보내서, 파일을 고쳐도 브라우저가 예전
+         버전을 계속 쓰는 경우가 있었다(수면 확인 팝업이 코드는 맞는데 안 뜨는 것처럼 보였던 원인
+         중 하나). 쿼리 문자열이 바뀌면 브라우저가 완전히 새 파일로 취급해서 이 문제가 사라진다. -->
+    <link rel="stylesheet" href="css/ola-2d-svg.css?v=20260806b">
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/home.css">
+    <link rel="stylesheet" href="css/ola-bot.css?v=20260806b">
+</head>
+
+<body class="flex h-screen overflow-hidden text-sm sm:text-base font-sans">
+
+    <!-- 좌측 내비게이션 사이드바 -->
+    <aside id="sidebar"
+        class="sidebar-expanded sidebar-transition bg-white h-full border-r border-border flex flex-col relative flex-shrink-0 z-40 shadow-sm">
+        <!-- 로고 영역 + 토글 버튼 (Gemini 스타일) -->
+        <div class="h-20 flex items-center justify-between pl-7 pr-4 border-b border-border">
+            <a href="landing.html" onclick="return uiJS.handleLogoClick(event)"
+                class="logo-link flex items-center gap-2.5 cursor-pointer relative">
+                <span class="relative w-7 h-7 flex-shrink-0 block">
+                    <img src="assets/logo/connect.png" alt="OLA"
+                        class="logo-toggle-icon-default w-7 h-7 object-contain absolute inset-0">
+                    <i data-lucide="panel-left-open"
+                        class="logo-toggle-icon-hover w-7 h-7 absolute inset-0 text-gray-400"></i>
+                </span>
+                <span class="logo-text text-xl font-bold text-dark tracking-tight">OLA</span>
+                <span
+                    class="logo-toggle-tooltip pointer-events-none absolute left-full ml-2 top-1/2 -translate-y-1/2 whitespace-nowrap bg-dark text-white text-xs font-medium px-3 py-1.5 rounded-lg opacity-0 invisible transition-opacity z-50">사이드바
+                    열기</span>
+            </a>
+            <div class="sidebar-toggle-standalone relative group flex-shrink-0">
+                <button id="toggleBtn" onclick="uiJS.toggleSidebar()"
+                    class="flex items-center justify-center w-8 h-8 rounded-lg text-gray-400 hover:bg-bg hover:text-dark transition-colors">
+                    <i data-lucide="panel-left" class="w-5 h-5 group-hover:hidden"></i>
+                    <i data-lucide="panel-left-close" id="toggleIcon" class="w-5 h-5 hidden group-hover:block"></i>
+                </button>
+                <span id="toggleText"
+                    class="pointer-events-none absolute left-full ml-2 top-1/2 -translate-y-1/2 whitespace-nowrap bg-dark text-white text-xs font-medium px-3 py-1.5 rounded-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity z-50">사이드바
+                    닫기</span>
+            </div>
+        </div>
+
+        <!-- 메뉴 영역 -->
+        <nav class="flex-1 overflow-y-auto py-4 px-4 flex flex-col gap-1.5">
+            <p class="nav-text px-3 text-[10px] font-bold text-gray-400 tracking-wider">MAIN</p>
+            <a href="index.html"
+                class="nav-item nav-home flex items-center gap-3 px-3 py-2.5 rounded-xl bg-white text-sky-600 border-l-4 border-sky-500 shadow-md relative z-10 transition-colors">
+                <i data-lucide="home" class="w-5 h-5 text-sky-500"></i>
+                <span class="nav-text" data-i18n="nav.home">홈</span>
+            </a>
+
+            <p class="nav-text px-3 text-[10px] font-bold text-gray-400 tracking-wider mt-2">SAFETY SERVICES</p>
+            <a href="./pages/map.html"
+                class="nav-item nav-map flex items-center gap-3 px-3 py-2.5 rounded-xl text-dark hover:bg-bg transition-colors">
+                <i data-lucide="map" class="w-5 h-5 text-gray-400"></i>
+                <span class="nav-text" data-i18n="nav.map">안전지도</span>
+            </a>
+
+            <a href="./pages/safety.html"
+                class="nav-item nav-safety flex items-center gap-3 px-3 py-2.5 rounded-xl text-dark hover:bg-bg transition-colors">
+                <i data-lucide="shield-check" class="w-5 h-5 text-gray-400"></i>
+                <span class="nav-text" data-i18n="nav.safety">생활안전</span>
+            </a>
+
+            <a href="./pages/emergency.html"
+                class="nav-item nav-emergency flex items-center gap-3 px-3 py-2.5 rounded-xl text-dark hover:bg-bg transition-colors">
+                <i data-lucide="heart-pulse" class="w-5 h-5 text-gray-400"></i>
+                <span class="nav-text" data-i18n="nav.emergency">행동요령</span>
+            </a>
+
+            <p class="nav-text px-3 text-[10px] font-bold text-gray-400 tracking-wider mt-2">SUPPORT &amp; AI</p>
+            <a href="./pages/complaint.html"
+                class="nav-item nav-complaint flex items-center gap-3 px-3 py-2.5 rounded-xl text-dark hover:bg-bg transition-colors">
+                <i data-lucide="file-text" class="w-5 h-5 text-gray-400"></i>
+                <span class="nav-text" data-i18n="nav.complaint">민원</span>
+            </a>
+
+            <a href="./pages/consult.html"
+                class="nav-item nav-consult flex items-center gap-3 px-3 py-2.5 rounded-xl text-dark hover:bg-bg transition-colors">
+                <i data-lucide="message-circle" class="w-5 h-5 text-gray-400"></i>
+                <span class="nav-text" data-i18n="nav.consult">AI 상담</span>
+            </a>
+
+            <a href="index.html#community-talk"
+                class="nav-item nav-community flex items-center gap-3 px-3 py-2.5 rounded-xl text-dark hover:bg-bg transition-colors">
+                <i data-lucide="users" class="w-5 h-5 text-gray-400"></i>
+                <span class="nav-text" data-i18n="nav.community">커뮤니티 톡</span>
+            </a>
+
+            <!-- 위치 기반 설정 (반경 2km 디폴트) -->
+            <button id="location-btn" onclick="olaLocationUI.useMyLocation()"
+                class="w-full mt-4 flex flex-col items-start gap-1 bg-white px-4 py-2.5 rounded-xl border border-border shadow-sm text-left hover:bg-gray-50 hover:border-primary transition-colors">
+                <span class="w-full flex items-center gap-2">
+                    <i data-lucide="map-pin" class="w-5 h-5 text-primary flex-shrink-0"></i>
+                    <span id="current-location" class="nav-text flex-1 font-bold text-dark text-sm">서울시청</span>
+                    <i data-lucide="navigation" id="location-btn-icon"
+                        class="nav-text w-3.5 h-3.5 text-gray-300 flex-shrink-0"></i>
+                </span>
+                <span class="nav-text text-xs text-gray-500 pl-7" data-i18n="nav.currentAreaLabel">현재 정밀 분석 지역</span>
+                <span id="current-location-radius" class="nav-text text-xs text-gray-400 pl-7">반경 2.0km 범위 밀착 감시</span>
+            </button>
+        </nav>
+
+        <!-- 하단 메뉴 -->
+        <div class="p-4 border-t border-border flex flex-col gap-1 mb-2">
+            <div class="relative" data-i18n-switcher>
+                <button type="button" data-lang-btn
+                    class="w-full flex items-center gap-3 px-3 py-2 rounded-lg text-gray-500 hover:text-dark transition-colors">
+                    <i data-lucide="globe" class="w-5 h-5 flex-shrink-0"></i>
+                    <span class="nav-text text-sm flex-1 text-left" data-i18n="common.language">언어</span>
+                    <i data-lucide="chevron-up" class="w-4 h-4 nav-text flex-shrink-0"></i>
+                </button>
+                <div data-lang-menu
+                    class="hidden absolute left-0 bottom-full mb-1 w-40 bg-white border border-border rounded-xl shadow-lg overflow-hidden z-50">
+                </div>
+            </div>
+            <a href="pages/mypage.html"
+                class="flex items-center gap-3 px-3 py-2 rounded-lg text-gray-500 hover:text-dark transition-colors">
+                <i data-lucide="settings" class="w-5 h-5"></i>
+                <span class="nav-text text-sm" data-i18n="nav.settings">설정</span>
+            </a>
+            <a href="#" id="sidebar-auth-link" onclick="olaAuthUI.handleSidebarAuthClick(); return false;"
+                class="flex items-center gap-3 px-3 py-2 rounded-lg text-gray-500 hover:text-dark transition-colors">
+                <i data-lucide="log-in" class="w-5 h-5" id="sidebar-auth-icon"></i>
+                <span class="nav-text text-sm" id="sidebar-auth-text">로그인</span>
+            </a>
+        </div>
+    </aside>
+
+    <!-- 메인 컨텐츠 영역 -->
+    <main class="flex-1 flex flex-col h-full bg-bg relative w-full">
+
+        <!-- 상단 헤더 -->
+        <header class="h-20 bg-white z-10 border-b border-border px-4 sm:px-6 lg:px-10">
+            <div
+                class="max-w-6xl mx-auto h-full flex items-center justify-between lg:grid lg:grid-cols-4 lg:gap-6">
+                <!-- 모바일용 메뉴 버튼 -->
+                <button onclick="uiJS.toggleSidebar()" class="md:hidden text-dark p-2">
+                    <i data-lucide="menu" class="w-6 h-6"></i>
+                </button>
+
+                <div class="flex-1 lg:col-span-3 mx-2 lg:mx-0 min-w-0 flex items-center">
+                    <div
+                        class="relative flex-1 min-w-0 max-w-md bg-white border border-blue-200 rounded-full focus-within:border-blue-400 transition-colors flex items-center">
+                        <span class="flex items-center gap-1.5 text-sm font-bold text-blue-900 flex-shrink-0 pl-4 pr-2 py-2">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4" aria-hidden="true">
+                                <line x1="12" y1="2" x2="12" y2="5"></line>
+                                <circle cx="12" cy="2" r="1" fill="currentColor" stroke="none"></circle>
+                                <rect x="5" y="5" width="14" height="12" rx="3"></rect>
+                                <circle cx="9.5" cy="11" r="1.2" fill="currentColor" stroke="none"></circle>
+                                <circle cx="14.5" cy="11" r="1.2" fill="currentColor" stroke="none"></circle>
+                            </svg>
+                            <span class="hidden sm:inline">Ask OLA</span>
+                        </span>
+                        <span class="w-px h-4 bg-blue-100 flex-shrink-0"></span>
+                        <div class="relative flex-1 min-w-0">
+                            <input type="text" id="home-search-input" placeholder=""
+                                oninput="olaSearchPlaceholderToggle()" onfocus="olaSearchPlaceholderToggle()"
+                                onblur="olaSearchPlaceholderToggle()"
+                                onkeydown="if(event.key==='Enter'){event.preventDefault();olaHomeSearchSubmit();}"
+                                class="relative z-10 w-full bg-transparent pl-3 pr-16 py-2 text-sm text-dark outline-none">
+                            <div id="home-search-rotator"
+                                class="absolute left-3 right-16 top-1/2 -translate-y-1/2 h-5 overflow-hidden pointer-events-none"
+                                aria-hidden="true">
+                                <ul class="home-search-rotator-list text-sm text-gray-400 leading-5">
+                                    <li class="h-5" data-i18n="search.rotator1">오늘의 안심 길 추천해줘</li>
+                                    <li class="h-5" data-i18n="search.rotator2">골목 안전도 확인해줘</li>
+                                    <li class="h-5" data-i18n="search.rotator3">가까운 대피소 찾아줘</li>
+                                    <li class="h-5" data-i18n="search.rotator4">우리 동네 위험지역 알려줘</li>
+                                    <li class="h-5" aria-hidden="true" data-i18n="search.rotator1">오늘의 안심 길 추천해줘</li>
+                                </ul>
+                            </div>
+                            <button type="button" id="home-voice-btn" onclick="olaVoiceSearch()" title="음성으로 검색" data-i18n-title="header.voiceSearch"
+                                class="absolute right-8 top-1/2 -translate-y-1/2 text-blue-900 hover:text-blue-950 transition-colors z-20">
+                                <i data-lucide="mic" class="w-4 h-4"></i>
+                            </button>
+                            <button type="button" title="검색" onclick="olaHomeSearchSubmit()" data-i18n-title="header.search"
+                                class="absolute right-2.5 top-1/2 -translate-y-1/2 text-blue-900 hover:text-blue-950 transition-colors z-20">
+                                <i data-lucide="search" class="w-4 h-4"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex items-center justify-end gap-2 flex-shrink-0">
+                    <!-- 주간/야간 모드 토글 -->
+                    <div class="bg-gray-100 rounded-full p-1 flex items-center gap-1 whitespace-nowrap flex-shrink-0">
+                        <button id="theme-btn-day" onclick="olaTheme.set('day')"
+                            class="flex items-center gap-1 px-3 py-1.5 text-xs font-bold rounded-full bg-white text-dark shadow-sm transition-all duration-300 whitespace-nowrap">
+                            <i data-lucide="sun" class="w-3.5 h-3.5 text-amber-400"></i> <span class="hidden md:inline" data-i18n="header.dayMode">주간 모드</span>
+                        </button>
+                        <button id="theme-btn-night" onclick="olaTheme.set('night')"
+                            class="flex items-center gap-1 px-3 py-1.5 text-xs font-semibold rounded-full text-gray-500 hover:text-dark transition-all duration-300 whitespace-nowrap">
+                            <i data-lucide="moon" class="w-3.5 h-3.5"></i> <span class="hidden md:inline" data-i18n="header.nightMode">야간 안심</span>
+                        </button>
+                    </div>
+                    <!-- 긴급 SOS -->
+                    <button type="button" onclick="olaSOS.open()"
+                        class="flex items-center gap-1 px-3 py-1.5 rounded-full bg-red-50 text-red-600 text-xs font-bold hover:bg-red-100 transition-colors whitespace-nowrap flex-shrink-0">
+                        <i data-lucide="siren" class="w-3.5 h-3.5"></i> <span class="hidden md:inline" data-i18n="header.sos">긴급 SOS</span>
+                    </button>
+                    <span class="w-px h-5 bg-slate-200 flex-shrink-0"></span>
+                    <div class="relative flex-shrink-0">
+                        <button id="notif-bell-btn" onclick="olaNotif.toggle()"
+                            class="relative p-2 text-gray-500 hover:text-primary transition-colors">
+                            <i data-lucide="bell" id="notif-bell-icon" class="w-6 h-6 bell-ring"></i>
+                            <span class="absolute top-1 right-1 w-2 h-2 bg-amber-500 rounded-full"></span>
+                        </button>
+                        <div id="notif-panel"
+                            class="hidden absolute -right-14 top-full mt-2 w-80 bg-white rounded-2xl shadow-xl border border-border overflow-hidden z-[9999] text-left">
+                            <div
+                                class="absolute -top-1.5 right-16 w-3 h-3 bg-white border-t border-l border-border rotate-45">
+                            </div>
+                            <div class="flex items-center justify-between px-4 pt-4 pb-2">
+                                <h4 class="font-bold text-dark text-sm" data-i18n="header.notifTitle">OLA 안심 브리핑 알림</h4>
+                                <button onclick="olaNotif.close()" class="text-gray-400 hover:text-dark">
+                                    <i data-lucide="x" class="w-4 h-4"></i>
+                                </button>
+                            </div>
+                            <div class="px-4 pb-4">
+                                <p class="text-xs text-gray-500 leading-relaxed" data-i18n="header.notifSample">오늘 저녁 퇴근길 폭우 주의보가 예정되어 있습니다.
+                                    우산을 챙기시고 하천 주변 도로로 우회해 주세요.</p>
+                            </div>
+                            <div class="flex border-t border-border">
+                                <button onclick="olaNotif.close()"
+                                    class="flex-1 py-3 text-xs font-bold text-gray-500 hover:bg-bg transition-colors" data-i18n="common.close">닫기</button>
+                                <a href="pages/emergency.html"
+                                    class="flex-1 py-3 text-xs font-bold text-primary hover:bg-emerald-50 transition-colors text-center border-l border-border"><span data-i18n="header.viewShelterGuide">대피 가이드 보기</span></a>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="pages/mypage.html" id="header-avatar-link"
+                        class="w-10 h-10 flex-shrink-0 rounded-full bg-emerald-600 text-white flex items-center justify-center font-bold cursor-pointer border border-white shadow-sm">
+                        <span id="header-avatar-inner"><i data-lucide="user" class="w-5 h-5"></i></span>
+                    </a>
+                </div>
+            </div>
+        </header>
+
+        <!-- 스크롤 가능한 본문 -->
+        <div class="page-scroll flex-1 min-h-0 overflow-y-auto px-4 sm:px-6 lg:px-10 pt-6 pb-10">
+
+            <section id="view-home" class="max-w-6xl mx-auto space-y-6">
+
+                <!-- 오늘의 올라 브리핑 (전체 폭, 이미지 실제 비율에 맞춰 높이 자동 조정 - 내용이 이미지보다 길어도 잘리지 않음) -->
+                <div class="w-full ola-card relative overflow-hidden grid" style="min-height: 450px"
+                    data-ola-drop-zone="true" data-ola-context="home-briefing">
+                    <img src="assets/images/9_2.png" alt=""
+                        class="w-full h-auto self-start [grid-area:1/1] rounded-t-[20px]">
+                    <div class="relative z-10 [grid-area:1/1] p-5 flex flex-col justify-start">
+                        <div class="relative z-10 lg:max-w-[38%]">
+                            <div class="bg-bg rounded-xl p-4 min-h-[280px] flex flex-col">
+                                <div class="flex items-start justify-between gap-2 mb-5">
+                                    <h2 class="text-base font-bold flex items-center gap-2.5 text-dark">
+                                        <button type="button" id="briefing-speak-btn" onclick="olaSpeakBriefing()" title="음성으로 듣기" data-i18n-title="home.briefingVoiceTitle"
+                                            class="w-8 h-8 rounded-lg bg-primary text-white flex items-center justify-center flex-shrink-0 hover:bg-emerald-600 hover:scale-110 hover:shadow-md active:scale-95 transition-all cursor-pointer">
+                                            <i data-lucide="megaphone" id="briefing-speak-icon" class="w-4 h-4"></i>
+                                        </button>
+                                        <span data-i18n="home.briefingHeading">오늘의 올라 브리핑</span>
+                                    </h2>
+                                    <span id="briefing-time" class="text-xs text-gray-400 whitespace-nowrap pt-1.5">2026.07.07
+                                        (화) 09:00 기준</span>
+                                </div>
+
+                                <p id="ai-briefing-text" class="text-base text-dark font-medium leading-relaxed break-keep" data-i18n="home.briefingLoadingText">
+                                    오늘의 브리핑을 불러오는 중입니다.
+                                </p>
+                                <div id="ai-briefing-loading" class="flex justify-center mt-4">
+                                    <i data-lucide="loader-circle" class="w-5 h-5 text-primary animate-spin"></i>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 오늘의 생활 지수 (전체 너비): 안전도(2행 병합) + 날씨·미세먼지·화재·응급실(2x2, 동일 크기) -->
+                <div class="ola-card p-6" data-ola-drop-zone="true" data-ola-context="life-index">
+                    <div class="flex items-center justify-between mb-4 pb-4 border-b border-slate-100">
+                        <h2 class="text-base font-bold flex items-center gap-2">
+                            <i data-lucide="zap" class="w-4 h-4 text-primary"></i> <span data-i18n="home.lifeIndexHeading">오늘의 생활 지수</span>
+                        </h2>
+                        <span class="text-[10px] text-white bg-emerald-500 font-bold flex items-center gap-1 px-2 py-1 rounded-full">
+                            <span class="w-1.5 h-1.5 rounded-full bg-white animate-pulse"></span> <span data-i18n="home.liveSyncDone">실시간 동기화 완료</span>
+                        </span>
+                    </div>
+                    <div id="lifestyle-index-grid" class="grid grid-cols-1 md:grid-cols-[308px_560px_1fr] gap-3">
+                        <!-- 고정 1: 우리동네 안심 지킴이 (AI OLA Safety Companion, 폭 고정, 좌측) -->
+                        <div class="relative overflow-hidden rounded-xl p-4 text-white flex flex-col items-center justify-between text-center bg-gradient-to-br from-emerald-500 via-teal-600 to-cyan-700">
+                            <div class="absolute -right-8 -bottom-8 w-32 h-32 bg-white/10 rounded-full blur-2xl pointer-events-none"></div>
+                            <div class="absolute -left-6 -top-6 w-24 h-24 bg-emerald-300/20 rounded-full blur-xl pointer-events-none"></div>
+
+                            <p class="relative z-10 self-start text-xs font-extrabold text-emerald-100/90 mt-6" data-i18n="home.safetyGuardianLabel">우리동네 안심 지킴이</p>
+
+                            <div class="relative z-10 flex-1 flex flex-col items-center justify-center min-h-0">
+                                <div class="relative w-32 h-32 mb-3 animate-subtle-float">
+                                    <svg class="relative w-full h-full -rotate-90" viewBox="0 0 120 120">
+                                        <circle cx="60" cy="60" r="55" fill="none" stroke="rgba(255,255,255,0.25)" stroke-width="7"></circle>
+                                        <circle data-life-safety-ring cx="60" cy="60" r="55" fill="none" stroke="#ffffff" stroke-width="7"
+                                            stroke-linecap="round" stroke-dasharray="345.6" stroke-dashoffset="345.6"></circle>
+                                    </svg>
+                                    <div class="absolute inset-0 flex flex-col items-center justify-center">
+                                        <span class="text-3xl font-extrabold leading-none"><span data-life-safety-score>-</span></span>
+                                        <span class="text-xs font-bold text-emerald-100/80 mt-0.5">/100</span>
+                                    </div>
+                                </div>
+
+                                <span data-life-safety-label
+                                    class="text-xl font-extrabold px-4 py-1 rounded-full bg-white/20">-</span>
+                            </div>
+
+                            <a href="pages/safety.html"
+                                class="relative z-10 w-full mb-6 bg-white text-emerald-900 hover:bg-emerald-50 text-xs font-black py-2.5 rounded-xl shadow-md transition-all flex items-center justify-center gap-1">
+                                <span data-i18n="home.viewMore">자세히 보기</span>
+                                <i data-lucide="arrow-right" class="w-3 h-3"></i>
+                            </a>
+                        </div>
+
+                        <!-- 날씨·미세먼지·화재·응급실 2x2 (폭 고정, 4개 카드 동일 크기), 나머지는 빈 공간 -->
+                        <div class="grid grid-cols-2 gap-3">
+                            <!-- 고정 2: 날씨 & 대기 (기온+날씨+강수확률) -->
+                            <div class="min-h-[150px] border border-slate-200 rounded-xl p-4 flex items-center gap-3">
+                                <img src="assets/images/날씨2.png" alt="" class="w-16 h-16 object-contain flex-shrink-0">
+                                <div class="min-w-0">
+                                    <p class="text-xs text-amber-600 font-medium mb-1" data-i18n="home.weatherAirLabel">날씨 &amp; 대기</p>
+                                    <p class="text-xl font-bold text-dark leading-tight"><span data-life-temp>-</span> <span data-life-weather>-</span></p>
+                                    <p class="text-xs text-gray-400 mt-2"><span data-i18n="home.outdoorIndexLabel">야외 활동 지수</span> '<span data-life-outdoor>-</span>'</p>
+                                </div>
+                            </div>
+                            <!-- 고정 3: 대기 미세먼지 (등급 배지 + 진행바) -->
+                            <div class="min-h-[150px] border border-slate-200 rounded-xl p-4 flex items-center gap-3">
+                                <img src="assets/images/미세먼지.png" alt="" class="w-16 h-16 object-contain flex-shrink-0">
+                                <div class="min-w-0 flex-1">
+                                    <div class="flex items-center justify-between gap-1 mb-1">
+                                        <p class="text-xs text-sky-600 font-medium" data-i18n="home.dustLabel">대기 미세먼지</p>
+                                        <span data-life-dust-badge
+                                            class="text-[9px] font-bold px-1.5 py-0.5 rounded-full bg-slate-100 text-slate-500 flex-shrink-0 whitespace-nowrap">-</span>
+                                    </div>
+                                    <p class="text-xl font-bold leading-tight" data-life-dust>-</p>
+                                    <div class="w-full h-1.5 bg-slate-100 rounded-full mt-2 overflow-hidden">
+                                        <div data-life-dust-bar class="h-full rounded-full bg-slate-300" style="width: 0%; transition: width .6s ease"></div>
+                                    </div>
+                                    <p class="text-xs text-gray-400 mt-2" data-life-dust-sub>-</p>
+                                </div>
+                            </div>
+                            <!-- 고정 4: 화재·재난 위험도 -->
+                            <div class="min-h-[150px] border border-slate-200 rounded-xl p-4 flex items-center gap-3">
+                                <img src="assets/images/화재.png" alt="" class="w-16 h-16 object-contain flex-shrink-0">
+                                <div class="min-w-0">
+                                    <p class="text-xs text-red-600 font-medium" data-i18n="home.fireRiskLabel">화재·재난 위험도</p>
+                                    <p class="text-xl font-bold leading-tight" data-life-fire-value>-</p>
+                                    <p class="text-xs text-gray-400" data-life-fire-sub data-i18n="common.checking">확인 중…</p>
+                                </div>
+                            </div>
+                            <!-- 고정 5: 응급실 혼잡도 -->
+                            <div class="min-h-[150px] border border-slate-200 rounded-xl p-4 flex items-center gap-3">
+                                <img src="assets/images/응급2.png" alt="" class="w-16 h-16 object-contain flex-shrink-0">
+                                <div class="min-w-0">
+                                    <p class="text-xs text-rose-600 font-medium" data-i18n="home.erCongestionLabel">응급실 혼잡도</p>
+                                    <p class="text-xl font-bold leading-tight" data-life-er-value>-</p>
+                                    <p class="text-xs text-gray-400" data-life-er-sub data-i18n="common.checking">확인 중…</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 여백 워터마크: 보호막이 형성되는 듯한 쉴드 그래픽 (장식용, 모바일에서는 숨김) -->
+                        <div class="hidden md:flex items-end justify-end relative overflow-hidden pointer-events-none select-none p-4">
+                            <svg class="absolute bottom-4 right-4 w-80 h-80 shield-watermark-ring" viewBox="0 0 120 120"
+                                style="animation-delay: 0s">
+                                <path d="M60 15 L95 28 V60 C95 81.5 80.2 98.8 60 105 C39.8 98.8 25 81.5 25 60 V28 L60 15 Z"
+                                    fill="#10B981" fill-opacity="0.3" />
+                            </svg>
+                            <svg class="absolute bottom-4 right-4 w-80 h-80 shield-watermark-ring" viewBox="0 0 120 120"
+                                style="animation-delay: 1.2s">
+                                <path d="M60 15 L95 28 V60 C95 81.5 80.2 98.8 60 105 C39.8 98.8 25 81.5 25 60 V28 L60 15 Z"
+                                    fill="#10B981" fill-opacity="0.3" />
+                            </svg>
+                            <svg class="absolute bottom-4 right-4 w-80 h-80 shield-watermark-ring" viewBox="0 0 120 120"
+                                style="animation-delay: 2.4s">
+                                <path d="M60 15 L95 28 V60 C95 81.5 80.2 98.8 60 105 C39.8 98.8 25 81.5 25 60 V28 L60 15 Z"
+                                    fill="#10B981" fill-opacity="0.3" />
+                            </svg>
+                            <div class="relative z-10 w-80 h-80 shield-watermark-icon" style="opacity: .035">
+                                <svg class="w-full h-full" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M60 15 L95 28 V60 C95 81.5 80.2 98.8 60 105 C39.8 98.8 25 81.5 25 60 V28 L60 15 Z"
+                                        fill="#10B981" />
+                                    <path d="M60 15 L95 28 V60 C95 81.5 80.2 98.8 60 105 V15 Z" fill="#059669"
+                                        fill-opacity="0.15" />
+                                    <path d="M45 58 L55 68 L76 45" stroke="white" stroke-width="8" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                    <g>
+                                        <circle cx="92" cy="32" r="13" fill="#0284C7" />
+                                        <path d="M92 25 V39 M85 32 H99" stroke="white" stroke-width="3.5"
+                                            stroke-linecap="round" />
+                                    </g>
+                                    <g>
+                                        <circle cx="28" cy="78" r="11" fill="#F59E0B" />
+                                        <path d="M28 72 V84 M22 78 H34" stroke="white" stroke-width="3"
+                                            stroke-linecap="round" />
+                                    </g>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 안심 관제 핵심 모듈 3종: 안심·비상 시설 지도 / 우리동네 안심시설 카테고리 / 실시간 안전 피드 -->
+                <div>
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+
+                        <!-- 1. 안심 · 비상 시설 지도 -->
+                        <div class="lg:col-span-7 bg-white rounded-3xl p-5 sm:p-6 border border-slate-200/80 shadow-sm space-y-4"
+                            data-ola-drop-zone="true" data-ola-context="home-safety-map">
+
+                            <div class="flex items-center justify-between pb-3 border-b border-slate-100">
+                                <div class="flex items-center gap-2">
+                                    <div class="w-7 h-7 rounded-lg bg-emerald-100 text-emerald-600 flex items-center justify-center">
+                                        <i data-lucide="map" class="w-4 h-4"></i>
+                                    </div>
+                                    <div>
+                                        <h2 class="text-base font-extrabold text-slate-900" data-i18n="home.safetyMapHeading">안심 · 비상 시설 지도</h2>
+                                        <p class="text-[11px] text-slate-400" data-i18n="home.safetyMapSubtitle">내 주변 비상 시설 위치 및 최단거리 실시간 매핑</p>
+                                    </div>
+                                </div>
+                                <a href="pages/map.html"
+                                    class="flex items-center gap-1 bg-emerald-500 hover:bg-emerald-600 text-white text-[11px] font-bold px-3 py-1.5 rounded-full transition-colors shrink-0">
+                                    <i data-lucide="map-pin" class="w-3.5 h-3.5"></i> <span data-i18n="home.centerOnMe">내 위치 중심 보기</span>
+                                </a>
+                            </div>
+
+                            <div
+                                class="w-full aspect-[1197/896] bg-slate-100 rounded-2xl relative overflow-hidden border border-slate-200/80 flex items-center justify-center">
+
+                                <img src="assets/images/11.png" alt=""
+                                    class="absolute inset-0 w-full h-full object-cover">
+
+                                <div id="pin-hospital-1" data-category="hospital" class="map-pin-drop" style="top: 14%; left: 45%;">
+                                    <div class="map-pin-bubble"><span class="map-pin-name" data-i18n="home.legendHospital">병원</span></div>
+                                    <div class="map-pin-icon-wrap text-red-500">
+                                        <i data-lucide="hospital" class="w-4 h-4"></i>
+                                    </div>
+                                </div>
+                                <div id="pin-hospital-2" data-category="hospital" class="map-pin-drop" style="top: 55%; left: 42%;">
+                                    <div class="map-pin-bubble"><span class="map-pin-name" data-i18n="home.legendHospital">병원</span></div>
+                                    <div class="map-pin-icon-wrap text-red-500">
+                                        <i data-lucide="hospital" class="w-4 h-4"></i>
+                                    </div>
+                                </div>
+                                <div id="pin-hospital-3" data-category="hospital" class="map-pin-drop" style="top: 42%; left: 15%;">
+                                    <div class="map-pin-bubble"><span class="map-pin-name" data-i18n="home.legendHospital">병원</span></div>
+                                    <div class="map-pin-icon-wrap text-red-500">
+                                        <i data-lucide="hospital" class="w-4 h-4"></i>
+                                    </div>
+                                </div>
+                                <div id="pin-hospital-4" data-category="hospital" class="map-pin-drop" style="top: 72%; left: 35%;">
+                                    <div class="map-pin-bubble"><span class="map-pin-name" data-i18n="home.legendHospital">병원</span></div>
+                                    <div class="map-pin-icon-wrap text-red-500">
+                                        <i data-lucide="hospital" class="w-4 h-4"></i>
+                                    </div>
+                                </div>
+                                <div id="pin-hospital-5" data-category="hospital" class="map-pin-drop" style="top: 35%; left: 75%;">
+                                    <div class="map-pin-bubble"><span class="map-pin-name" data-i18n="home.legendHospital">병원</span></div>
+                                    <div class="map-pin-icon-wrap text-red-500">
+                                        <i data-lucide="hospital" class="w-4 h-4"></i>
+                                    </div>
+                                </div>
+                                <div id="pin-hospital-6" data-category="hospital" class="map-pin-drop" style="top: 70%; left: 68%;">
+                                    <div class="map-pin-bubble"><span class="map-pin-name" data-i18n="home.legendHospital">병원</span></div>
+                                    <div class="map-pin-icon-wrap text-red-500">
+                                        <i data-lucide="hospital" class="w-4 h-4"></i>
+                                    </div>
+                                </div>
+
+                                <div id="pin-pharmacy-1" data-category="pharmacy" class="map-pin-drop" style="top: 10%; left: 66%;">
+                                    <div class="map-pin-bubble"><span class="map-pin-name" data-i18n="home.legendPharmacy">약국</span></div>
+                                    <div class="map-pin-icon-wrap text-teal-500">
+                                        <i data-lucide="pill" class="w-4 h-4"></i>
+                                    </div>
+                                </div>
+                                <div id="pin-pharmacy-2" data-category="pharmacy" class="map-pin-drop" style="top: 55%; left: 25%;">
+                                    <div class="map-pin-bubble"><span class="map-pin-name" data-i18n="home.legendPharmacy">약국</span></div>
+                                    <div class="map-pin-icon-wrap text-teal-500">
+                                        <i data-lucide="pill" class="w-4 h-4"></i>
+                                    </div>
+                                </div>
+                                <div id="pin-pharmacy-3" data-category="pharmacy" class="map-pin-drop" style="top: 80%; left: 50%;">
+                                    <div class="map-pin-bubble"><span class="map-pin-name" data-i18n="home.legendPharmacy">약국</span></div>
+                                    <div class="map-pin-icon-wrap text-teal-500">
+                                        <i data-lucide="pill" class="w-4 h-4"></i>
+                                    </div>
+                                </div>
+                                <div id="pin-pharmacy-4" data-category="pharmacy" class="map-pin-drop" style="top: 48%; left: 85%;">
+                                    <div class="map-pin-bubble"><span class="map-pin-name" data-i18n="home.legendPharmacy">약국</span></div>
+                                    <div class="map-pin-icon-wrap text-teal-500">
+                                        <i data-lucide="pill" class="w-4 h-4"></i>
+                                    </div>
+                                </div>
+
+                                <div id="pin-aed-1" data-category="aed" class="map-pin-drop" style="top: 33%; left: 36%;">
+                                    <div class="map-pin-bubble"><span class="map-pin-name">AED</span></div>
+                                    <div class="map-pin-icon-wrap text-amber-500">
+                                        <i data-lucide="heart-pulse" class="w-4 h-4"></i>
+                                    </div>
+                                </div>
+                                <div id="pin-aed-2" data-category="aed" class="map-pin-drop" style="top: 65%; left: 12%;">
+                                    <div class="map-pin-bubble"><span class="map-pin-name">AED</span></div>
+                                    <div class="map-pin-icon-wrap text-amber-500">
+                                        <i data-lucide="heart-pulse" class="w-4 h-4"></i>
+                                    </div>
+                                </div>
+                                <div id="pin-aed-3" data-category="aed" class="map-pin-drop" style="top: 88%; left: 65%;">
+                                    <div class="map-pin-bubble"><span class="map-pin-name">AED</span></div>
+                                    <div class="map-pin-icon-wrap text-amber-500">
+                                        <i data-lucide="heart-pulse" class="w-4 h-4"></i>
+                                    </div>
+                                </div>
+                                <div id="pin-aed-4" data-category="aed" class="map-pin-drop" style="top: 65%; left: 92%;">
+                                    <div class="map-pin-bubble"><span class="map-pin-name">AED</span></div>
+                                    <div class="map-pin-icon-wrap text-amber-500">
+                                        <i data-lucide="heart-pulse" class="w-4 h-4"></i>
+                                    </div>
+                                </div>
+                                <div id="pin-aed-5" data-category="aed" class="map-pin-drop" style="top: 49%; left: 65%;">
+                                    <div class="map-pin-bubble"><span class="map-pin-name">AED</span></div>
+                                    <div class="map-pin-icon-wrap text-amber-500">
+                                        <i data-lucide="heart-pulse" class="w-4 h-4"></i>
+                                    </div>
+                                </div>
+
+                                <div id="pin-cctv-1" data-category="cctv" class="map-pin-drop" style="top: 22%; left: 55%;">
+                                    <div class="map-pin-bubble"><span class="map-pin-name">CCTV</span></div>
+                                    <div class="map-pin-icon-wrap text-emerald-500">
+                                        <i data-lucide="camera" class="w-4 h-4"></i>
+                                    </div>
+                                </div>
+                                <div id="pin-cctv-2" data-category="cctv" class="map-pin-drop" style="top: 50%; left: 20%;">
+                                    <div class="map-pin-bubble"><span class="map-pin-name">CCTV</span></div>
+                                    <div class="map-pin-icon-wrap text-emerald-500">
+                                        <i data-lucide="camera" class="w-4 h-4"></i>
+                                    </div>
+                                </div>
+                                <div id="pin-cctv-3" data-category="cctv" class="map-pin-drop" style="top: 85%; left: 40%;">
+                                    <div class="map-pin-bubble"><span class="map-pin-name">CCTV</span></div>
+                                    <div class="map-pin-icon-wrap text-emerald-500">
+                                        <i data-lucide="camera" class="w-4 h-4"></i>
+                                    </div>
+                                </div>
+                                <div id="pin-cctv-4" data-category="cctv" class="map-pin-drop" style="top: 40%; left: 80%;">
+                                    <div class="map-pin-bubble"><span class="map-pin-name">CCTV</span></div>
+                                    <div class="map-pin-icon-wrap text-emerald-500">
+                                        <i data-lucide="camera" class="w-4 h-4"></i>
+                                    </div>
+                                </div>
+
+                                <div id="pin-safepath-1" data-category="safepath" class="map-pin-drop" style="top: 28%; left: 50%;">
+                                    <div class="map-pin-bubble"><span class="map-pin-name" data-i18n="home.legendWomenSafeRoute">여성안심길</span></div>
+                                    <div class="map-pin-icon-wrap text-purple-500">
+                                        <i data-lucide="footprints" class="w-4 h-4"></i>
+                                    </div>
+                                </div>
+                                <div id="pin-safepath-2" data-category="safepath" class="map-pin-drop" style="top: 65%; left: 22%;">
+                                    <div class="map-pin-bubble"><span class="map-pin-name" data-i18n="home.legendWomenSafeRoute">여성안심길</span></div>
+                                    <div class="map-pin-icon-wrap text-purple-500">
+                                        <i data-lucide="footprints" class="w-4 h-4"></i>
+                                    </div>
+                                </div>
+                                <div id="pin-safepath-3" data-category="safepath" class="map-pin-drop" style="top: 70%; left: 55%;">
+                                    <div class="map-pin-bubble"><span class="map-pin-name" data-i18n="home.legendWomenSafeRoute">여성안심길</span></div>
+                                    <div class="map-pin-icon-wrap text-purple-500">
+                                        <i data-lucide="footprints" class="w-4 h-4"></i>
+                                    </div>
+                                </div>
+                                <div id="pin-safepath-4" data-category="safepath" class="map-pin-drop" style="top: 55%; left: 78%;">
+                                    <div class="map-pin-bubble"><span class="map-pin-name" data-i18n="home.legendWomenSafeRoute">여성안심길</span></div>
+                                    <div class="map-pin-icon-wrap text-purple-500">
+                                        <i data-lucide="footprints" class="w-4 h-4"></i>
+                                    </div>
+                                </div>
+                                <div id="pin-safepath-5" data-category="safepath" class="map-pin-drop" style="top: 37%; left: 65%;">
+                                    <div class="map-pin-bubble"><span class="map-pin-name" data-i18n="home.legendWomenSafeRoute">여성안심길</span></div>
+                                    <div class="map-pin-icon-wrap text-purple-500">
+                                        <i data-lucide="footprints" class="w-4 h-4"></i>
+                                    </div>
+                                </div>
+
+                                <div id="pin-police-1" data-category="police" class="map-pin-drop" style="top: 46%; left: 55%;">
+                                    <div class="map-pin-bubble"><span class="map-pin-name" data-i18n="home.legendPoliceBox">지구대·파출소</span></div>
+                                    <div class="map-pin-icon-wrap text-blue-600">
+                                        <i data-lucide="shield-check" class="w-4 h-4"></i>
+                                    </div>
+                                </div>
+                                <div id="pin-police-2" data-category="police" class="map-pin-drop" style="top: 47%; left: 30%;">
+                                    <div class="map-pin-bubble"><span class="map-pin-name" data-i18n="home.legendPoliceBox">지구대·파출소</span></div>
+                                    <div class="map-pin-icon-wrap text-blue-600">
+                                        <i data-lucide="shield-check" class="w-4 h-4"></i>
+                                    </div>
+                                </div>
+                                <div id="pin-police-3" data-category="police" class="map-pin-drop" style="top: 78%; left: 80%;">
+                                    <div class="map-pin-bubble"><span class="map-pin-name" data-i18n="home.legendPoliceBox">지구대·파출소</span></div>
+                                    <div class="map-pin-icon-wrap text-blue-600">
+                                        <i data-lucide="shield-check" class="w-4 h-4"></i>
+                                    </div>
+                                </div>
+                                <div id="pin-police-4" data-category="police" class="map-pin-drop" style="top: 75%; left: 88%;">
+                                    <div class="map-pin-bubble"><span class="map-pin-name" data-i18n="home.legendPoliceBox">지구대·파출소</span></div>
+                                    <div class="map-pin-icon-wrap text-blue-600">
+                                        <i data-lucide="shield-check" class="w-4 h-4"></i>
+                                    </div>
+                                </div>
+                                <div id="pin-police-5" data-category="police" class="map-pin-drop" style="top: 22%; left: 67%;">
+                                    <div class="map-pin-bubble"><span class="map-pin-name" data-i18n="home.legendPoliceBox">지구대·파출소</span></div>
+                                    <div class="map-pin-icon-wrap text-blue-600">
+                                        <i data-lucide="shield-check" class="w-4 h-4"></i>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <!-- 지도 핀 범례 -->
+                            <div class="flex flex-wrap items-center gap-x-3 gap-y-1.5 text-[10px] text-slate-500 font-bold px-1">
+                                <span class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-red-500"></span><span data-i18n="home.legendHospital">병원</span></span>
+                                <span class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-teal-500"></span><span data-i18n="home.legendPharmacy">약국</span></span>
+                                <span class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-amber-500"></span>AED</span>
+                                <span class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-emerald-500"></span>CCTV</span>
+                                <span class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-purple-500"></span><span data-i18n="home.legendWomenSafeRoute">여성안심길</span></span>
+                                <span class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-blue-600"></span><span data-i18n="home.legendPoliceBox">지구대·파출소</span></span>
+                            </div>
+                            <div id="district-index-row" class="grid grid-cols-1 sm:grid-cols-3 gap-3"></div>
+
+                            <!-- 속보 티커 - "속보" 텍스트는 고정, 내용만 우측에서 좌측으로 흐름 -->
+                            <div class="flex items-center gap-2">
+                                <span class="text-xs font-extrabold text-red-500 shrink-0 animate-pulse" data-i18n="home.breakingNews">🚨 속보</span>
+                                <div class="overflow-hidden whitespace-nowrap flex-1 min-w-0">
+                                    <div id="disaster-ticker-text" class="ticker-scroll inline-block text-xs font-bold text-slate-700"></div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <!-- 우측: 카테고리 + 실시간 안전 피드 -->
+                        <div class="lg:col-span-5 space-y-6">
+
+                            <!-- 3. 실시간 커뮤니티 톡 -->
+                            <div id="community-talk" class="bg-white rounded-3xl p-5 sm:p-6 border border-slate-200/80 shadow-sm flex flex-col overflow-hidden"
+                                data-ola-drop-zone="true" data-ola-context="community-talk">
+
+                                <div class="flex items-center justify-between pb-3 border-b border-slate-100">
+                                    <div class="flex items-center gap-2">
+                                        <div class="w-7 h-7 rounded-lg bg-emerald-100 text-emerald-600 flex items-center justify-center">
+                                            <i data-lucide="users" class="w-4 h-4"></i>
+                                        </div>
+                                        <div>
+                                            <h2 class="text-base font-extrabold text-slate-900" data-i18n="home.talkHeading">실시간 커뮤니티 톡</h2>
+                                            <p class="text-[11px] text-slate-400" data-i18n="home.talkSubtitle">우리 동네 이웃들의 실시간 안전·생활 이야기</p>
+                                        </div>
+                                    </div>
+                                    <button type="button" onclick="simulateIncomingTalk()" title="새로고침" data-i18n-title="common.refresh"
+                                        class="p-2 rounded-lg text-slate-400 hover:text-emerald-600 hover:bg-slate-100 transition shrink-0">
+                                        <i data-lucide="refresh-cw" class="w-4 h-4"></i>
+                                    </button>
+                                </div>
+
+                                <!-- 카테고리 필터 -->
+                                <div class="flex items-center gap-1.5 overflow-x-auto scrollbar-none pt-3 pb-1 text-xs font-bold">
+                                    <button onclick="filterTalkCategory('all')" id="talk-tab-all"
+                                        class="talk-category-tab px-3 py-1 rounded-full bg-slate-900 text-white shrink-0 transition-all" data-i18n="talk.catAll">전체</button>
+                                    <button onclick="filterTalkCategory('emergency')" id="talk-tab-emergency"
+                                        class="talk-category-tab px-3 py-1 rounded-full bg-slate-100 text-slate-600 hover:bg-slate-200 shrink-0 transition-all" data-i18n="talk.catUrgent">🔥 긴급·제보</button>
+                                    <button onclick="filterTalkCategory('info')" id="talk-tab-info"
+                                        class="talk-category-tab px-3 py-1 rounded-full bg-slate-100 text-slate-600 hover:bg-slate-200 shrink-0 transition-all" data-i18n="talk.catSafety">📢 안전·정보</button>
+                                    <button onclick="filterTalkCategory('life')" id="talk-tab-life"
+                                        class="talk-category-tab px-3 py-1 rounded-full bg-slate-100 text-slate-600 hover:bg-slate-200 shrink-0 transition-all" data-i18n="talk.catNews">💬 동네소식</button>
+                                </div>
+
+                                <!-- 톡 작성 입력창 -->
+                                <div class="py-3 border-b border-slate-100">
+                                    <!-- 추천 태그 -->
+                                    <div class="flex items-center gap-1.5 mb-2 overflow-x-auto scrollbar-none text-[11px]">
+                                        <span class="text-slate-400 font-medium shrink-0" data-i18n="talk.suggestedTags">추천 태그:</span>
+                                        <button type="button" onclick="toggleTalkTag(this, '#비상벨점검')"
+                                            class="talk-tag-chip px-2 py-0.5 bg-white border border-slate-200 rounded-md text-slate-600 hover:border-emerald-400 hover:text-emerald-600 transition shrink-0">#비상벨점검</button>
+                                        <button type="button" onclick="toggleTalkTag(this, '#소화기')"
+                                            class="talk-tag-chip px-2 py-0.5 bg-white border border-slate-200 rounded-md text-slate-600 hover:border-emerald-400 hover:text-emerald-600 transition shrink-0">#소화기</button>
+                                        <button type="button" onclick="toggleTalkTag(this, '#야간안심길')"
+                                            class="talk-tag-chip px-2 py-0.5 bg-white border border-slate-200 rounded-md text-slate-600 hover:border-emerald-400 hover:text-emerald-600 transition shrink-0">#야간안심길</button>
+                                    </div>
+
+                                    <form onsubmit="submitCommunityTalk(event)">
+                                        <div class="bg-slate-50 border border-slate-200 focus-within:border-emerald-500 focus-within:ring-2 focus-within:ring-emerald-500/20 rounded-2xl p-2.5 transition">
+                                            <textarea id="talk-input" rows="2"
+                                                placeholder="주변 안전 정보나 생활 이야기를 나눠보세요... (#안전제보)" data-i18n-placeholder="talk.composerPlaceholder"
+                                                class="w-full bg-transparent text-xs focus:outline-none resize-none"></textarea>
+
+                                            <!-- 선택된 태그 칩 (작성 중에도 보이도록 입력창 바로 아래 표시) -->
+                                            <div id="talk-selected-tags" class="hidden flex-wrap items-center gap-1.5 mt-1.5"></div>
+
+                                            <!-- 첨부한 사진 미리보기 (사진을 고르기 전엔 숨김) -->
+                                            <div id="talk-image-preview" class="hidden relative w-20 h-20 rounded-xl overflow-hidden border border-slate-200 mt-1.5">
+                                                <img id="talk-image-preview-img" src="" alt="첨부 이미지" class="w-full h-full object-cover" data-i18n-title="talk.attachedImageAlt">
+                                                <button type="button" onclick="removeTalkImage()"
+                                                    class="absolute top-1 right-1 w-5 h-5 rounded-full bg-black/60 hover:bg-black/80 text-white flex items-center justify-center text-[11px] leading-none transition">
+                                                    ✕
+                                                </button>
+                                            </div>
+
+                                            <!-- 위치 태그 칩 (태그가 켜져 있을 때만 표시) -->
+                                            <div id="talk-location-chip"
+                                                class="hidden items-center gap-1 w-fit text-[11px] font-bold text-emerald-600 bg-emerald-50 px-2 py-1 rounded-full mt-1.5">
+                                                📍 <span id="talk-location-chip-text"></span>
+                                                <button type="button" onclick="toggleTalkLocationTag()" class="ml-0.5 hover:text-emerald-800">✕</button>
+                                            </div>
+
+                                            <div class="flex items-center justify-between pt-1.5 mt-1.5 border-t border-slate-200">
+                                                <div class="flex items-center gap-1">
+                                                    <button type="button" onclick="triggerTalkCameraCapture()" title="사진 촬영" data-i18n-title="talk.titlePhoto"
+                                                        class="w-7 h-7 rounded-lg text-slate-400 hover:text-slate-600 hover:bg-slate-100 flex items-center justify-center transition shrink-0">
+                                                        <i data-lucide="camera" class="w-4 h-4"></i>
+                                                    </button>
+                                                    <button type="button" onclick="triggerTalkGalleryPick()" title="이미지 첨부" data-i18n-title="talk.titleImage"
+                                                        class="w-7 h-7 rounded-lg text-slate-400 hover:text-slate-600 hover:bg-slate-100 flex items-center justify-center transition shrink-0">
+                                                        <i data-lucide="image" class="w-4 h-4"></i>
+                                                    </button>
+                                                    <button type="button" onclick="toggleTalkLocationTag()" id="talk-location-tag-btn" title="내 위치 태그하기" data-i18n-title="talk.titleLocation"
+                                                        class="w-7 h-7 rounded-lg text-slate-400 hover:text-slate-600 hover:bg-slate-100 flex items-center justify-center transition shrink-0">
+                                                        <i data-lucide="locate-fixed" class="w-4 h-4"></i>
+                                                    </button>
+                                                    <div class="relative">
+                                                        <button type="button" onclick="toggleTalkEmojiPicker(event)" title="이모티콘" data-i18n-title="talk.titleEmoji"
+                                                            class="w-7 h-7 rounded-lg text-slate-400 hover:text-slate-600 hover:bg-slate-100 flex items-center justify-center transition shrink-0">
+                                                            <i data-lucide="smile" class="w-4 h-4"></i>
+                                                        </button>
+                                                        <div id="talk-emoji-picker"
+                                                            class="hidden absolute bottom-full left-0 mb-2 w-56 bg-white border border-slate-200 rounded-xl shadow-lg p-2 grid grid-cols-6 gap-1 z-20">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <button type="submit"
+                                                    class="px-3.5 py-1.5 bg-emerald-500 hover:bg-emerald-600 active:scale-95 text-white font-bold text-xs rounded-xl shadow-sm transition" data-i18n="talk.submit">
+                                                    톡 등록
+                                                </button>
+                                            </div>
+                                        </div>
+
+                                        <div id="talk-empty-toast" class="hidden mt-2 text-center text-xs text-red-500 font-medium" data-i18n="talk.emptyWarning">
+                                            ⚠️ 내용을 입력하거나 사진을 첨부해주세요!
+                                        </div>
+
+                                        <input type="file" id="talk-camera-input" accept="image/*" capture="environment" class="hidden" onchange="handleTalkImageSelected(this)">
+                                        <input type="file" id="talk-gallery-input" accept="image/*" class="hidden" onchange="handleTalkImageSelected(this)">
+                                    </form>
+                                </div>
+
+                                <!-- 톡 피드 -->
+                                <div id="talk-feed-container" class="pt-3 space-y-3 max-h-[420px] overflow-y-auto">
+
+                                    <div class="talk-post-item p-3.5 rounded-2xl border border-amber-200 bg-amber-50/60 space-y-2" data-talk-category="emergency">
+                                        <div class="flex items-center gap-2">
+                                            <div class="w-7 h-7 rounded-full bg-amber-500 text-white font-bold flex items-center justify-center text-xs">☀️</div>
+                                            <div>
+                                                <div class="flex items-center gap-1.5">
+                                                    <span class="text-xs font-bold text-slate-800">알림센터</span>
+                                                    <span class="text-[9px] bg-amber-100 text-amber-800 font-bold px-1.5 py-0.5 rounded">공식정보</span>
+                                                </div>
+                                                <span class="text-[10px] text-slate-400">15:10 · 📍 중구 전역</span>
+                                            </div>
+                                        </div>
+                                        <p class="text-xs text-slate-700 leading-relaxed">중구 폭염주의보가 발효 중입니다. 무더위 쉼터 12개소를 24시간 연장 운영하니 가까운 주민센터에서 이용해주세요!</p>
+                                        <div class="flex items-center justify-between pt-1 border-t border-amber-100 text-[11px] text-slate-400">
+                                            <span class="text-amber-600 font-semibold">#폭염대비 #무더위쉼터</span>
+                                            <div class="flex items-center gap-3">
+                                                <button onclick="toggleTalkLike(this)" class="hover:text-red-500 flex items-center gap-1 transition">
+                                                    <i data-lucide="heart" class="w-3.5 h-3.5"></i> <span class="like-count font-bold">24</span>
+                                                </button>
+                                                <button onclick="toggleTalkComments(this)" class="hover:text-slate-600 flex items-center gap-1 transition">
+                                                    <i data-lucide="message-circle" class="w-3.5 h-3.5"></i> <span class="comment-count">2</span>
+                                                </button>
+                                                <button onclick="reportTalkPost(this)" class="hover:text-red-500 flex items-center gap-1 transition" title="신고하기">
+                                                    <i data-lucide="flag" class="w-3.5 h-3.5"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <div class="talk-comments hidden mt-2 pt-2 border-t border-amber-100 space-y-2">
+                                            <div class="talk-comment-item flex items-start justify-between gap-2">
+                                                <p class="text-xs text-slate-600"><span class="font-bold text-slate-800">동네 이웃</span> 쉼터 위치가 정확히 어디인가요?</p>
+                                                <button onclick="deleteTalkComment(this)" class="text-slate-300 hover:text-red-500 shrink-0"><i data-lucide="x" class="w-3 h-3"></i></button>
+                                            </div>
+                                            <div class="talk-comment-item flex items-start justify-between gap-2">
+                                                <p class="text-xs text-slate-600"><span class="font-bold text-slate-800">동네 주민</span> 주민센터 안내데스크에 물어보니 바로 알려주셨어요!</p>
+                                                <button onclick="deleteTalkComment(this)" class="text-slate-300 hover:text-red-500 shrink-0"><i data-lucide="x" class="w-3 h-3"></i></button>
+                                            </div>
+                                            <div class="flex items-center gap-1.5 pt-1">
+                                                <input type="text" class="talk-comment-input flex-1 text-xs border border-slate-200 rounded-lg px-2 py-1 focus:outline-none focus:border-emerald-400 bg-white"
+                                                    placeholder="댓글을 입력하세요..." onkeydown="if(event.key==='Enter'){event.preventDefault();addTalkComment(this)}">
+                                                <button type="button" onclick="addTalkComment(this.previousElementSibling)" class="text-emerald-600 text-xs font-bold px-2 py-1 shrink-0">등록</button>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="talk-post-item p-3.5 rounded-2xl border border-slate-200 bg-white space-y-2" data-talk-category="life">
+                                        <div class="flex items-center gap-2">
+                                            <div class="w-7 h-7 rounded-full bg-indigo-100 text-indigo-700 font-bold flex items-center justify-center text-xs">이</div>
+                                            <div>
+                                                <div class="flex items-center gap-1.5">
+                                                    <span class="text-xs font-bold text-slate-800">동네 이웃</span>
+                                                    <span class="text-[9px] bg-emerald-50 text-emerald-600 font-bold px-1.5 py-0.5 rounded">인증 주민</span>
+                                                </div>
+                                                <span class="text-[10px] text-slate-400">3분 전 · <span class="talk-seed-area">📍 우리 동네</span></span>
+                                            </div>
+                                        </div>
+                                        <p class="text-xs text-slate-700 leading-relaxed">근처 24시 약국 밤에도 불 켜져 있고 영업 중이에요! 급하신 분들 참고하세요~</p>
+                                        <div class="flex items-center justify-between pt-1 border-t border-slate-100 text-[11px] text-slate-400">
+                                            <span class="font-semibold text-slate-500">#야간약국 #정보공유</span>
+                                            <div class="flex items-center gap-3">
+                                                <button onclick="toggleTalkLike(this)" class="hover:text-red-500 flex items-center gap-1 transition">
+                                                    <i data-lucide="heart" class="w-3.5 h-3.5"></i> <span class="like-count font-bold">12</span>
+                                                </button>
+                                                <button onclick="toggleTalkComments(this)" class="hover:text-slate-600 flex items-center gap-1 transition">
+                                                    <i data-lucide="message-circle" class="w-3.5 h-3.5"></i> <span class="comment-count">1</span>
+                                                </button>
+                                                <button onclick="reportTalkPost(this)" class="hover:text-red-500 flex items-center gap-1 transition" title="신고하기">
+                                                    <i data-lucide="flag" class="w-3.5 h-3.5"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <div class="talk-comments hidden mt-2 pt-2 border-t border-slate-100 space-y-2">
+                                            <div class="talk-comment-item flex items-start justify-between gap-2">
+                                                <p class="text-xs text-slate-600"><span class="font-bold text-slate-800">동네 지킴이</span> 정보 감사해요! 덕분에 급할 때 도움됐어요.</p>
+                                                <button onclick="deleteTalkComment(this)" class="text-slate-300 hover:text-red-500 shrink-0"><i data-lucide="x" class="w-3 h-3"></i></button>
+                                            </div>
+                                            <div class="flex items-center gap-1.5 pt-1">
+                                                <input type="text" class="talk-comment-input flex-1 text-xs border border-slate-200 rounded-lg px-2 py-1 focus:outline-none focus:border-emerald-400 bg-white"
+                                                    placeholder="댓글을 입력하세요..." onkeydown="if(event.key==='Enter'){event.preventDefault();addTalkComment(this)}">
+                                                <button type="button" onclick="addTalkComment(this.previousElementSibling)" class="text-emerald-600 text-xs font-bold px-2 py-1 shrink-0">등록</button>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="talk-post-item p-3.5 rounded-2xl border border-slate-200 bg-white space-y-2" data-talk-category="info">
+                                        <div class="flex items-center gap-2">
+                                            <div class="w-7 h-7 rounded-full bg-teal-100 text-teal-700 font-bold flex items-center justify-center text-xs">동</div>
+                                            <div>
+                                                <div class="flex items-center gap-1.5">
+                                                    <span class="text-xs font-bold text-slate-800">동네 지킴이</span>
+                                                </div>
+                                                <span class="text-[10px] text-slate-400">12분 전 · <span class="talk-seed-area">📍 우리 동네</span></span>
+                                            </div>
+                                        </div>
+                                        <p class="text-xs text-slate-700 leading-relaxed">인근 보행로 조명이 새로 교체되어서 밤에도 훨씬 밝습니다. 여성안심귀가길 이용 추천해요! 💡</p>
+                                        <div class="flex items-center justify-between pt-1 border-t border-slate-100 text-[11px] text-slate-400">
+                                            <span class="font-semibold text-slate-500">#안심귀가길 #가로등</span>
+                                            <div class="flex items-center gap-3">
+                                                <button onclick="toggleTalkLike(this)" class="hover:text-red-500 flex items-center gap-1 transition">
+                                                    <i data-lucide="heart" class="w-3.5 h-3.5"></i> <span class="like-count font-bold">8</span>
+                                                </button>
+                                                <button onclick="toggleTalkComments(this)" class="hover:text-slate-600 flex items-center gap-1 transition">
+                                                    <i data-lucide="message-circle" class="w-3.5 h-3.5"></i> <span class="comment-count">0</span>
+                                                </button>
+                                                <button onclick="reportTalkPost(this)" class="hover:text-red-500 flex items-center gap-1 transition" title="신고하기">
+                                                    <i data-lucide="flag" class="w-3.5 h-3.5"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <div class="talk-comments hidden mt-2 pt-2 border-t border-slate-100 space-y-2">
+                                            <div class="flex items-center gap-1.5 pt-1">
+                                                <input type="text" class="talk-comment-input flex-1 text-xs border border-slate-200 rounded-lg px-2 py-1 focus:outline-none focus:border-emerald-400 bg-white"
+                                                    placeholder="댓글을 입력하세요..." onkeydown="if(event.key==='Enter'){event.preventDefault();addTalkComment(this)}">
+                                                <button type="button" onclick="addTalkComment(this.previousElementSibling)" class="text-emerald-600 text-xs font-bold px-2 py-1 shrink-0">등록</button>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+
+            </section>
+
+        </div>
+    </main>
+
+    <!-- 로그인 팝업 (모든 페이지 공통) -->
+    <div id="loginModal"
+        class="fixed inset-0 bg-dark bg-opacity-50 z-50 flex items-center justify-center hidden opacity-0 transition-opacity duration-300">
+        <div class="bg-white w-[90%] max-w-md rounded-2xl shadow-xl overflow-hidden transform scale-95 transition-transform duration-300"
+            id="loginModalContent">
+            <div class="p-8">
+                <div class="flex justify-between items-center mb-6">
+                    <div class="text-primary font-bold text-2xl tracking-tighter flex items-center gap-2">
+                        <i data-lucide="compass" class="w-6 h-6"></i> OLA.
+                    </div>
+                    <button onclick="uiJS.closeLoginModal()" class="text-gray-400 hover:text-dark">
+                        <i data-lucide="x" class="w-6 h-6"></i>
+                    </button>
+                </div>
+
+                <!-- 로그인/회원가입 탭 (아이디·비밀번호 찾기 화면에서는 숨김) -->
+                <div id="authTabBar" class="flex gap-2 mb-6 bg-bg p-1 rounded-xl">
+                    <button id="authTabLogin" onclick="olaAuthUI.switchTab('login')"
+                        class="flex-1 py-2 rounded-lg text-sm font-bold transition-colors bg-white text-primary shadow-sm" data-i18n="auth.login">로그인</button>
+                    <button id="authTabSignup" onclick="olaAuthUI.switchTab('signup')"
+                        class="flex-1 py-2 rounded-lg text-sm font-bold transition-colors text-gray-500" data-i18n="auth.signup">회원가입</button>
+                </div>
+
+                <!-- 아이디/비밀번호 찾기 화면 상단 뒤로가기 -->
+                <button id="authBackBtn" onclick="olaAuthUI.switchTab('login')"
+                    class="hidden items-center gap-1 text-xs text-gray-400 hover:text-primary mb-4">
+                    <i data-lucide="chevron-left" class="w-4 h-4"></i> <span data-i18n="auth.backToLogin">로그인으로 돌아가기</span>
+                </button>
+
+                <p id="authMessage" class="text-sm text-red-500 mb-3 hidden"></p>
+                <p id="authSuccessMessage" class="text-sm text-point2 mb-3 hidden"></p>
+
+                <!-- 로그인 폼 -->
+                <div id="loginPanel" class="space-y-4">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1" data-i18n="auth.email">이메일</label>
+                        <input type="email" id="loginEmail" placeholder="example@ola.com" class="ola-input">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1" data-i18n="auth.password">비밀번호</label>
+                        <input type="password" id="loginPassword" placeholder="••••••••" class="ola-input">
+                    </div>
+                    <button id="loginSubmitBtn" onclick="olaAuthUI.handleLogin()" class="ola-btn-primary mt-2"><span data-i18n="auth.login">로그인</span></button>
+                    <div class="flex justify-center gap-3 text-xs text-gray-400 pt-1">
+                        <button onclick="olaAuthUI.switchTab('findId')" class="hover:text-primary"><span data-i18n="auth.findId">아이디 찾기</span></button>
+                        <span>|</span>
+                        <button onclick="olaAuthUI.switchTab('resetPw')" class="hover:text-primary"><span data-i18n="auth.resetPw">비밀번호 찾기</span></button>
+                    </div>
+                </div>
+
+                <!-- 회원가입 폼 -->
+                <div id="signupPanel" class="space-y-4 hidden">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1" data-i18n="auth.name">이름</label>
+                        <input type="text" id="signupName" placeholder="홍길동" data-i18n-placeholder="auth.namePlaceholder" class="ola-input">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1" data-i18n="auth.email">이메일</label>
+                        <input type="email" id="signupEmail" placeholder="example@ola.com" class="ola-input">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1" data-i18n="auth.password">비밀번호</label>
+                        <input type="password" id="signupPassword" placeholder="6자 이상" data-i18n-placeholder="auth.passwordPlaceholder" class="ola-input">
+                    </div>
+                    <button id="signupSubmitBtn" onclick="olaAuthUI.handleSignup()" class="ola-btn-primary mt-2"><span data-i18n="auth.signup">회원가입</span></button>
+                </div>
+
+                <!-- 아이디 찾기 -->
+                <div id="findIdPanel" class="space-y-4 hidden">
+                    <p class="text-sm text-gray-500" data-i18n="auth.findIdDesc">가입 시 입력한 이름을 입력하면 등록된 이메일(아이디)을 알려드려요.</p>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1" data-i18n="auth.name">이름</label>
+                        <input type="text" id="findIdName" placeholder="홍길동" data-i18n-placeholder="auth.namePlaceholder" class="ola-input">
+                    </div>
+                    <button onclick="olaAuthUI.handleFindId()" class="ola-btn-primary mt-2"><span data-i18n="auth.findId">아이디 찾기</span></button>
+                    <div id="findIdResult" class="space-y-2"></div>
+                </div>
+
+                <!-- 비밀번호 찾기(재설정) -->
+                <div id="resetPwPanel" class="space-y-4 hidden">
+                    <p class="text-sm text-gray-500" data-i18n="auth.resetPwDesc">이름과 아이디(이메일)가 모두 일치하면 새 비밀번호로 바꿀 수 있어요.</p>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1" data-i18n="auth.name">이름</label>
+                        <input type="text" id="resetPwName" placeholder="홍길동" data-i18n-placeholder="auth.namePlaceholder" class="ola-input">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1" data-i18n="auth.email">아이디(이메일)</label>
+                        <input type="email" id="resetPwEmail" placeholder="example@ola.com" class="ola-input">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1" data-i18n="auth.newPassword">새 비밀번호</label>
+                        <input type="password" id="resetPwNew" placeholder="6자 이상" data-i18n-placeholder="auth.passwordPlaceholder" class="ola-input">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1" data-i18n="auth.confirmPassword">새 비밀번호 확인</label>
+                        <input type="password" id="resetPwConfirm" placeholder="6자 이상" data-i18n-placeholder="auth.passwordPlaceholder" class="ola-input">
+                    </div>
+                    <button onclick="olaAuthUI.handleResetPassword()" class="ola-btn-primary mt-2"><span data-i18n="auth.changePw">비밀번호 변경</span></button>
+                </div>
+
+                <p class="text-xs text-gray-400 mt-6 text-center leading-relaxed"><span data-i18n-html="auth.demoNotice">이 계정 정보는 서버가 아닌 이 브라우저(localStorage)에만 저장되는 데모용 로그인입니다.</span></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 토스트 알림 -->
+    <div id="toast-notif"
+        class="fixed bottom-6 right-6 z-50 bg-dark text-white rounded-2xl p-4 shadow-2xl flex items-center gap-3 max-w-sm transition-all duration-300 transform translate-y-20 opacity-0 pointer-events-none">
+        <div
+            class="w-8 h-8 rounded-full bg-primary bg-opacity-20 text-secondary flex items-center justify-center flex-shrink-0">
+            <i data-lucide="bell-ring" class="w-4 h-4"></i>
+        </div>
+        <div class="text-left flex-1">
+            <p class="text-xs font-bold" id="toast-title">안심 알림</p>
+            <span class="text-[10px] text-gray-400 block mt-0.5" id="toast-body">알림 내용이 들어갑니다.</span>
+        </div>
+        <button onclick="olaToast.dismiss()" class="text-gray-400 hover:text-white flex-shrink-0"><i data-lucide="x"
+                class="w-4 h-4"></i></button>
+    </div>
+
+    <!-- OLA 안내 로봇 -->
+    <div id="ola-layer" aria-label="OLA AI 안내 로봇">
+        <div id="ola-stage">
+            <div id="ola-message" role="status" aria-live="polite" aria-atomic="true" aria-hidden="true">
+                <button id="ola-message-close" type="button" aria-label="OLA 안내 닫기">×</button>
+                <strong id="ola-message-title"></strong>
+                <p id="ola-message-text"></p>
+                <ul id="ola-message-details"></ul>
+                <div id="ola-message-actions"></div>
+            </div>
+            <div id="ola-render-area"></div>
+            <div id="ola-zzz" aria-hidden="true">Zzz</div>
+            <button id="ola-settings-trigger" type="button" aria-label="올라 설정 열기"
+                aria-controls="ola-settings-panel" aria-expanded="false" hidden>
+                <img data-src="assets/ola/ui/ola-settings-gear.png" alt="" width="36" height="36">
+            </button>
+        </div>
+        <button id="ola-restore-trigger" type="button" aria-label="올라 다시 표시" hidden>올라 다시 표시</button>
+        <aside id="ola-settings-panel" role="dialog" aria-label="올라 설정" aria-hidden="true"
+            aria-modal="false" tabindex="-1" hidden inert>
+            <header><strong>올라 설정</strong><button id="ola-settings-close" type="button"
+                    aria-label="올라 설정 닫기">×</button></header>
+            <div class="ola-settings-content">
+                <section class="ola-settings-group" aria-labelledby="ola-settings-basic-title">
+                    <h3 id="ola-settings-basic-title">기본</h3>
+                    <label><span>올라 표시</span><input id="ola-setting-visible" type="checkbox"></label>
+                    <button id="ola-setting-hide-page" type="button">현재 페이지에서 숨기기</button>
+                </section>
+                <section class="ola-settings-group" aria-labelledby="ola-settings-sleep-title">
+                    <h3 id="ola-settings-sleep-title">자동 수면</h3>
+                    <label><span>수면 시간</span><select id="ola-setting-sleep">
+                            <option value="60000">1분</option>
+                            <option value="300000">5분 (기본값)</option>
+                            <option value="3600000">1시간</option>
+                            <option value="0">없음</option>
+                        </select></label>
+                    <label><span>수면 예고</span><input id="ola-setting-sleep-warning" type="checkbox"></label>
+                </section>
+                <section class="ola-settings-group" aria-labelledby="ola-settings-guide-title">
+                    <h3 id="ola-settings-guide-title">인사와 안내</h3>
+                    <label><span>페이지 입장 인사</span><input id="ola-setting-welcome" type="checkbox"></label>
+                    <label><span>자동 안내 빈도</span><select id="ola-setting-guide-frequency">
+                            <option value="minimal">최소</option><option value="normal">보통</option><option value="active">활발</option>
+                        </select></label>
+                </section>
+                <section class="ola-settings-group" aria-labelledby="ola-settings-motion-title">
+                    <h3 id="ola-settings-motion-title">움직임</h3>
+                    <label><span>모션 강도</span><select id="ola-setting-motion-intensity">
+                            <option value="minimal">최소</option><option value="normal">보통</option><option value="active">활발</option>
+                        </select></label>
+                    <label><span>움직임 줄이기</span><select id="ola-setting-reduce-motion">
+                            <option value="system">시스템</option><option value="always">항상</option><option value="never">사용 안 함</option>
+                        </select></label>
+                    <label><span>자동 비행</span><input id="ola-setting-auto-flight" type="checkbox"></label>
+                </section>
+                <section class="ola-settings-group" aria-labelledby="ola-settings-emotion-title">
+                    <h3 id="ola-settings-emotion-title">감정</h3>
+                    <label><span>감정 표현</span><select id="ola-setting-emotion-intensity">
+                            <option value="minimal">최소</option><option value="normal">보통</option><option value="rich">풍부하게</option>
+                        </select></label>
+                    <label><span>공감 반응</span><input id="ola-setting-empathy" type="checkbox"></label>
+                    <label><span>반복 드래그 반응</span><input id="ola-setting-drag-reaction" type="checkbox"></label>
+                </section>
+                <section class="ola-settings-group" aria-labelledby="ola-settings-position-title">
+                    <h3 id="ola-settings-position-title">위치</h3>
+                    <label><span>기본 대기 위치</span><select id="ola-setting-dock-position">
+                            <option value="right">오른쪽</option><option value="left">왼쪽</option>
+                        </select></label>
+                    <label><span>올라 스테이션 사용</span><input id="ola-setting-station" type="checkbox"></label>
+                    <button id="ola-setting-reset-position" type="button">올라 위치 초기화</button>
+                </section>
+                <section class="ola-settings-group ola-settings-help" aria-labelledby="ola-settings-help-title">
+                    <h3 id="ola-settings-help-title">올라 도움말</h3>
+                    <ul>
+                        <li>몸체를 드래그해 올라를 움직일 수 있어요.</li>
+                        <li>가슴 코어로 Sleep/Wake를 전환해요.</li>
+                        <li>카드나 박스를 누르면 해당 기능을 설명해요.</li>
+                        <li>상황에 따라 감정과 안내 모션으로 반응해요.</li>
+                    </ul>
+                    <button id="ola-settings-help-guide" type="button">사용법 보기</button>
+                    <button id="ola-setting-replay-intro" type="button">처음 사용 안내 다시 보기</button>
+                </section>
+            </div>
+            <footer>
+                <button id="ola-setting-reset-position-footer" type="button">올라 위치 초기화</button>
+                <button id="ola-setting-reset-defaults" type="button">기본 설정으로 복원</button>
+            </footer>
+        </aside>
+    </div>
+
+    <!-- JS 스크립트 모음 -->
+    <script>window.OLA_BASE = '';</script>
+    <script src="js/config.js"></script>
+    <script src="js/i18n.js"></script>
+    <script src="js/settings.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/auth-ui.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/data.js"></script>
+    <script src="js/regions-list.js"></script>
+    <script src="js/location.js"></script>
+    <script src="js/location-ui.js"></script>
+    <script src="js/ui.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/briefing.js"></script>
+    <script src="js/openai.js"></script>
+    <script src="js/news.js"></script>
+    <script src="js/briefing-text.js"></script>
+    <script src="js/home.js"></script>
+
+    <!-- OLA 안내 로봇 (?v=... 는 위 CSS와 같은 이유의 캐시 버스팅) -->
+    <script src="js/ola/ola-page-config.js?v=20260806b"></script>
+    <script src="js/ola/ola-i18n.js?v=20260806b"></script>
+    <script src="js/ola/ola-state-manager.js?v=20260806b"></script>
+    <script src="js/ola/ola-2d-motion-engine.js?v=20260806b"></script>
+    <script src="js/ola/ola-renderer-2d.js?v=20260806b"></script>
+    <script src="js/ola/ola-renderer-3d.js?v=20260806b"></script>
+    <script src="js/ola/ola-renderer-manager.js?v=20260806b"></script>
+    <script src="js/ola/ola-controller.js?v=20260806b"></script>
+
+</body>
+
+</html>

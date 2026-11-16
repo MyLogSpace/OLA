@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ask OLA | 시작하기</title>
+
+    <!-- 폰트 설정 (Pretendard) -->
+    <link rel="stylesheet" as="style" crossorigin
+        href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" />
+
+    <!-- Tailwind CSS (CDN) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="js/tailwind-config.js"></script>
+
+    <!-- 아이콘 -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- CSS 모음 -->
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/landing.css">
+</head>
+
+<body class="min-h-screen bg-bg text-dark font-sans">
+
+    <!-- 언어 변경 (지구본 아이콘) -->
+    <div class="fixed top-4 right-4 z-40" data-i18n-switcher>
+        <button type="button" data-lang-btn
+            class="flex items-center gap-1.5 bg-white border border-border rounded-full shadow-sm px-3 py-2 text-sm font-medium text-dark hover:bg-bg transition-colors">
+            <i data-lucide="globe" class="w-4 h-4 flex-shrink-0"></i>
+            <span data-i18n="common.language">언어</span>
+            <i data-lucide="chevron-down" class="w-4 h-4 flex-shrink-0"></i>
+        </button>
+        <div data-lang-menu
+            class="hidden absolute right-0 top-full mt-1 w-40 bg-white border border-border rounded-xl shadow-lg overflow-hidden z-50">
+        </div>
+    </div>
+
+    <!-- 위치 정보 안내 토스트 (채팅 말풍선 스타일, 닫기 가능) -->
+    <div id="location-toast" class="hidden fixed top-4 left-4 z-40 max-w-[230px] flex flex-col gap-1.5">
+        <div class="relative bg-emerald-500 text-white rounded-2xl rounded-tl-sm px-3.5 py-2.5 shadow-sm">
+            <button type="button" onclick="dismissLocationToast()"
+                class="absolute top-1.5 right-2 text-white/70 hover:text-white text-xs leading-none">✕</button>
+            <p class="text-xs leading-snug pr-4"><span data-i18n="landing.locationNotFound">위치정보를 찾지 못했습니다.</span><br><span id="location-toast-text"></span></p>
+        </div>
+        <div class="self-start ml-3 bg-blue-600 text-white rounded-2xl rounded-tl-sm px-3.5 py-2 shadow-sm">
+            <p class="text-[11px] leading-snug" data-i18n="landing.locationApprox">위치 정보는 대략적으로 표시됩니다.</p>
+        </div>
+    </div>
+
+    <!-- 중앙 온보딩 콘텐츠 -->
+    <div class="min-h-screen flex flex-col items-center justify-center px-4 py-12">
+        <div class="w-full max-w-md flex flex-col items-center gap-5 text-center">
+
+            <div>
+                <img src="assets/images/ola-logo.png" alt="OLA — 당신의 일상을 이해하는 AI Partner"
+                    class="w-full max-w-[240px] mx-auto" />
+            </div>
+
+            <div class="landing-illustration-plate w-full rounded-2xl overflow-hidden border border-border relative">
+                <img src="assets/images/5-2.png" alt="ASK OLA"
+                    class="w-full h-full object-cover" />
+                <h6 class="absolute bottom-3 right-3 text-white text-xs font-bold bg-black/40 backdrop-blur-sm px-3 py-1 rounded-full"
+                    data-i18n="landing.caption">생활 밀착형 안전 · 민원 AI 플랫폼</h6>
+            </div>
+
+            <div class="ola-card w-full text-left p-6 flex flex-col gap-4">
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1" data-i18n="auth.email">이메일</label>
+                    <input type="email" id="loginEmail" placeholder="you@example.com" class="ola-input">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1" data-i18n="auth.password">비밀번호</label>
+                    <input type="password" id="loginPassword" placeholder="••••••••" class="ola-input">
+                </div>
+
+                <p id="authMessage" class="text-sm text-red-500 hidden"></p>
+
+                <button id="loginSubmitBtn" onclick="handleLandingLogin()" class="ola-btn-primary"
+                    style="background-color:#1E3A8A" data-i18n="landing.loginStart">로그인하고 시작하기</button>
+                <a href="index.html" class="text-center text-sm font-bold hover:underline"
+                    style="color:#1E3A8A" data-i18n="landing.guestBrowse">게스트로 둘러보기 →</a>
+            </div>
+
+            <p class="text-xs text-gray-400" data-i18n="landing.consentNotice">가입 시 공공데이터 기반 안전 정보 제공에 동의합니다.</p>
+        </div>
+    </div>
+
+    <!-- 관련사이트 선택 (데스크톱 전용) -->
+    <div class="hidden lg:block fixed bottom-4 right-4 z-30">
+        <select id="related-site-select" onchange="onRelatedSiteChange(this)"
+            class="ola-input text-sm shadow-sm cursor-pointer" style="min-width:150px">
+            <option value="" data-i18n="landing.relatedSiteDefault">관련사이트 선택</option>
+            <option value="https://www.safekorea.go.kr" data-i18n="landing.site.safekorea">국민재난안전포털</option>
+            <option value="https://www.safepatrol.go.kr" data-i18n="landing.site.safepatrol">안전신문고</option>
+            <option value="https://www.gov.kr" data-i18n="landing.site.gov24">정부24</option>
+            <option value="https://www.e-gen.or.kr" data-i18n="landing.site.egen">응급의료포털 e-gen</option>
+            <option value="https://www.weather.go.kr" data-i18n="landing.site.weather">기상청 날씨누리</option>
+            <option value="https://www.police.go.kr" data-i18n="landing.site.police">경찰청</option>
+            <option value="https://www.nfa.go.kr" data-i18n="landing.site.fire">소방청</option>
+        </select>
+    </div>
+
+    <!-- JS 스크립트 모음 -->
+    <script>window.OLA_BASE = '';</script>
+    <script src="js/config.js"></script>
+    <script src="js/i18n.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/auth-ui.js"></script>
+    <script src="js/data.js"></script>
+    <script src="js/regions-list.js"></script>
+    <script src="js/location.js"></script>
+    <script>
+        async function handleLandingLogin() {
+            await olaAuthUI.handleLogin();
+            if (olaAuth.isLoggedIn()) window.location.href = 'index.html';
+        }
+
+        function dismissLocationToast() {
+            document.getElementById('location-toast')?.classList.add('hidden');
+        }
+
+        function onRelatedSiteChange(select) {
+            const url = select.value;
+            if (url) window.open(url, '_blank', 'noopener');
+            select.value = '';
+        }
+
+        // 위치 안내 토스트의 "{{지역}}으로 설정됩니다." 부분은 data-i18n으로 처리할 수 없는
+        // 동적 문구라, 언어가 바뀌면 이 함수를 다시 불러 직접 갱신한다.
+        function renderLocationToastText() {
+            const textEl = document.getElementById('location-toast-text');
+            if (!textEl || !window.olaLocation || !textEl.dataset.rendered) return;
+            const t = window.olaI18n ? olaI18n.t : (k, vars) => vars.label;
+            const { sido, gu } = olaLocation.getSidoGu();
+            const label = window.olaRegionLabel ? olaRegionLabel(sido, gu) : `${sido} ${gu}`;
+            textEl.textContent = t('landing.locationSetTo', { label });
+        }
+
+        function initLocationToast() {
+            const toast = document.getElementById('location-toast');
+            const textEl = document.getElementById('location-toast-text');
+            if (!toast || !textEl || !window.olaLocation) return;
+            // 자동으로 GPS 위치를 감지해 저장하지 않습니다 (기본값 "서울시청"을 유지하기 위함).
+            // 실제 위치 사용은 사이드바의 "내 위치 사용" 버튼을 눌렀을 때만 동작합니다.
+            // 이미 사용자가 위치를 선택해둔 적이 있으면 그 값을 그대로 존중하고 안내를 띄우지 않습니다.
+            if (localStorage.getItem('ola_selected_region')) return;
+            textEl.dataset.rendered = '1';
+            renderLocationToastText();
+            toast.classList.remove('hidden');
+        }
+        document.addEventListener('DOMContentLoaded', initLocationToast);
+        document.addEventListener('DOMContentLoaded', () => {
+            if (window.olaI18n) olaI18n.onLocaleChange(renderLocationToastText);
+        });
+        document.addEventListener('DOMContentLoaded', () => {
+            if (window.lucide) lucide.createIcons();
+        });
+    </script>
+</body>
+
+</html>
