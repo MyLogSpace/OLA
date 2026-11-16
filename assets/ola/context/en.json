@@ -1,0 +1,332 @@
+{
+  "home-briefing": {
+    "title": "Today's OLA Briefing",
+    "userSummary": "This section gives you a short briefing on the weather and everyday safety information for your selected area.",
+    "details": [
+      "The briefing on this screen is updated when the lookup is complete.",
+      "Select View details to open the full briefing."
+    ],
+    "suggestedQuestion": "Ask what you should check first in today's briefing.",
+    "visibleValueSelectors": ["#ai-briefing-text", "#briefing-time"],
+    "sourceComments": [
+      {"file": "index.html", "line": 257, "summary": "오늘의 올라 브리핑 카드 목적과 배치"},
+      {"file": "js/home.js", "line": 163, "summary": "실제 데이터 기반 브리핑 생성 흐름"}
+    ],
+    "safetyLevel": "general",
+    "fallback": "You can check today's everyday safety briefing in this section."
+  },
+  "life-index": {
+    "title": "Today's Living Conditions",
+    "userSummary": "This section brings together safety, weather, air quality, fire and disaster risks, and emergency room congestion.",
+    "details": [
+      "Values marked as loading are updated when each lookup is complete.",
+      "Select Safe directions to continue to the everyday safety page."
+    ],
+    "suggestedQuestion": "Ask which of the current living condition indicators deserves attention.",
+    "visibleValueSelectors": [
+      "[data-life-safety-message]",
+      "[data-life-safety-score]",
+      "[data-life-safety-label]",
+      "[data-life-temp]",
+      "[data-life-weather]",
+      "[data-life-outdoor]",
+      "[data-life-dust]",
+      "[data-life-dust-sub]",
+      "[data-life-fire-value]",
+      "[data-life-fire-sub]",
+      "[data-life-er-value]",
+      "[data-life-er-sub]"
+    ],
+    "sourceComments": [
+      {"file": "index.html", "line": 292, "summary": "생활 지수에 포함되는 안전·날씨·대기·재난·응급 항목"},
+      {"file": "index.html", "line": 345, "summary": "생활 지수 하위 카드 구성"},
+      {"file": "js/home.js", "line": 143, "summary": "생활 지수용 단기예보 값"},
+      {"file": "js/home.js", "line": 152, "summary": "생활 지수용 응급실 현황 값"}
+    ],
+    "safetyLevel": "general",
+    "fallback": "You can check today's weather and nearby everyday safety information in this section."
+  },
+  "home-safety-map": {
+    "title": "Safety and Emergency Facilities Map",
+    "userSummary": "Use the facility-type buttons to change what appears on the map and check the locations and distances provided on this screen.",
+    "details": [
+      "You can select late-night pharmacies, AEDs, emergency bells and CCTV, safe routes home, or police stations.",
+      "In an emergency, prioritize an emergency call and instructions at the scene over map information."
+    ],
+    "suggestedQuestion": "Ask how to find the facility you need on the map.",
+    "visibleValueSelectors": [
+      "#safety-map-location-badge",
+      "#pin-pharmacy .map-pin-name",
+      "#pin-pharmacy .map-pin-sub",
+      "#pin-aed .map-pin-name",
+      "#pin-aed .map-pin-sub",
+      "#pin-police .map-pin-name",
+      "#pin-police .map-pin-sub"
+    ],
+    "sourceComments": [
+      {"file": "index.html", "line": 433, "summary": "안심 관제 핵심 모듈의 지도 영역"},
+      {"file": "index.html", "line": 437, "summary": "안심·비상 시설 지도 카드"}
+    ],
+    "safetyLevel": "safety-fixed",
+    "fallback": "You can browse nearby safety and emergency facilities by type in this section."
+  },
+  "community-talk": {
+    "title": "Live Community Talk",
+    "userSummary": "This section lets you share nearby safety updates or everyday stories and read your neighbors' latest posts.",
+    "details": [
+      "New posts are shown for your currently selected location.",
+      "Please avoid including personal information or your exact home address in a post."
+    ],
+    "suggestedQuestion": "Ask how to write a community post safely.",
+    "visibleValueSelectors": [],
+    "sourceComments": [
+      {"file": "index.html", "line": 588, "summary": "실시간 커뮤니티 톡 카드"},
+      {"file": "index.html", "line": 609, "summary": "커뮤니티 글 작성 입력 영역"},
+      {"file": "js/home.js", "line": 444, "summary": "새 글을 최신 피드에 표시하는 동작"}
+    ],
+    "safetyLevel": "privacy-caution",
+    "fallback": "You can read the latest stories from your neighborhood in this section.",
+    "emotion": "talk"
+  },
+  "safety-location": {
+    "title": "Everyday Safety Search Settings",
+    "userSummary": "Choose an area and search radius, then refresh to recalculate the safety information on this page using the same settings.",
+    "details": [
+      "Select the province or metropolitan city first, followed by the city, county, or district.",
+      "The radius applies to information that depends on distance, such as nearby shelters."
+    ],
+    "suggestedQuestion": "Choose the area and radius you want, then select Refresh.",
+    "visibleValueSelectors": ["#sido-select", "#gu-select", "#radius-select", "#api-status"],
+    "sourceComments": [
+      {"file": "pages/safety.html", "line": 195, "summary": "검색 조건 영역"},
+      {"file": "js/safety.js", "line": 2, "summary": "선택 지역 기준 데이터 갱신"}
+    ],
+    "safetyLevel": "general",
+    "fallback": "You can set the area and radius for the everyday safety search in this section.",
+    "emotion": "think"
+  },
+  "emergency-location": {
+    "title": "Emergency Facility Search Settings",
+    "userSummary": "Choose an area and radius, then refresh to search again for nearby emergency rooms, AEDs, and hospitals using the same settings.",
+    "details": [
+      "Displayed facility information may differ from current operations, so please confirm before visiting.",
+      "In an urgent situation, call 119 before searching."
+    ],
+    "suggestedQuestion": "Choose the area and radius you want to search, then select Refresh.",
+    "visibleValueSelectors": ["#sido-select", "#gu-select", "#radius-select", "#api-status"],
+    "sourceComments": [
+      {"file": "pages/emergency.html", "line": 191, "summary": "검색 조건 영역"},
+      {"file": "js/emergency.js", "line": 3, "summary": "선택 지역과 반경 기준 시설 조회"}
+    ],
+    "safetyLevel": "emergency-fixed",
+    "fallback": "You can set the area and radius for the emergency facility search in this section.",
+    "emotion": "think"
+  },
+  "disaster-location": {
+    "title": "Disaster Information Search Settings",
+    "userSummary": "Choose an area and radius, then refresh to check the weather, advisories, and nearby shelters again using the same settings.",
+    "details": [
+      "Advisories and forecasts can change, so check the reference time shown on the screen.",
+      "During an actual disaster, prioritize emergency alerts and the latest guidance from authorities."
+    ],
+    "suggestedQuestion": "Choose the area and radius you want to check, then select Refresh.",
+    "visibleValueSelectors": ["#sido-select", "#gu-select", "#radius-select", "#api-status"],
+    "sourceComments": [
+      {"file": "pages/disaster.html", "line": 195, "summary": "검색 조건 영역"},
+      {"file": "js/disaster.js", "line": 3, "summary": "선택 지역 기준 재난정보 조회"}
+    ],
+    "safetyLevel": "safety-fixed",
+    "fallback": "You can set the area and radius for the disaster information search in this section.",
+    "emotion": "think"
+  },
+  "weather-coordinate": {
+    "title": "Live Weather Coordinates",
+    "userSummary": "This box explains the displayed area, weather-grid coordinates, and current forecast values.",
+    "loadingSummary": "Weather-coordinate data is loading.",
+    "dynamicSummary": "For {{region}}, the weather coordinates are latitude {{lat}} and longitude {{lng}}, with KMA grid {{grid}}. The reference time is {{basis}}; the current temperature is {{temp}}, today's low is {{tmn}}, and today's high is {{tmx}}.",
+    "dynamicValueBindings": {
+      "region": "#weather-coordinate-region",
+      "lat": "#weather-coordinate-lat",
+      "lng": "#weather-coordinate-lng",
+      "grid": "#weather-coordinate-grid",
+      "basis": "#weather-coordinate-basis",
+      "temp": "#weather-coordinate-temp",
+      "tmn": "#weather-coordinate-tmn",
+      "tmx": "#weather-coordinate-tmx"
+    },
+    "details": ["nx and ny are the grid coordinates used for Korea Meteorological Administration short-range forecasts."],
+    "visibleValueSelectors": ["#weather-coordinate-region", "#weather-coordinate-lat", "#weather-coordinate-lng", "#weather-coordinate-grid", "#weather-coordinate-basis", "#weather-coordinate-temp", "#weather-coordinate-tmn", "#weather-coordinate-tmx"],
+    "safetyLevel": "general",
+    "fallback": "You can review the live weather coordinates and temperatures shown on this screen.",
+    "emotion": "talk"
+  },
+  "safety-overall": {
+    "title": "Overall Safety",
+    "userSummary": "This card combines several safety indicators for the selected area into a reference score and rating.",
+    "details": [
+      "The displayed values are updated for the selected area when the lookup is complete.",
+      "The score is a reference for comparison. Please also check conditions at the scene and official guidance."
+    ],
+    "suggestedQuestion": "Review the score and rating together.",
+    "visibleValueSelectors": ["#score-main", "#score-grade", "#score-desc"],
+    "safetyLevel": "safety-fixed",
+    "fallback": "You can check the selected area's overall safety rating on this card.",
+    "emotion": "talk"
+  },
+  "safety-analysis": {
+    "title": "AI Recommended Actions",
+    "userSummary": "This section suggests a few quick actions worth taking based on the current area's safety indicators.",
+    "details": [
+      "If no data is available, only general guidance is shown without making assumptions.",
+      "In an urgent or dangerous situation, prioritize 112, 119, and official guidance over these suggestions."
+    ],
+    "suggestedQuestion": "Start by reading the recommended actions currently displayed.",
+    "visibleValueSelectors": ["#ai-action-checklist"],
+    "safetyLevel": "safety-fixed",
+    "fallback": "You can view AI-recommended actions for the current area in this section.",
+    "emotion": "worried"
+  },
+  "safety-crime-trend": {
+    "title": "Crime Trend by Type",
+    "userSummary": "A reference chart showing trends across 6 crime types: violent, theft, assault, intellectual, traffic, and other.",
+    "details": [
+      "This is illustrative sample data based on police statistics (as of 2024.12.31) total counts, not actual monthly statistics.",
+      "Check official National Police Agency statistics for accurate monthly figures."
+    ],
+    "suggestedQuestion": "Check the data interpretation note below the chart.",
+    "visibleValueSelectors": ["#crime-trend-insight"],
+    "safetyLevel": "safety-fixed",
+    "fallback": "This card is a chart made from reference sample data.",
+    "emotion": "talk"
+  },
+  "safety-crime": {
+    "title": "Risk Index Top 5",
+    "userSummary": "This section uses public crime statistics to rank areas with the highest relative risk index within the same province or metropolitan city.",
+    "details": [
+      "Check the reference date and coverage of the statistics.",
+      "A relative index does not determine any individual's actual level of risk."
+    ],
+    "suggestedQuestion": "Compare the ranking only among areas using the same reference scope.",
+    "visibleValueSelectors": ["#ranking-scope-label"],
+    "safetyLevel": "safety-fixed",
+    "fallback": "You can compare risk index rankings by area in this section.",
+    "emotion": "talk"
+  },
+  "safety-shelters": {
+    "title": "Nearby Shelters",
+    "userSummary": "This section shows the number and list of civil defense shelters near the selected area.",
+    "details": [
+      "It is helpful to check facility names and locations in advance.",
+      "During a disaster, prioritize on-site controls and emergency alert instructions."
+    ],
+    "suggestedQuestion": "Check the location of a nearby shelter in advance.",
+    "visibleValueSelectors": ["#shelter-count", "#shelter-list"],
+    "safetyLevel": "safety-fixed",
+    "fallback": "You can check nearby shelters in this section.",
+    "emotion": "talk"
+  },
+  "emergency-er": {
+    "title": "Live Emergency Room Status",
+    "userSummary": "This section helps you quickly check nearby emergency room locations and reference bed availability.",
+    "details": [
+      "Displayed congestion may differ from current conditions, so calling before visiting is recommended.",
+      "Call 119 immediately for severe symptoms or any problem with consciousness or breathing."
+    ],
+    "suggestedQuestion": "Check the nearest emergency room together with its displayed status.",
+    "visibleValueSelectors": ["#er-count", "#er-list"],
+    "safetyLevel": "emergency-fixed",
+    "fallback": "You can check nearby emergency room information in this section.",
+    "emotion": "alert"
+  },
+  "emergency-aed": {
+    "title": "Nearby AEDs",
+    "userSummary": "This card shows automated external defibrillator installation locations near the current area.",
+    "details": [
+      "If you suspect cardiac arrest, call 119 first and follow the operator's instructions.",
+      "Confirm the AED's location and current hours of access at the site."
+    ],
+    "suggestedQuestion": "Check the location of a nearby AED in advance.",
+    "visibleValueSelectors": ["#aed-count", "#aed-list"],
+    "safetyLevel": "emergency-fixed",
+    "fallback": "You can check nearby AED installation locations on this card.",
+    "emotion": "worried"
+  },
+  "emergency-hospitals": {
+    "title": "Hospital Search",
+    "userSummary": "This section lets you search for nearby medical facilities by area and hospital name.",
+    "details": [
+      "The results show each hospital's name and location.",
+      "Confirm opening hours and available services with the facility before visiting."
+    ],
+    "suggestedQuestion": "Use the hospital name field to narrow the results.",
+    "visibleValueSelectors": ["#hospital-filter", "#hospital-list"],
+    "safetyLevel": "general",
+    "fallback": "You can search for nearby hospitals in this section.",
+    "emotion": "talk"
+  },
+  "emergency-guides": {
+    "title": "Action Guides by Disaster Type",
+    "userSummary": "This section shows basic action guides by disaster type, grouped into natural, social, daily-life safety, and preparedness tabs.",
+    "details": [
+      "Pick a tab above and tap an icon to see the guide for that situation.",
+      "If the scene is dangerous or the condition is urgent, call 119 before reading the guide."
+    ],
+    "suggestedQuestion": "Tap the disaster type you want to check right now.",
+    "visibleValueSelectors": ["#disaster-guide-detail-title", "#disaster-guide-detail-body"],
+    "safetyLevel": "emergency-fixed",
+    "fallback": "You can review basic action guides by disaster type in this section.",
+    "emotion": "alert"
+  },
+  "disaster-weather": {
+    "title": "Today's Weather",
+    "userSummary": "This card shows the short-term forecast for the current area by time period.",
+    "details": [
+      "Check the displayed temperature and sky conditions before going out.",
+      "Forecasts may change, so check the reference time as well."
+    ],
+    "suggestedQuestion": "Review the forecast reference time and changes by time period together.",
+    "visibleValueSelectors": ["#fcst-time", "#forecast-grid"],
+    "safetyLevel": "general",
+    "fallback": "You can check today's short-term forecast on this card.",
+    "emotion": "talk"
+  },
+  "disaster-warnings": {
+    "title": "Disaster Weather Advisories",
+    "userSummary": "This section shows current advisories and affected areas provided by the Korea Meteorological Administration.",
+    "details": [
+      "When an advisory appears, check its type and affected area.",
+      "For evacuation or travel decisions, prioritize emergency alerts and the latest guidance from authorities."
+    ],
+    "suggestedQuestion": "Check whether any advisory is currently in effect.",
+    "visibleValueSelectors": ["#warning-list"],
+    "safetyLevel": "safety-fixed",
+    "fallback": "You can check current disaster weather advisories in this section.",
+    "emotion": "alert"
+  },
+  "disaster-guides": {
+    "title": "Disaster Response Guides",
+    "userSummary": "This section explains basic preparation and evacuation actions for each type of disaster.",
+    "details": [
+      "Open the item that matches the situation and review the steps in order.",
+      "During an actual disaster, prioritize on-site controls and official disaster guidance."
+    ],
+    "suggestedQuestion": "Open the response guide for the type of disaster you need.",
+    "visibleValueSelectors": ["#guide-accordion"],
+    "safetyLevel": "safety-fixed",
+    "fallback": "You can review basic response guidance by disaster type in this section.",
+    "emotion": "worried"
+  },
+  "disaster-shelters": {
+    "title": "Disaster Shelters",
+    "userSummary": "This section shows civil defense shelters and their locations near the current area.",
+    "details": [
+      "Check a nearby facility in advance.",
+      "During an evacuation, follow emergency alerts and instructions at the scene."
+    ],
+    "suggestedQuestion": "Check the location of a nearby shelter.",
+    "visibleValueSelectors": ["#shelter-count", "#shelter-list"],
+    "safetyLevel": "safety-fixed",
+    "fallback": "You can check nearby shelters in this section.",
+    "emotion": "talk"
+  }
+}

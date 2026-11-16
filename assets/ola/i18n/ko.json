@@ -1,0 +1,175 @@
+{
+  "ola": {
+    "brand": "올라",
+    "settings": {
+      "title": "올라 설정",
+      "sections": {
+        "basic": "기본",
+        "autoSleep": "자동 수면",
+        "greetingGuide": "인사와 안내",
+        "motion": "움직임",
+        "emotion": "감정",
+        "position": "위치"
+      },
+      "fields": {
+        "visible": "올라 표시",
+        "sleepTimeout": "자동 수면 시간",
+        "sleepWarning": "수면 예고",
+        "welcome": "페이지 입장 인사",
+        "idleMessages": "자동 이야기와 생활 팁",
+        "guideFrequency": "자동 안내 빈도",
+        "motionIntensity": "모션 강도",
+        "reduceMotion": "움직임 줄이기",
+        "autoFlight": "자동 비행",
+        "emotionExpression": "감정 표현",
+        "empathy": "공감 반응",
+        "repeatDrag": "반복 드래그 반응",
+        "dockPosition": "기본 대기 위치",
+        "station": "올라 스테이션 사용"
+      },
+      "options": {
+        "oneMinute": "1분",
+        "fiveMinutesDefault": "5분 (기본값)",
+        "oneHour": "1시간",
+        "none": "없음",
+        "minimal": "최소",
+        "normal": "보통",
+        "active": "활발",
+        "system": "시스템 설정 따르기",
+        "always": "항상 줄이기",
+        "never": "사용 안 함",
+        "rich": "풍부하게",
+        "right": "오른쪽",
+        "left": "왼쪽"
+      }
+    },
+    "actions": {
+      "close": "닫기",
+      "confirmSleepYes": "네, 쉴게요",
+      "confirmSleepNo": "아니요, 계속 볼게요",
+      "viewDetails": "자세히 보기",
+      "openPage": "페이지 열기",
+      "recommended": "추천 행동",
+      "hideOnPage": "현재 페이지에서 숨기기",
+      "restoreCompanion": "올라 다시 표시",
+      "resetPosition": "올라 위치 초기화",
+      "viewGuide": "사용법 보기",
+      "replayIntro": "처음 사용 안내 다시 보기",
+      "restoreDefaults": "기본 설정으로 복원"
+    },
+    "greetings": {
+      "title": "반가워요!",
+      "home": "안녕하세요! 여기는 홈이에요. 오늘의 안전 정보와 올라 브리핑을 확인할 수 있어요.",
+      "safety": "여기는 생활안전 페이지예요. 일상에서 필요한 안전 정보를 함께 살펴볼까요?",
+      "emergency": "여기는 행동요령 페이지예요. 재난·응급 상황별로 무엇을 해야 하는지 빠르게 찾을 수 있어요.",
+      "map": "여기는 안전지도 페이지예요. 주변 병원, 경찰서, AED, 대피소 같은 안전 시설의 위치를 확인할 수 있어요."
+    },
+    "messages": {
+      "helpTitle": "올라 사용 안내",
+      "helpSummary": "안녕하세요. 설명 가능한 박스의 빈 공간을 누르면 간단히 알려드릴게요. 자세히 보기 버튼은 바로 이동하고, 제 위에 마우스를 올리면 발 아래 설정 톱니를 찾을 수 있어요. 저를 드래그해 편한 위치로 옮길 수도 있어요.",
+      "sleepWarningTitle": "올라가 졸려요",
+      "sleepWarning": "잠시 후 쉬고 있을게요. 다시 불러주면 바로 깨어날게요.",
+      "sleep": "잠시 쉬고 있을게요.",
+      "confirmSleepTitle": "잠깐, 확인할게요",
+      "confirmSleep": "지금 수면 모드로 들어갈까요? 다시 부르면 바로 깨어날게요.",
+      "wake": "불렀어요? 다시 함께 살펴볼게요!",
+      "idleReturn": "다시 함께 살펴볼 준비가 됐어요.",
+      "settingsSaved": "설정을 저장했어요.",
+      "defaultsRestored": "기본 설정으로 복원했어요."
+    },
+    "emotions": {
+      "happy": {
+        "title": "기뻐요",
+        "message": "좋아요! 함께 확인해 볼게요."
+      },
+      "think": {
+        "title": "생각 중이에요",
+        "message": "잠시 내용을 살펴보고 있어요."
+      },
+      "worried": {
+        "title": "주의해서 볼게요",
+        "message": "걱정되는 내용이에요. 차분히 확인해 주세요."
+      },
+      "alert": {
+        "title": "중요한 안내",
+        "message": "중요한 내용이에요. 꼭 확인해 주세요."
+      },
+      "angry": {
+        "title": "올라가 어질어질해요",
+        "message": "앗, 너무 자주 흔들면 조금 어지러워요!"
+      },
+      "empathy": {
+        "title": "함께 살펴볼게요",
+        "message": "걱정되는 마음을 이해해요. 필요한 정보를 함께 확인해요."
+      },
+      "sad": {
+        "title": "함께 살펴볼게요",
+        "message": "걱정되는 마음을 이해해요. 필요한 정보를 함께 확인해요."
+      },
+      "sleepy": {
+        "title": "올라가 졸려요",
+        "message": "잠시 후 쉬고 있을게요. 다시 불러주면 바로 깨어날게요."
+      },
+      "sleep": {
+        "title": "쉬고 있어요",
+        "message": "가슴 코어를 누르면 바로 깨어날게요."
+      },
+      "wake": {
+        "title": "다시 왔어요",
+        "message": "불렀어요? 다시 함께 살펴볼게요!"
+      },
+      "guide": {
+        "title": "안내할게요",
+        "message": "선택한 영역의 설명을 확인해 보세요."
+      }
+    },
+    "help": {
+      "title": "올라 도움말",
+      "items": [
+        "몸체를 드래그해 올라를 움직일 수 있어요.",
+        "가슴 코어를 눌러 Sleep과 Wake를 전환해요.",
+        "카드나 박스를 누르면 해당 기능을 설명해요.",
+        "자동 수면 후에는 가슴 코어로 다시 깨울 수 있어요.",
+        "상황에 따라 표정과 안내 모션으로 반응해요.",
+        "위치 초기화로 올라를 기본 대기 위치로 돌려보낼 수 있어요.",
+        "올라 스테이션을 사용하면 안전한 대기 위치에 머물러요."
+      ]
+    },
+    "accessibility": {
+      "companion": "올라 AI 반려 로봇",
+      "robotAlt": "올라 안내 로봇",
+      "openSettings": "올라 설정 열기",
+      "closeSettings": "올라 설정 닫기",
+      "restoreCompanion": "올라 다시 표시",
+      "wake": "올라 깨우기",
+      "sleep": "올라 쉬게 하기",
+      "move": "올라 몸체. Enter 또는 Space로 설정 버튼 표시",
+      "closeDescription": "올라 설명 닫기",
+      "currentLanguage": "현재 언어",
+      "selected": "선택됨"
+    },
+    "errors": {
+      "dataLoad": "데이터를 불러오지 못했어요.",
+      "tryAgain": "잠시 후 다시 확인해 주세요.",
+      "noInformation": "현재 제공할 정보가 없어요.",
+      "settingsLoad": "설정을 불러오지 못했어요.",
+      "defaultsRestored": "기본 설정으로 복원했어요.",
+      "contextLoad": "카드 설명을 불러오지 못했어요."
+    },
+    "context": {
+      "actions": {
+        "ask": "OLA에게 질문"
+      },
+      "form": {
+        "label": "무엇이 궁금한가요?",
+        "placeholder": "이 영역에 관해 질문해 주세요.",
+        "submit": "질문 보내기",
+        "cancel": "취소",
+        "empty": "질문을 입력해 주세요.",
+        "loading": "답변을 확인하고 있어요.",
+        "unavailable": "지금은 AI 상담을 연결할 수 없어요. 위의 고정 안내는 계속 확인할 수 있어요.",
+        "failed": "AI 답변을 불러오지 못했어요. 위의 고정 안내를 참고해 주세요."
+      }
+    }
+  }
+}

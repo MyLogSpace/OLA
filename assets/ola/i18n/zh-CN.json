@@ -1,0 +1,175 @@
+{
+  "ola": {
+    "brand": "OLA",
+    "settings": {
+      "title": "OLA 设置",
+      "sections": {
+        "basic": "基本",
+        "autoSleep": "自动休眠",
+        "greetingGuide": "问候与引导",
+        "motion": "动作",
+        "emotion": "情感",
+        "position": "位置"
+      },
+      "fields": {
+        "visible": "显示 OLA",
+        "sleepTimeout": "自动休眠时间",
+        "sleepWarning": "休眠提醒",
+        "welcome": "进入页面时问候",
+        "idleMessages": "自动对话与生活提示",
+        "guideFrequency": "自动引导频率",
+        "motionIntensity": "动作强度",
+        "reduceMotion": "减少动态效果",
+        "autoFlight": "自动飞行",
+        "emotionExpression": "情感表达",
+        "empathy": "共情回应",
+        "repeatDrag": "反复拖动回应",
+        "dockPosition": "默认停留位置",
+        "station": "使用 OLA 站点"
+      },
+      "options": {
+        "oneMinute": "1 分钟",
+        "fiveMinutesDefault": "5 分钟（默认）",
+        "oneHour": "1 小时",
+        "none": "无",
+        "minimal": "最少",
+        "normal": "适中",
+        "active": "活跃",
+        "system": "跟随系统设置",
+        "always": "始终减少",
+        "never": "不减少",
+        "rich": "丰富",
+        "right": "右侧",
+        "left": "左侧"
+      }
+    },
+    "actions": {
+      "close": "关闭",
+      "confirmSleepYes": "好的，让它休息",
+      "confirmSleepNo": "不用，继续",
+      "viewDetails": "查看详情",
+      "openPage": "打开页面",
+      "recommended": "建议操作",
+      "hideOnPage": "在当前页面隐藏",
+      "restoreCompanion": "重新显示 OLA",
+      "resetPosition": "重置 OLA 位置",
+      "viewGuide": "查看使用方法",
+      "replayIntro": "重新查看首次使用说明",
+      "restoreDefaults": "恢复默认设置"
+    },
+    "greetings": {
+      "title": "很高兴见到你！",
+      "home": "你好！这里是首页。你可以在这里查看今天的安全信息和 OLA 简报。",
+      "safety": "这里是生活安全页面。我们一起查看日常所需的安全信息吧。",
+      "emergency": "这里是行动指南页面。你可以按灾害·紧急情况类型快速查找应对方法。",
+      "map": "这里是安全地图页面。你可以查找附近的医院、警察局、AED 和避难所位置。"
+    },
+    "messages": {
+      "helpTitle": "OLA 使用说明",
+      "helpSummary": "你好。轻触可说明卡片的空白区域，我会简单介绍。详情按钮会直接跳转。将鼠标移到我身上可在脚下找到设置齿轮，也可以拖动我到舒适的位置。",
+      "sleepWarningTitle": "OLA 有点困了",
+      "sleepWarning": "我马上要休息一下。需要我时叫我，我会立刻醒来。",
+      "sleep": "我先在这里休息一会儿。",
+      "confirmSleepTitle": "先确认一下",
+      "confirmSleep": "现在要进入休眠模式吗？随时点我都可以叫醒我。",
+      "wake": "你叫我了吗？我们继续一起看看吧！",
+      "idleReturn": "我已经准备好继续和你一起查看了。",
+      "settingsSaved": "设置已保存。",
+      "defaultsRestored": "已恢复默认设置。"
+    },
+    "emotions": {
+      "happy": {
+        "title": "很开心",
+        "message": "好的！我们一起确认吧。"
+      },
+      "think": {
+        "title": "正在思考",
+        "message": "我正在花一点时间查看内容。"
+      },
+      "worried": {
+        "title": "需要留意",
+        "message": "这项内容可能需要留意，请冷静确认。"
+      },
+      "alert": {
+        "title": "重要提醒",
+        "message": "这是重要信息，请务必确认。"
+      },
+      "angry": {
+        "title": "OLA 有点晕",
+        "message": "哎呀，这样频繁地移动我，我会有点晕！"
+      },
+      "empathy": {
+        "title": "我会陪你一起看",
+        "message": "我理解你可能会担心。我们一起确认需要的信息吧。"
+      },
+      "sad": {
+        "title": "我会陪你一起看",
+        "message": "我理解你可能会担心。我们一起确认需要的信息吧。"
+      },
+      "sleepy": {
+        "title": "OLA 有点困了",
+        "message": "我马上要休息一下。需要我时叫我，我会立刻醒来。"
+      },
+      "sleep": {
+        "title": "正在休息",
+        "message": "需要我时，按下胸前核心就能唤醒我。"
+      },
+      "wake": {
+        "title": "我回来了",
+        "message": "你叫我了吗？我们继续一起看看吧！"
+      },
+      "guide": {
+        "title": "为你说明",
+        "message": "请查看所选区域的说明。"
+      }
+    },
+    "help": {
+      "title": "OLA 帮助",
+      "items": [
+        "拖动 OLA 的身体即可在画面中移动 OLA。",
+        "按下胸前核心可在休眠与唤醒状态之间切换。",
+        "选择卡片或区域即可查看该功能的说明。",
+        "自动休眠后，按下胸前核心即可唤醒 OLA。",
+        "OLA 会根据情况用表情和轻柔的引导动作回应。",
+        "重置位置可让 OLA 返回默认停留位置。",
+        "启用 OLA 站点后，OLA 会停留在安全的位置。"
+      ]
+    },
+    "accessibility": {
+      "companion": "OLA AI 陪伴机器人",
+      "robotAlt": "OLA 引导机器人",
+      "openSettings": "打开 OLA 设置",
+      "closeSettings": "关闭 OLA 设置",
+      "restoreCompanion": "重新显示 OLA",
+      "wake": "唤醒 OLA",
+      "sleep": "让 OLA 休息",
+      "move": "OLA 机身。按 Enter 或空格键显示设置按钮",
+      "closeDescription": "关闭 OLA 说明",
+      "currentLanguage": "当前语言",
+      "selected": "已选择"
+    },
+    "errors": {
+      "dataLoad": "无法加载数据。",
+      "tryAgain": "请稍后再试。",
+      "noInformation": "目前没有可提供的信息。",
+      "settingsLoad": "无法加载设置。",
+      "defaultsRestored": "已恢复默认设置。",
+      "contextLoad": "无法加载卡片说明。"
+    },
+    "context": {
+      "actions": {
+        "ask": "询问 OLA"
+      },
+      "form": {
+        "label": "你想了解什么？",
+        "placeholder": "请输入与此区域有关的问题。",
+        "submit": "发送问题",
+        "cancel": "取消",
+        "empty": "请输入问题。",
+        "loading": "正在确认回答。",
+        "unavailable": "目前无法连接 AI 咨询。你仍可查看上方的固定说明。",
+        "failed": "无法加载 AI 回答，请参考上方的固定说明。"
+      }
+    }
+  }
+}

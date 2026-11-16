@@ -1,0 +1,332 @@
+{
+  "home-briefing": {
+    "title": "今日のOLAブリーフィング",
+    "userSummary": "現在設定されている地域の天気と暮らしの安全情報を、短くまとめて確認できるエリアです。",
+    "details": [
+      "照会が完了すると、現在の画面に表示されるブリーフィングが更新されます。",
+      "「詳しく見る」を選ぶと、詳細なブリーフィングへ移動できます。"
+    ],
+    "suggestedQuestion": "今日のブリーフィングで最初に確認したい内容を尋ねてみてください。",
+    "visibleValueSelectors": ["#ai-briefing-text", "#briefing-time"],
+    "sourceComments": [
+      {"file": "index.html", "line": 257, "summary": "오늘의 올라 브리핑 카드 목적과 배치"},
+      {"file": "js/home.js", "line": 163, "summary": "실제 데이터 기반 브리핑 생성 흐름"}
+    ],
+    "safetyLevel": "general",
+    "fallback": "このエリアで、今日の暮らしの安全ブリーフィングを確認できます。"
+  },
+  "life-index": {
+    "title": "今日の生活指標",
+    "userSummary": "安全度、天気、大気質、火災・災害リスク、救急外来の混雑状況をまとめて確認できるエリアです。",
+    "details": [
+      "確認中の値は、それぞれの情報の照会が完了すると更新されます。",
+      "「安心ルート案内」から、生活安全画面を続けて確認できます。"
+    ],
+    "suggestedQuestion": "現在表示されている生活指標のうち、注意して見る項目を尋ねてみてください。",
+    "visibleValueSelectors": [
+      "[data-life-safety-message]",
+      "[data-life-safety-score]",
+      "[data-life-safety-label]",
+      "[data-life-temp]",
+      "[data-life-weather]",
+      "[data-life-outdoor]",
+      "[data-life-dust]",
+      "[data-life-dust-sub]",
+      "[data-life-fire-value]",
+      "[data-life-fire-sub]",
+      "[data-life-er-value]",
+      "[data-life-er-sub]"
+    ],
+    "sourceComments": [
+      {"file": "index.html", "line": 292, "summary": "생활 지수에 포함되는 안전·날씨·대기·재난·응급 항목"},
+      {"file": "index.html", "line": 345, "summary": "생활 지수 하위 카드 구성"},
+      {"file": "js/home.js", "line": 143, "summary": "생활 지수용 단기예보 값"},
+      {"file": "js/home.js", "line": 152, "summary": "생활 지수용 응급실 현황 값"}
+    ],
+    "safetyLevel": "general",
+    "fallback": "このエリアで、今日の天気と周辺の暮らしの安全情報を確認できます。"
+  },
+  "home-safety-map": {
+    "title": "安全・緊急施設マップ",
+    "userSummary": "施設種別のボタンで地図に表示する項目を切り替え、現在の画面で提供されている施設の位置と距離を確認できるエリアです。",
+    "details": [
+      "夜間薬局、AED、非常ベル・CCTV、安心帰宅ルート、交番・警察署を選択できます。",
+      "緊急時は、地図情報よりも緊急通報と現場の案内を優先してください。"
+    ],
+    "suggestedQuestion": "必要な施設を地図で探す方法を尋ねてみてください。",
+    "visibleValueSelectors": [
+      "#safety-map-location-badge",
+      "#pin-pharmacy .map-pin-name",
+      "#pin-pharmacy .map-pin-sub",
+      "#pin-aed .map-pin-name",
+      "#pin-aed .map-pin-sub",
+      "#pin-police .map-pin-name",
+      "#pin-police .map-pin-sub"
+    ],
+    "sourceComments": [
+      {"file": "index.html", "line": 433, "summary": "안심 관제 핵심 모듈의 지도 영역"},
+      {"file": "index.html", "line": 437, "summary": "안심·비상 시설 지도 카드"}
+    ],
+    "safetyLevel": "safety-fixed",
+    "fallback": "このエリアで、周辺の安全・緊急施設を種類別に確認できます。"
+  },
+  "community-talk": {
+    "title": "リアルタイム・コミュニティトーク",
+    "userSummary": "周辺の安全情報や暮らしの話題を投稿し、近隣の最新投稿を確認できるエリアです。",
+    "details": [
+      "新しい投稿は、現在設定されている位置を基準に表示されます。",
+      "個人情報や正確な自宅住所は投稿に含めないようにしてください。"
+    ],
+    "suggestedQuestion": "コミュニティ投稿を安全に作成する方法を尋ねてみてください。",
+    "visibleValueSelectors": [],
+    "sourceComments": [
+      {"file": "index.html", "line": 588, "summary": "실시간 커뮤니티 톡 카드"},
+      {"file": "index.html", "line": 609, "summary": "커뮤니티 글 작성 입력 영역"},
+      {"file": "js/home.js", "line": 444, "summary": "새 글을 최신 피드에 표시하는 동작"}
+    ],
+    "safetyLevel": "privacy-caution",
+    "fallback": "このエリアで、地域の最新の暮らしの話題を確認できます。",
+    "emotion": "talk"
+  },
+  "safety-location": {
+    "title": "生活安全の検索条件",
+    "userSummary": "地域と検索半径を選んで更新すると、このページの生活安全情報が同じ条件で再計算されます。",
+    "details": [
+      "広域地域を先に選び、次に市・郡・区を選択してください。",
+      "検索半径は、周辺の避難施設など距離を基準にする情報へ適用されます。"
+    ],
+    "suggestedQuestion": "確認したい地域と半径を選び、更新してください。",
+    "visibleValueSelectors": ["#sido-select", "#gu-select", "#radius-select", "#api-status"],
+    "sourceComments": [
+      {"file": "pages/safety.html", "line": 195, "summary": "검색 조건 영역"},
+      {"file": "js/safety.js", "line": 2, "summary": "선택 지역 기준 데이터 갱신"}
+    ],
+    "safetyLevel": "general",
+    "fallback": "このエリアで、生活安全情報を検索する地域と半径を設定できます。",
+    "emotion": "think"
+  },
+  "emergency-location": {
+    "title": "救急施設の検索条件",
+    "userSummary": "地域と検索半径を選んで更新すると、周辺の救急外来、AED、病院の一覧を同じ条件で再検索します。",
+    "details": [
+      "表示される施設情報は実際の運営状況と異なる場合があるため、訪問前に確認してください。",
+      "緊急時は、検索よりも119番通報を優先してください。"
+    ],
+    "suggestedQuestion": "検索したい地域と半径を選び、更新してください。",
+    "visibleValueSelectors": ["#sido-select", "#gu-select", "#radius-select", "#api-status"],
+    "sourceComments": [
+      {"file": "pages/emergency.html", "line": 191, "summary": "검색 조건 영역"},
+      {"file": "js/emergency.js", "line": 3, "summary": "선택 지역과 반경 기준 시설 조회"}
+    ],
+    "safetyLevel": "emergency-fixed",
+    "fallback": "このエリアで、救急施設を検索する地域と半径を設定できます。",
+    "emotion": "think"
+  },
+  "disaster-location": {
+    "title": "災害情報の検索条件",
+    "userSummary": "地域と検索半径を選んで更新すると、天気、警報・注意報、周辺の避難施設を同じ条件で再確認します。",
+    "details": [
+      "警報・注意報や予報は更新されるため、画面に表示された基準時刻も確認してください。",
+      "実際の災害時は、緊急速報メールと関係機関の最新案内を優先してください。"
+    ],
+    "suggestedQuestion": "確認したい地域と半径を選び、更新してください。",
+    "visibleValueSelectors": ["#sido-select", "#gu-select", "#radius-select", "#api-status"],
+    "sourceComments": [
+      {"file": "pages/disaster.html", "line": 195, "summary": "검색 조건 영역"},
+      {"file": "js/disaster.js", "line": 3, "summary": "선택 지역 기준 재난정보 조회"}
+    ],
+    "safetyLevel": "safety-fixed",
+    "fallback": "このエリアで、災害情報を検索する地域と半径を設定できます。",
+    "emotion": "think"
+  },
+  "weather-coordinate": {
+    "title": "リアルタイム気象座標",
+    "userSummary": "画面に表示されている地域、気象庁の格子座標、現在の予報値を説明するボックスです。",
+    "loadingSummary": "気象座標データを読み込んでいます。",
+    "dynamicSummary": "現在の地域は{{region}}、気象座標は緯度{{lat}}、経度{{lng}}、気象庁の格子は{{grid}}です。基準時刻は{{basis}}、現在の気温は{{temp}}、今日の最低気温は{{tmn}}、最高気温は{{tmx}}です。",
+    "dynamicValueBindings": {
+      "region": "#weather-coordinate-region",
+      "lat": "#weather-coordinate-lat",
+      "lng": "#weather-coordinate-lng",
+      "grid": "#weather-coordinate-grid",
+      "basis": "#weather-coordinate-basis",
+      "temp": "#weather-coordinate-temp",
+      "tmn": "#weather-coordinate-tmn",
+      "tmx": "#weather-coordinate-tmx"
+    },
+    "details": ["nxとnyは、韓国気象庁の短期予報を照会する際に使う格子座標です。"],
+    "visibleValueSelectors": ["#weather-coordinate-region", "#weather-coordinate-lat", "#weather-coordinate-lng", "#weather-coordinate-grid", "#weather-coordinate-basis", "#weather-coordinate-temp", "#weather-coordinate-tmn", "#weather-coordinate-tmx"],
+    "safetyLevel": "general",
+    "fallback": "この画面のリアルタイム気象座標と気温を確認できます。",
+    "emotion": "talk"
+  },
+  "safety-overall": {
+    "title": "総合安全度",
+    "userSummary": "選択した地域の複数の安全指標をまとめ、参考用のスコアと等級で表示するカードです。",
+    "details": [
+      "照会が完了すると、表示値は現在選択されている地域を基準に更新されます。",
+      "スコアは比較のための参考情報です。現場の状況と公式案内もあわせて確認してください。"
+    ],
+    "suggestedQuestion": "スコアと等級をあわせて確認してください。",
+    "visibleValueSelectors": ["#score-main", "#score-grade", "#score-desc"],
+    "safetyLevel": "safety-fixed",
+    "fallback": "このカードで、選択した地域の総合安全度を確認できます。",
+    "emotion": "talk"
+  },
+  "safety-analysis": {
+    "title": "AIおすすめ行動",
+    "userSummary": "現在の地域の安全指標をもとに、今しておくとよい行動を短く提案するエリアです。",
+    "details": [
+      "照会データがない場合は推測せず、基本案内のみを表示します。",
+      "緊急または危険な状況では、この提案よりも112番・119番と公式案内を優先してください。"
+    ],
+    "suggestedQuestion": "まず、現在表示されているおすすめ行動を確認してください。",
+    "visibleValueSelectors": ["#ai-action-checklist"],
+    "safetyLevel": "safety-fixed",
+    "fallback": "このエリアで、現在の地域基準のAIおすすめ行動を確認できます。",
+    "emotion": "worried"
+  },
+  "safety-crime-trend": {
+    "title": "犯罪種別発生推移",
+    "userSummary": "凶悪・窃盗・暴力・知能・交通・その他の6種類の傾向を示す参考用グラフです。",
+    "details": [
+      "実際の月別統計ではなく、警察庁統計(2024.12.31時点)の総発生件数をもとにした例示データです。",
+      "正確な月別数値は警察庁の公式統計を確認してください。"
+    ],
+    "suggestedQuestion": "グラフ下のデータ解釈の文言を確認してください。",
+    "visibleValueSelectors": ["#crime-trend-insight"],
+    "safetyLevel": "safety-fixed",
+    "fallback": "このカードは参考用の例示データで作成されたグラフです。",
+    "emotion": "talk"
+  },
+  "safety-crime": {
+    "title": "危険指数TOP5",
+    "userSummary": "公開犯罪統計をもとに、同じ広域地域内で相対危険指数が高い地域の順位を示すエリアです。",
+    "details": [
+      "統計の基準時点と集計範囲をあわせて確認してください。",
+      "相対指数は、個人の実際の危険度を断定する値ではありません。"
+    ],
+    "suggestedQuestion": "順位は、同じ基準範囲の地域同士で比較してください。",
+    "visibleValueSelectors": ["#ranking-scope-label"],
+    "safetyLevel": "safety-fixed",
+    "fallback": "このエリアで、地域別の危険指数順位を比較できます。",
+    "emotion": "talk"
+  },
+  "safety-shelters": {
+    "title": "周辺の避難施設",
+    "userSummary": "選択した地域周辺の民防衛避難施設の一覧と件数を確認するエリアです。",
+    "details": [
+      "施設名と位置を事前に確認しておくと安心です。",
+      "災害時は、現場の規制と緊急速報メールの案内を優先してください。"
+    ],
+    "suggestedQuestion": "近くの避難施設の位置を事前に確認してください。",
+    "visibleValueSelectors": ["#shelter-count", "#shelter-list"],
+    "safetyLevel": "safety-fixed",
+    "fallback": "このエリアで、周辺の避難施設を確認できます。",
+    "emotion": "talk"
+  },
+  "emergency-er": {
+    "title": "リアルタイム救急外来情報",
+    "userSummary": "周辺の救急外来の位置と、参考用の病床状況をすばやく確認できるエリアです。",
+    "details": [
+      "表示される混雑度は実際の状況と異なる場合があるため、訪問前に電話で確認してください。",
+      "重い症状や意識・呼吸の異常がある場合は、すぐに119番へ通報してください。"
+    ],
+    "suggestedQuestion": "近くの救急外来と現在の表示状況をあわせて確認してください。",
+    "visibleValueSelectors": ["#er-count", "#er-list"],
+    "safetyLevel": "emergency-fixed",
+    "fallback": "このエリアで、周辺の救急外来情報を確認できます。",
+    "emotion": "alert"
+  },
+  "emergency-aed": {
+    "title": "周辺のAED",
+    "userSummary": "現在の地域周辺にある自動体外式除細動器の設置場所を確認するカードです。",
+    "details": [
+      "心停止が疑われる場合は、まず119番へ通報し、案内に従って使用してください。",
+      "AEDの位置と実際に利用できる時間は、現地であらためて確認してください。"
+    ],
+    "suggestedQuestion": "近くのAED設置場所を事前に確認してください。",
+    "visibleValueSelectors": ["#aed-count", "#aed-list"],
+    "safetyLevel": "emergency-fixed",
+    "fallback": "このカードで、周辺のAED設置場所を確認できます。",
+    "emotion": "worried"
+  },
+  "emergency-hospitals": {
+    "title": "病院検索",
+    "userSummary": "地域と病院名をもとに、周辺の医療機関一覧を検索するエリアです。",
+    "details": [
+      "検索結果で病院名と位置を確認できます。",
+      "診療時間と受診の可否は、訪問前に各医療機関へ確認してください。"
+    ],
+    "suggestedQuestion": "病院名の検索欄を使って結果を絞り込んでください。",
+    "visibleValueSelectors": ["#hospital-filter", "#hospital-list"],
+    "safetyLevel": "general",
+    "fallback": "このエリアで、周辺の病院を検索できます。",
+    "emotion": "talk"
+  },
+  "emergency-guides": {
+    "title": "災害類型別の国民行動要領",
+    "userSummary": "自然災害・社会災害・生活安全・非常対備に分かれた、災害類型別の基本行動要領を確認できるエリアです。",
+    "details": [
+      "上のタブで災害類型を選び、アイコンを押してその状況の行動要領を確認してください。",
+      "現場に危険がある場合や状態が切迫している場合は、案内を読むより先に119番へ通報してください。"
+    ],
+    "suggestedQuestion": "今気になる災害類型の行動要領を押してみてください。",
+    "visibleValueSelectors": ["#disaster-guide-detail-title", "#disaster-guide-detail-body"],
+    "safetyLevel": "emergency-fixed",
+    "fallback": "このエリアで、災害類型別の基本行動要領を確認できます。",
+    "emotion": "alert"
+  },
+  "disaster-weather": {
+    "title": "今日の天気",
+    "userSummary": "現在の地域の短期予報を時間帯ごとに確認するカードです。",
+    "details": [
+      "外出前に、表示されている気温や空模様などの予報を確認してください。",
+      "予報は更新されるため、基準時刻もあわせて確認してください。"
+    ],
+    "suggestedQuestion": "予報の基準時刻と時間帯ごとの変化をあわせて確認してください。",
+    "visibleValueSelectors": ["#fcst-time", "#forecast-grid"],
+    "safetyLevel": "general",
+    "fallback": "このカードで、今日の短期予報を確認できます。",
+    "emotion": "talk"
+  },
+  "disaster-warnings": {
+    "title": "災害気象警報・注意報",
+    "userSummary": "韓国気象庁が提供する現在の警報・注意報と対象地域を確認するエリアです。",
+    "details": [
+      "警報・注意報が表示された場合は、種類と対象地域を確認してください。",
+      "避難や移動の判断では、緊急速報メールと関係機関の最新案内を優先してください。"
+    ],
+    "suggestedQuestion": "現在発表中の警報・注意報があるか確認してください。",
+    "visibleValueSelectors": ["#warning-list"],
+    "safetyLevel": "safety-fixed",
+    "fallback": "このエリアで、現在の災害気象警報・注意報を確認できます。",
+    "emotion": "alert"
+  },
+  "disaster-guides": {
+    "title": "災害時の対応ガイド",
+    "userSummary": "災害の種類ごとに、備えと避難に必要な基本行動を確認するエリアです。",
+    "details": [
+      "状況に合う項目を開き、順番に確認してください。",
+      "実際の災害時は、現場の規制と公式の災害案内を優先してください。"
+    ],
+    "suggestedQuestion": "必要な災害種別の対応ガイドを開いてください。",
+    "visibleValueSelectors": ["#guide-accordion"],
+    "safetyLevel": "safety-fixed",
+    "fallback": "このエリアで、災害種別の基本的な対応ガイドを確認できます。",
+    "emotion": "worried"
+  },
+  "disaster-shelters": {
+    "title": "災害避難施設",
+    "userSummary": "現在の地域周辺にある民防衛避難施設と、その位置を確認するエリアです。",
+    "details": [
+      "普段から近くの施設を確認しておいてください。",
+      "実際に避難する際は、緊急速報メールと現場の案内に従って移動してください。"
+    ],
+    "suggestedQuestion": "近くの避難施設の位置を確認してください。",
+    "visibleValueSelectors": ["#shelter-count", "#shelter-list"],
+    "safetyLevel": "safety-fixed",
+    "fallback": "このエリアで、周辺の避難施設を確認できます。",
+    "emotion": "talk"
+  }
+}

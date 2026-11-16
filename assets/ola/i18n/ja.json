@@ -1,0 +1,175 @@
+{
+  "ola": {
+    "brand": "OLA",
+    "settings": {
+      "title": "OLA 設定",
+      "sections": {
+        "basic": "基本",
+        "autoSleep": "自動スリープ",
+        "greetingGuide": "あいさつと案内",
+        "motion": "動き",
+        "emotion": "感情",
+        "position": "位置"
+      },
+      "fields": {
+        "visible": "OLA を表示",
+        "sleepTimeout": "自動スリープ時間",
+        "sleepWarning": "スリープ予告",
+        "welcome": "ページ入場時のあいさつ",
+        "idleMessages": "自動トークと暮らしのヒント",
+        "guideFrequency": "自動案内の頻度",
+        "motionIntensity": "モーション強度",
+        "reduceMotion": "動きを減らす",
+        "autoFlight": "自動飛行",
+        "emotionExpression": "感情表現",
+        "empathy": "共感反応",
+        "repeatDrag": "繰り返しドラッグ反応",
+        "dockPosition": "基本待機位置",
+        "station": "OLA ステーションを使用"
+      },
+      "options": {
+        "oneMinute": "1分",
+        "fiveMinutesDefault": "5分（デフォルト）",
+        "oneHour": "1時間",
+        "none": "なし",
+        "minimal": "最小",
+        "normal": "標準",
+        "active": "活発",
+        "system": "システム設定に従う",
+        "always": "常に減らす",
+        "never": "減らさない",
+        "rich": "豊かに",
+        "right": "右",
+        "left": "左"
+      }
+    },
+    "actions": {
+      "close": "閉じる",
+      "confirmSleepYes": "はい、休ませます",
+      "confirmSleepNo": "いいえ、続けます",
+      "viewDetails": "詳しく見る",
+      "openPage": "ページを開く",
+      "recommended": "おすすめの操作",
+      "hideOnPage": "このページで非表示",
+      "restoreCompanion": "OLA を再表示",
+      "resetPosition": "OLA の位置をリセット",
+      "viewGuide": "使い方を見る",
+      "replayIntro": "初回案内をもう一度見る",
+      "restoreDefaults": "デフォルト設定に戻す"
+    },
+    "greetings": {
+      "title": "お会いできてうれしいです！",
+      "home": "こんにちは！ここはホームです。今日の安全情報と OLA ブリーフィングを確認できます。",
+      "safety": "ここは生活安全ページです。日常に必要な安全情報を一緒に確認しましょう。",
+      "emergency": "ここは行動要領ページです。災害・緊急状況別にすべきことをすばやく確認できます。",
+      "map": "ここは安全地図ページです。周辺の病院・警察署・AED・避難所の位置を確認できます。"
+    },
+    "messages": {
+      "helpTitle": "OLA の使い方",
+      "helpSummary": "こんにちは。説明できるカードの空白部分を押すと、簡単にご案内します。詳細ボタンはすぐに移動します。私にマウスを重ねると足元に設定ギアが現れ、ドラッグで好きな位置へ移動できます。",
+      "sleepWarningTitle": "OLA は少し眠そうです",
+      "sleepWarning": "もうすぐ少し休みます。呼んでくれたら、すぐに起きますね。",
+      "sleep": "ここで少し休んでいますね。",
+      "confirmSleepTitle": "確認です",
+      "confirmSleep": "今、スリープモードに入ってもいいですか？いつでも私を押せば起こせます。",
+      "wake": "呼びましたか？また一緒に確認しましょう！",
+      "idleReturn": "また一緒に確認する準備ができました。",
+      "settingsSaved": "設定を保存しました。",
+      "defaultsRestored": "デフォルト設定に戻しました。"
+    },
+    "emotions": {
+      "happy": {
+        "title": "うれしいです",
+        "message": "いいですね！一緒に確認しましょう。"
+      },
+      "think": {
+        "title": "考えています",
+        "message": "少し内容を確認しています。"
+      },
+      "worried": {
+        "title": "注意して確認します",
+        "message": "気になる内容です。落ち着いて確認してください。"
+      },
+      "alert": {
+        "title": "重要なお知らせ",
+        "message": "重要な情報です。必ず確認してください。"
+      },
+      "angry": {
+        "title": "OLA は少し目が回っています",
+        "message": "わっ、何度も動かされると少し目が回ります！"
+      },
+      "empathy": {
+        "title": "一緒に確認します",
+        "message": "心配な気持ち、わかります。必要な情報を一緒に確認しましょう。"
+      },
+      "sad": {
+        "title": "一緒に確認します",
+        "message": "心配な気持ち、わかります。必要な情報を一緒に確認しましょう。"
+      },
+      "sleepy": {
+        "title": "OLA は少し眠そうです",
+        "message": "もうすぐ少し休みます。呼んでくれたら、すぐに起きますね。"
+      },
+      "sleep": {
+        "title": "休んでいます",
+        "message": "必要なときは胸のコアを押してください。"
+      },
+      "wake": {
+        "title": "戻りました",
+        "message": "呼びましたか？また一緒に確認しましょう！"
+      },
+      "guide": {
+        "title": "ご案内します",
+        "message": "選択したエリアの説明を確認してください。"
+      }
+    },
+    "help": {
+      "title": "OLA ヘルプ",
+      "items": [
+        "OLA の本体をドラッグすると、画面上で移動できます。",
+        "胸のコアを押すと、スリープとウェイクを切り替えられます。",
+        "カードやボックスを選ぶと、その機能の説明を確認できます。",
+        "自動スリープ後は、胸のコアを押すと OLA が起きます。",
+        "OLA は状況に応じて表情と穏やかな案内モーションで反応します。",
+        "位置をリセットすると、OLA が基本待機位置に戻ります。",
+        "OLA ステーションを使うと、安全な待機位置にとどまります。"
+      ]
+    },
+    "accessibility": {
+      "companion": "OLA AI コンパニオンロボット",
+      "robotAlt": "OLA 案内ロボット",
+      "openSettings": "OLA 設定を開く",
+      "closeSettings": "OLA 設定を閉じる",
+      "restoreCompanion": "OLA を再表示",
+      "wake": "OLA を起こす",
+      "sleep": "OLA を休ませる",
+      "move": "OLA の本体。Enter または Space キーで設定ボタンを表示",
+      "closeDescription": "OLA の説明を閉じる",
+      "currentLanguage": "現在の言語",
+      "selected": "選択済み"
+    },
+    "errors": {
+      "dataLoad": "データを読み込めませんでした。",
+      "tryAgain": "しばらくしてからもう一度確認してください。",
+      "noInformation": "現在提供できる情報はありません。",
+      "settingsLoad": "設定を読み込めませんでした。",
+      "defaultsRestored": "デフォルト設定に戻しました。",
+      "contextLoad": "カードの説明を読み込めませんでした。"
+    },
+    "context": {
+      "actions": {
+        "ask": "OLA に質問"
+      },
+      "form": {
+        "label": "何を知りたいですか？",
+        "placeholder": "このエリアについて質問してください。",
+        "submit": "質問を送信",
+        "cancel": "キャンセル",
+        "empty": "質問を入力してください。",
+        "loading": "回答を確認しています。",
+        "unavailable": "現在 AI 相談に接続できません。上の固定案内は引き続き確認できます。",
+        "failed": "AI の回答を読み込めませんでした。上の固定案内を参照してください。"
+      }
+    }
+  }
+}

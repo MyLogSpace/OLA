@@ -1,0 +1,332 @@
+{
+  "home-briefing": {
+    "title": "今日 OLA 简报",
+    "userSummary": "此区域会简要整理当前所选地区的天气和日常安全信息。",
+    "details": [
+      "查询完成后，当前画面中的简报内容会自动更新。",
+      "选择“查看详情”即可进入详细简报。"
+    ],
+    "suggestedQuestion": "可以询问今天的简报中最应先查看哪项内容。",
+    "visibleValueSelectors": ["#ai-briefing-text", "#briefing-time"],
+    "sourceComments": [
+      {"file": "index.html", "line": 257, "summary": "오늘의 올라 브리핑 카드 목적과 배치"},
+      {"file": "js/home.js", "line": 163, "summary": "실제 데이터 기반 브리핑 생성 흐름"}
+    ],
+    "safetyLevel": "general",
+    "fallback": "可以在此区域查看今天的日常安全简报。"
+  },
+  "life-index": {
+    "title": "今日生活指数",
+    "userSummary": "此区域集中显示安全、天气、空气质量、火灾与灾害风险，以及急诊室拥挤情况。",
+    "details": [
+      "标为查询中的数值会在各项信息查询完成后更新。",
+      "选择“安心路线指引”可继续查看日常安全页面。"
+    ],
+    "suggestedQuestion": "可以询问当前显示的生活指数中有哪些项目需要留意。",
+    "visibleValueSelectors": [
+      "[data-life-safety-message]",
+      "[data-life-safety-score]",
+      "[data-life-safety-label]",
+      "[data-life-temp]",
+      "[data-life-weather]",
+      "[data-life-outdoor]",
+      "[data-life-dust]",
+      "[data-life-dust-sub]",
+      "[data-life-fire-value]",
+      "[data-life-fire-sub]",
+      "[data-life-er-value]",
+      "[data-life-er-sub]"
+    ],
+    "sourceComments": [
+      {"file": "index.html", "line": 292, "summary": "생활 지수에 포함되는 안전·날씨·대기·재난·응급 항목"},
+      {"file": "index.html", "line": 345, "summary": "생활 지수 하위 카드 구성"},
+      {"file": "js/home.js", "line": 143, "summary": "생활 지수용 단기예보 값"},
+      {"file": "js/home.js", "line": 152, "summary": "생활 지수용 응급실 현황 값"}
+    ],
+    "safetyLevel": "general",
+    "fallback": "可以在此区域查看今天的天气和周边日常安全信息。"
+  },
+  "home-safety-map": {
+    "title": "安全与应急设施地图",
+    "userSummary": "可通过设施类型按钮切换地图显示项目，并查看当前画面提供的设施位置和距离信息。",
+    "details": [
+      "可以选择夜间药店、AED、应急铃与 CCTV、安心回家路线或派出所。",
+      "紧急情况下，请优先拨打紧急电话并听从现场指引，不要仅依赖地图信息。"
+    ],
+    "suggestedQuestion": "可以询问如何在地图上找到需要的设施。",
+    "visibleValueSelectors": [
+      "#safety-map-location-badge",
+      "#pin-pharmacy .map-pin-name",
+      "#pin-pharmacy .map-pin-sub",
+      "#pin-aed .map-pin-name",
+      "#pin-aed .map-pin-sub",
+      "#pin-police .map-pin-name",
+      "#pin-police .map-pin-sub"
+    ],
+    "sourceComments": [
+      {"file": "index.html", "line": 433, "summary": "안심 관제 핵심 모듈의 지도 영역"},
+      {"file": "index.html", "line": 437, "summary": "안심·비상 시설 지도 카드"}
+    ],
+    "safetyLevel": "safety-fixed",
+    "fallback": "可以在此区域按类型查看周边安全与应急设施。"
+  },
+  "community-talk": {
+    "title": "实时社区交流",
+    "userSummary": "此区域可发布周边安全信息或生活动态，并查看邻里的最新帖子。",
+    "details": [
+      "新帖子会以当前设置的位置为基准显示。",
+      "请勿在帖子中留下个人信息或准确的家庭住址。"
+    ],
+    "suggestedQuestion": "可以询问如何安全地发布社区帖子。",
+    "visibleValueSelectors": [],
+    "sourceComments": [
+      {"file": "index.html", "line": 588, "summary": "실시간 커뮤니티 톡 카드"},
+      {"file": "index.html", "line": 609, "summary": "커뮤니티 글 작성 입력 영역"},
+      {"file": "js/home.js", "line": 444, "summary": "새 글을 최신 피드에 표시하는 동작"}
+    ],
+    "safetyLevel": "privacy-caution",
+    "fallback": "可以在此区域查看所在社区的最新生活动态。",
+    "emotion": "talk"
+  },
+  "safety-location": {
+    "title": "日常安全查询条件",
+    "userSummary": "选择地区和查询半径后刷新，此页面的日常安全信息会按相同条件重新计算。",
+    "details": [
+      "请先选择道或广域市，再选择市、郡或区。",
+      "半径适用于周边避难设施等需要按距离查询的信息。"
+    ],
+    "suggestedQuestion": "请选择所需地区和半径，然后点击刷新。",
+    "visibleValueSelectors": ["#sido-select", "#gu-select", "#radius-select", "#api-status"],
+    "sourceComments": [
+      {"file": "pages/safety.html", "line": 195, "summary": "검색 조건 영역"},
+      {"file": "js/safety.js", "line": 2, "summary": "선택 지역 기준 데이터 갱신"}
+    ],
+    "safetyLevel": "general",
+    "fallback": "可以在此区域设置日常安全信息的查询地区和半径。",
+    "emotion": "think"
+  },
+  "emergency-location": {
+    "title": "应急设施查询条件",
+    "userSummary": "选择地区和半径后刷新，系统会按相同条件重新查找周边急诊室、AED 和医院。",
+    "details": [
+      "显示的设施信息可能与实际运营情况不同，前往前建议先行确认。",
+      "情况危急时，请优先拨打 119，不要先进行搜索。"
+    ],
+    "suggestedQuestion": "请选择要查询的地区和半径，然后点击刷新。",
+    "visibleValueSelectors": ["#sido-select", "#gu-select", "#radius-select", "#api-status"],
+    "sourceComments": [
+      {"file": "pages/emergency.html", "line": 191, "summary": "검색 조건 영역"},
+      {"file": "js/emergency.js", "line": 3, "summary": "선택 지역과 반경 기준 시설 조회"}
+    ],
+    "safetyLevel": "emergency-fixed",
+    "fallback": "可以在此区域设置应急设施的查询地区和半径。",
+    "emotion": "think"
+  },
+  "disaster-location": {
+    "title": "灾害信息查询条件",
+    "userSummary": "选择地区和半径后刷新，系统会按相同条件重新查看天气、预警和周边避难设施。",
+    "details": [
+      "预警和预报可能更新，请同时查看画面上的基准时间。",
+      "实际发生灾害时，请优先参考灾害短信和有关机构的最新指引。"
+    ],
+    "suggestedQuestion": "请选择要查看的地区和半径，然后点击刷新。",
+    "visibleValueSelectors": ["#sido-select", "#gu-select", "#radius-select", "#api-status"],
+    "sourceComments": [
+      {"file": "pages/disaster.html", "line": 195, "summary": "검색 조건 영역"},
+      {"file": "js/disaster.js", "line": 3, "summary": "선택 지역 기준 재난정보 조회"}
+    ],
+    "safetyLevel": "safety-fixed",
+    "fallback": "可以在此区域设置灾害信息的查询地区和半径。",
+    "emotion": "think"
+  },
+  "weather-coordinate": {
+    "title": "实时气象坐标",
+    "userSummary": "此框说明当前画面显示的地区、气象网格坐标和最新预报数值。",
+    "loadingSummary": "正在加载气象坐标数据。",
+    "dynamicSummary": "当前地区为{{region}}，气象坐标为纬度{{lat}}、经度{{lng}}，韩国气象厅网格为{{grid}}。基准时间为{{basis}}，当前气温{{temp}}，今日最低{{tmn}}，今日最高{{tmx}}。",
+    "dynamicValueBindings": {
+      "region": "#weather-coordinate-region",
+      "lat": "#weather-coordinate-lat",
+      "lng": "#weather-coordinate-lng",
+      "grid": "#weather-coordinate-grid",
+      "basis": "#weather-coordinate-basis",
+      "temp": "#weather-coordinate-temp",
+      "tmn": "#weather-coordinate-tmn",
+      "tmx": "#weather-coordinate-tmx"
+    },
+    "details": ["nx和ny是查询韩国气象厅短期预报时使用的网格坐标。"],
+    "visibleValueSelectors": ["#weather-coordinate-region", "#weather-coordinate-lat", "#weather-coordinate-lng", "#weather-coordinate-grid", "#weather-coordinate-basis", "#weather-coordinate-temp", "#weather-coordinate-tmn", "#weather-coordinate-tmx"],
+    "safetyLevel": "general",
+    "fallback": "可以查看当前画面的实时气象坐标和气温信息。",
+    "emotion": "talk"
+  },
+  "safety-overall": {
+    "title": "综合安全度",
+    "userSummary": "此卡片综合所选地区的多项安全指标，以参考分数和等级显示。",
+    "details": [
+      "查询完成后，显示数值会按当前所选地区更新。",
+      "分数仅供比较参考，请同时确认现场情况和官方指引。"
+    ],
+    "suggestedQuestion": "请结合分数和等级一起查看。",
+    "visibleValueSelectors": ["#score-main", "#score-grade", "#score-desc"],
+    "safetyLevel": "safety-fixed",
+    "fallback": "可以在此卡片查看所选地区的综合安全度。",
+    "emotion": "talk"
+  },
+  "safety-analysis": {
+    "title": "AI推荐行动",
+    "userSummary": "此区域会根据当前地区的安全指标，简要推荐现在值得做的行动。",
+    "details": [
+      "没有查询数据时，不会进行推测，只显示基本指引。",
+      "情况紧急或危险时，请优先拨打 112、119，并遵循官方指引，不要仅依赖此推荐。"
+    ],
+    "suggestedQuestion": "请先阅读当前显示的推荐行动。",
+    "visibleValueSelectors": ["#ai-action-checklist"],
+    "safetyLevel": "safety-fixed",
+    "fallback": "可以在此区域查看当前地区的AI推荐行动。",
+    "emotion": "worried"
+  },
+  "safety-crime-trend": {
+    "title": "各类犯罪发生趋势",
+    "userSummary": "展示凶恶、盗窃、暴力、智能、交通、其他共6种犯罪类型趋势的参考图表。",
+    "details": [
+      "这不是实际的月度统计数据，而是根据警方统计（截至2024.12.31）总发生件数制作的示例数据。",
+      "准确的月度数据请查阅警察厅官方统计。"
+    ],
+    "suggestedQuestion": "请查看图表下方的数据解读说明。",
+    "visibleValueSelectors": ["#crime-trend-insight"],
+    "safetyLevel": "safety-fixed",
+    "fallback": "此卡片是根据参考示例数据制作的图表。",
+    "emotion": "talk"
+  },
+  "safety-crime": {
+    "title": "风险指数TOP5",
+    "userSummary": "此区域依据公开犯罪统计数据，展示同一道或广域市内相对风险指数较高地区的排名。",
+    "details": [
+      "请同时确认统计基准时间和统计范围。",
+      "相对指数不能用于判定个人的实际风险。"
+    ],
+    "suggestedQuestion": "请只在采用相同基准范围的地区之间比较排名。",
+    "visibleValueSelectors": ["#ranking-scope-label"],
+    "safetyLevel": "safety-fixed",
+    "fallback": "可以在此区域比较各地区的风险指数排名。",
+    "emotion": "talk"
+  },
+  "safety-shelters": {
+    "title": "周边避难设施",
+    "userSummary": "此区域显示所选地区周边的民防避难设施数量和列表。",
+    "details": [
+      "建议提前确认设施名称和位置。",
+      "灾害发生时，请优先遵循现场管制和灾害短信指引。"
+    ],
+    "suggestedQuestion": "请提前确认附近避难设施的位置。",
+    "visibleValueSelectors": ["#shelter-count", "#shelter-list"],
+    "safetyLevel": "safety-fixed",
+    "fallback": "可以在此区域查看周边避难设施。",
+    "emotion": "talk"
+  },
+  "emergency-er": {
+    "title": "实时急诊室情况",
+    "userSummary": "此区域可快速查看周边急诊室的位置和供参考的床位情况。",
+    "details": [
+      "显示的拥挤程度可能与实时情况不同，前往前建议先电话确认。",
+      "如有危急症状，或意识、呼吸出现异常，请立即拨打 119。"
+    ],
+    "suggestedQuestion": "请结合距离和当前显示状态查看附近的急诊室。",
+    "visibleValueSelectors": ["#er-count", "#er-list"],
+    "safetyLevel": "emergency-fixed",
+    "fallback": "可以在此区域查看周边急诊室信息。",
+    "emotion": "alert"
+  },
+  "emergency-aed": {
+    "title": "周边 AED",
+    "userSummary": "此卡片显示当前地区周边的自动体外除颤器安装地点。",
+    "details": [
+      "如怀疑发生心搏骤停，请先拨打 119，并按照接线员的指引使用。",
+      "请在现场再次确认 AED 的位置和实际可用时间。"
+    ],
+    "suggestedQuestion": "请提前确认附近 AED 的安装地点。",
+    "visibleValueSelectors": ["#aed-count", "#aed-list"],
+    "safetyLevel": "emergency-fixed",
+    "fallback": "可以在此卡片查看周边 AED 的安装地点。",
+    "emotion": "worried"
+  },
+  "emergency-hospitals": {
+    "title": "医院搜索",
+    "userSummary": "此区域可按地区和医院名称查找周边医疗机构。",
+    "details": [
+      "可以在搜索结果中查看医院名称和位置。",
+      "前往前，请向相关机构确认诊疗时间和是否可以接诊。"
+    ],
+    "suggestedQuestion": "可以使用医院名称搜索框缩小结果范围。",
+    "visibleValueSelectors": ["#hospital-filter", "#hospital-list"],
+    "safetyLevel": "general",
+    "fallback": "可以在此区域搜索周边医院。",
+    "emotion": "talk"
+  },
+  "emergency-guides": {
+    "title": "各灾害类型行动指南",
+    "userSummary": "此区域按自然灾害、社会灾害、生活安全、应急准备分类，提供各灾害类型的基本行动指南。",
+    "details": [
+      "在上方选择灾害类型标签，点击图标查看该情况的行动指南。",
+      "如现场存在危险或情况危急，请优先拨打 119，不要先阅读指南。"
+    ],
+    "suggestedQuestion": "点击你现在想了解的灾害类型。",
+    "visibleValueSelectors": ["#disaster-guide-detail-title", "#disaster-guide-detail-body"],
+    "safetyLevel": "emergency-fixed",
+    "fallback": "可以在此区域查看各灾害类型的基本行动指南。",
+    "emotion": "alert"
+  },
+  "disaster-weather": {
+    "title": "今日天气",
+    "userSummary": "此卡片按时间段显示当前地区的短期天气预报。",
+    "details": [
+      "外出前请查看显示的气温和天空状况等预报信息。",
+      "预报可能更新，请同时确认基准时间。"
+    ],
+    "suggestedQuestion": "请结合预报基准时间查看各时间段的变化。",
+    "visibleValueSelectors": ["#fcst-time", "#forecast-grid"],
+    "safetyLevel": "general",
+    "fallback": "可以在此卡片查看今天的短期天气预报。",
+    "emotion": "talk"
+  },
+  "disaster-warnings": {
+    "title": "灾害气象预警",
+    "userSummary": "此区域显示韩国气象厅提供的当前预警和适用地区。",
+    "details": [
+      "如显示预警，请确认预警类型和适用地区。",
+      "判断是否避难或移动时，请优先参考灾害短信和有关机构的最新指引。"
+    ],
+    "suggestedQuestion": "请确认当前是否有正在生效的预警。",
+    "visibleValueSelectors": ["#warning-list"],
+    "safetyLevel": "safety-fixed",
+    "fallback": "可以在此区域查看当前灾害气象预警。",
+    "emotion": "alert"
+  },
+  "disaster-guides": {
+    "title": "灾害应对指南",
+    "userSummary": "此区域按灾害类型说明准备和避难时所需的基本行动。",
+    "details": [
+      "打开与当前情况相符的项目，并按顺序查看。",
+      "实际发生灾害时，请优先遵循现场管制和官方灾害指引。"
+    ],
+    "suggestedQuestion": "请展开所需灾害类型的应对指南。",
+    "visibleValueSelectors": ["#guide-accordion"],
+    "safetyLevel": "safety-fixed",
+    "fallback": "可以在此区域查看各类灾害的基本应对指南。",
+    "emotion": "worried"
+  },
+  "disaster-shelters": {
+    "title": "灾害避难设施",
+    "userSummary": "此区域显示当前地区周边的民防避难设施及其位置。",
+    "details": [
+      "请在平时提前确认附近的设施。",
+      "实际避难时，请按照灾害短信和现场指引移动。"
+    ],
+    "suggestedQuestion": "请确认附近避难设施的位置。",
+    "visibleValueSelectors": ["#shelter-count", "#shelter-list"],
+    "safetyLevel": "safety-fixed",
+    "fallback": "可以在此区域查看周边避难设施。",
+    "emotion": "talk"
+  }
+}

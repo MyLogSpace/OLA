@@ -1,0 +1,332 @@
+{
+  "home-briefing": {
+    "title": "오늘의 올라 브리핑",
+    "userSummary": "현재 설정 지역의 날씨와 생활안전 정보를 짧은 브리핑으로 정리하는 영역이에요.",
+    "details": [
+      "조회가 끝나면 현재 화면의 브리핑 문장이 갱신돼요.",
+      "자세히 보기를 누르면 상세 브리핑으로 이동할 수 있어요."
+    ],
+    "suggestedQuestion": "오늘 브리핑에서 가장 먼저 확인할 내용이 무엇인지 물어보세요.",
+    "visibleValueSelectors": ["#ai-briefing-text", "#briefing-time"],
+    "sourceComments": [
+      {"file": "index.html", "line": 257, "summary": "오늘의 올라 브리핑 카드 목적과 배치"},
+      {"file": "js/home.js", "line": 163, "summary": "실제 데이터 기반 브리핑 생성 흐름"}
+    ],
+    "safetyLevel": "general",
+    "fallback": "이 영역에서 오늘의 생활안전 브리핑을 확인할 수 있어요."
+  },
+  "life-index": {
+    "title": "오늘의 생활 지수",
+    "userSummary": "안전도, 날씨, 대기질, 화재·재난 위험과 응급실 혼잡도를 한곳에서 확인하는 영역이에요.",
+    "details": [
+      "확인 중인 값은 각 정보의 조회가 끝나면 갱신돼요.",
+      "안심 길안내 버튼으로 생활안전 화면을 이어서 볼 수 있어요."
+    ],
+    "suggestedQuestion": "지금 표시된 생활 지수 중 주의해서 볼 항목을 물어보세요.",
+    "visibleValueSelectors": [
+      "[data-life-safety-message]",
+      "[data-life-safety-score]",
+      "[data-life-safety-label]",
+      "[data-life-temp]",
+      "[data-life-weather]",
+      "[data-life-outdoor]",
+      "[data-life-dust]",
+      "[data-life-dust-sub]",
+      "[data-life-fire-value]",
+      "[data-life-fire-sub]",
+      "[data-life-er-value]",
+      "[data-life-er-sub]"
+    ],
+    "sourceComments": [
+      {"file": "index.html", "line": 292, "summary": "생활 지수에 포함되는 안전·날씨·대기·재난·응급 항목"},
+      {"file": "index.html", "line": 345, "summary": "생활 지수 하위 카드 구성"},
+      {"file": "js/home.js", "line": 143, "summary": "생활 지수용 단기예보 값"},
+      {"file": "js/home.js", "line": 152, "summary": "생활 지수용 응급실 현황 값"}
+    ],
+    "safetyLevel": "general",
+    "fallback": "이 영역에서 오늘의 날씨와 주변 생활안전 정보를 확인할 수 있어요."
+  },
+  "home-safety-map": {
+    "title": "안심·비상 시설 지도",
+    "userSummary": "시설 종류 버튼으로 지도에 표시할 항목을 바꾸고, 현재 화면에 제공된 시설의 위치와 거리 정보를 확인하는 영역이에요.",
+    "details": [
+      "야간약국, AED, 비상벨·CCTV, 안심귀가길, 지구대 항목을 선택할 수 있어요.",
+      "긴급 상황에서는 지도 정보보다 긴급 신고와 현장 안내를 우선하세요."
+    ],
+    "suggestedQuestion": "원하는 시설을 지도에서 찾는 방법을 물어보세요.",
+    "visibleValueSelectors": [
+      "#safety-map-location-badge",
+      "#pin-pharmacy .map-pin-name",
+      "#pin-pharmacy .map-pin-sub",
+      "#pin-aed .map-pin-name",
+      "#pin-aed .map-pin-sub",
+      "#pin-police .map-pin-name",
+      "#pin-police .map-pin-sub"
+    ],
+    "sourceComments": [
+      {"file": "index.html", "line": 433, "summary": "안심 관제 핵심 모듈의 지도 영역"},
+      {"file": "index.html", "line": 437, "summary": "안심·비상 시설 지도 카드"}
+    ],
+    "safetyLevel": "safety-fixed",
+    "fallback": "이 영역에서 주변 안심·비상 시설을 종류별로 확인할 수 있어요."
+  },
+  "community-talk": {
+    "title": "실시간 커뮤니티 톡",
+    "userSummary": "주변 안전 정보나 생활 이야기를 등록하고 이웃의 최신 글을 확인하는 영역이에요.",
+    "details": [
+      "새 글은 현재 설정한 위치를 기준으로 표시돼요.",
+      "개인정보나 정확한 집 주소는 글에 남기지 않는 것이 좋아요."
+    ],
+    "suggestedQuestion": "커뮤니티 글을 안전하게 작성하는 방법을 물어보세요.",
+    "visibleValueSelectors": [],
+    "sourceComments": [
+      {"file": "index.html", "line": 588, "summary": "실시간 커뮤니티 톡 카드"},
+      {"file": "index.html", "line": 609, "summary": "커뮤니티 글 작성 입력 영역"},
+      {"file": "js/home.js", "line": 444, "summary": "새 글을 최신 피드에 표시하는 동작"}
+    ],
+    "safetyLevel": "privacy-caution",
+    "fallback": "이 영역에서 우리 동네의 최신 생활 이야기를 확인할 수 있어요.",
+    "emotion": "talk"
+  },
+  "safety-location": {
+    "title": "생활안전 조회 조건",
+    "userSummary": "지역과 조회 반경을 선택한 뒤 새로고침하면 이 페이지의 생활안전 정보가 같은 조건으로 다시 계산돼요.",
+    "details": [
+      "시도와 시군구를 먼저 선택해 주세요.",
+      "반경은 주변 대피시설처럼 거리 기준이 필요한 정보에 적용돼요."
+    ],
+    "suggestedQuestion": "원하는 지역과 반경을 선택한 뒤 새로고침을 눌러 보세요.",
+    "visibleValueSelectors": ["#sido-select", "#gu-select", "#radius-select", "#api-status"],
+    "sourceComments": [
+      {"file": "pages/safety.html", "line": 195, "summary": "검색 조건 영역"},
+      {"file": "js/safety.js", "line": 2, "summary": "선택 지역 기준 데이터 갱신"}
+    ],
+    "safetyLevel": "general",
+    "fallback": "이 영역에서 생활안전 정보를 조회할 지역과 반경을 설정할 수 있어요.",
+    "emotion": "think"
+  },
+  "emergency-location": {
+    "title": "응급시설 조회 조건",
+    "userSummary": "지역과 반경을 선택한 뒤 새로고침하면 주변 응급실, AED와 병원 목록을 같은 조건으로 다시 찾아요.",
+    "details": [
+      "표시된 시설 정보는 실제 운영 상황과 다를 수 있어 방문 전에 확인하는 것이 좋아요.",
+      "위급한 상황에서는 검색보다 119 신고를 우선하세요."
+    ],
+    "suggestedQuestion": "찾으려는 지역과 반경을 선택한 뒤 새로고침을 눌러 보세요.",
+    "visibleValueSelectors": ["#sido-select", "#gu-select", "#radius-select", "#api-status"],
+    "sourceComments": [
+      {"file": "pages/emergency.html", "line": 191, "summary": "검색 조건 영역"},
+      {"file": "js/emergency.js", "line": 3, "summary": "선택 지역과 반경 기준 시설 조회"}
+    ],
+    "safetyLevel": "emergency-fixed",
+    "fallback": "이 영역에서 응급시설을 조회할 지역과 반경을 설정할 수 있어요.",
+    "emotion": "think"
+  },
+  "disaster-location": {
+    "title": "재난정보 조회 조건",
+    "userSummary": "지역과 반경을 선택한 뒤 새로고침하면 날씨, 특보와 주변 대피시설을 같은 조건으로 다시 확인해요.",
+    "details": [
+      "특보와 예보는 갱신될 수 있으므로 화면의 기준 시각을 함께 확인하세요.",
+      "실제 재난 중에는 재난문자와 관계기관의 최신 안내를 우선하세요."
+    ],
+    "suggestedQuestion": "확인할 지역과 반경을 선택한 뒤 새로고침을 눌러 보세요.",
+    "visibleValueSelectors": ["#sido-select", "#gu-select", "#radius-select", "#api-status"],
+    "sourceComments": [
+      {"file": "pages/disaster.html", "line": 195, "summary": "검색 조건 영역"},
+      {"file": "js/disaster.js", "line": 3, "summary": "선택 지역 기준 재난정보 조회"}
+    ],
+    "safetyLevel": "safety-fixed",
+    "fallback": "이 영역에서 재난정보를 조회할 지역과 반경을 설정할 수 있어요.",
+    "emotion": "think"
+  },
+  "weather-coordinate": {
+    "title": "실시간 기상좌표",
+    "userSummary": "현재 화면에 표시된 지역과 기상청 격자, 관측·예보 기온을 설명하는 박스예요.",
+    "loadingSummary": "기상좌표 데이터를 불러오는 중입니다.",
+    "dynamicSummary": "현재 {{region}}의 기상좌표는 위도 {{lat}}, 경도 {{lng}}이고 기상청 격자는 {{grid}}입니다. 기준 시각 {{basis}}, 현재 기온 {{temp}}, 오늘 최저 {{tmn}}, 오늘 최고 {{tmx}}로 표시되고 있어요.",
+    "dynamicValueBindings": {
+      "region": "#weather-coordinate-region",
+      "lat": "#weather-coordinate-lat",
+      "lng": "#weather-coordinate-lng",
+      "grid": "#weather-coordinate-grid",
+      "basis": "#weather-coordinate-basis",
+      "temp": "#weather-coordinate-temp",
+      "tmn": "#weather-coordinate-tmn",
+      "tmx": "#weather-coordinate-tmx"
+    },
+    "details": ["nx와 ny는 기상청 단기예보 요청에 사용하는 격자 좌표예요."],
+    "visibleValueSelectors": ["#weather-coordinate-region", "#weather-coordinate-lat", "#weather-coordinate-lng", "#weather-coordinate-grid", "#weather-coordinate-basis", "#weather-coordinate-temp", "#weather-coordinate-tmn", "#weather-coordinate-tmx"],
+    "safetyLevel": "general",
+    "fallback": "현재 화면의 실시간 기상좌표와 기온 정보를 확인할 수 있어요.",
+    "emotion": "talk"
+  },
+  "safety-overall": {
+    "title": "종합 안전도",
+    "userSummary": "선택한 지역의 여러 안전 지표를 종합해 참고용 점수와 등급으로 보여주는 카드예요.",
+    "details": [
+      "표시 값은 조회가 끝나면 현재 선택 지역 기준으로 갱신돼요.",
+      "점수는 비교를 돕는 참고 정보이며 현장 상황과 공식 안내를 함께 확인하세요."
+    ],
+    "suggestedQuestion": "점수와 등급을 함께 확인해 보세요.",
+    "visibleValueSelectors": ["#score-main", "#score-grade", "#score-desc"],
+    "safetyLevel": "safety-fixed",
+    "fallback": "이 카드에서 선택 지역의 종합 안전도를 확인할 수 있어요.",
+    "emotion": "talk"
+  },
+  "safety-analysis": {
+    "title": "주요 안전 지표",
+    "userSummary": "AI 추천 행동 건수, 범죄 지수, 자치구 안전순위를 한눈에 요약해서 보여주는 영역이에요.",
+    "details": [
+      "AI 추천 행동 타일을 누르면(또는 오래 보면) 추천 항목 내용을 확인할 수 있어요.",
+      "긴급하거나 위험한 상황에서는 이 지표보다 112·119와 공식 안내를 우선하세요."
+    ],
+    "suggestedQuestion": "지금 표시된 안전 지표를 먼저 확인해 보세요.",
+    "visibleValueSelectors": ["#key-safety-metrics"],
+    "safetyLevel": "safety-fixed",
+    "fallback": "이 영역에서 현재 지역 기준 주요 안전 지표를 볼 수 있어요.",
+    "emotion": "worried"
+  },
+  "safety-crime-trend": {
+    "title": "범죄 유형별 발생 추이",
+    "userSummary": "강력·절도·폭력·지능·교통·기타 6개 유형의 추세를 보여주는 참고용 그래프예요.",
+    "details": [
+      "실제 월별 통계가 아니라 경찰청 통계(2024.12.31 기준) 총 발생건수를 기준으로 만든 예시 데이터예요.",
+      "정확한 월별 수치는 경찰청 공식 통계를 확인하세요."
+    ],
+    "suggestedQuestion": "그래프 아래 데이터 해석 문구를 확인해 보세요.",
+    "visibleValueSelectors": ["#crime-trend-insight"],
+    "safetyLevel": "safety-fixed",
+    "fallback": "이 카드는 참고용 예시 데이터로 만든 그래프예요.",
+    "emotion": "talk"
+  },
+  "safety-crime": {
+    "title": "위험지수 TOP5",
+    "userSummary": "공개 범죄 통계를 바탕으로 같은 시도 안에서 상대 위험지수가 높은 지역 순위를 보여주는 영역이에요.",
+    "details": [
+      "통계 기준 시점과 집계 범위를 함께 확인하세요.",
+      "상대 지수는 실제 개인의 위험을 단정하는 값이 아니에요."
+    ],
+    "suggestedQuestion": "순위를 같은 기준 지역끼리 비교해 보세요.",
+    "visibleValueSelectors": ["#ranking-scope-label"],
+    "safetyLevel": "safety-fixed",
+    "fallback": "이 영역에서 지역별 위험지수 순위를 비교할 수 있어요.",
+    "emotion": "talk"
+  },
+  "safety-shelters": {
+    "title": "주변 대피시설",
+    "userSummary": "선택한 지역 주변의 민방위 대피시설 목록과 개수를 확인하는 영역이에요.",
+    "details": [
+      "시설 이름과 위치를 미리 확인해 두면 좋아요.",
+      "재난 시에는 현장 통제와 재난문자 안내를 우선하세요."
+    ],
+    "suggestedQuestion": "가까운 대피시설의 위치를 미리 확인해 보세요.",
+    "visibleValueSelectors": ["#shelter-count", "#shelter-list"],
+    "safetyLevel": "safety-fixed",
+    "fallback": "이 영역에서 주변 대피시설을 확인할 수 있어요.",
+    "emotion": "talk"
+  },
+  "emergency-er": {
+    "title": "실시간 응급실 현황",
+    "userSummary": "주변 응급실의 위치와 참고용 병상 현황을 빠르게 확인하는 영역이에요.",
+    "details": [
+      "표시 혼잡도는 실시간 상황과 다를 수 있으므로 방문 전 전화 확인이 좋아요.",
+      "위급한 증상이나 의식·호흡 이상이 있으면 즉시 119에 신고하세요."
+    ],
+    "suggestedQuestion": "가까운 응급실과 현재 표시 상태를 함께 확인하세요.",
+    "visibleValueSelectors": ["#er-count", "#er-list"],
+    "safetyLevel": "emergency-fixed",
+    "fallback": "이 영역에서 주변 응급실 정보를 확인할 수 있어요.",
+    "emotion": "alert"
+  },
+  "emergency-aed": {
+    "title": "주변 AED",
+    "userSummary": "현재 지역 주변의 자동심장충격기 설치 장소를 확인하는 카드예요.",
+    "details": [
+      "심정지가 의심되면 먼저 119에 신고하고 안내에 따라 사용하세요.",
+      "AED 위치와 실제 이용 가능 시간은 현장에서 다시 확인하세요."
+    ],
+    "suggestedQuestion": "가까운 AED 설치 장소를 미리 확인해 보세요.",
+    "visibleValueSelectors": ["#aed-count", "#aed-list"],
+    "safetyLevel": "emergency-fixed",
+    "fallback": "이 카드에서 주변 AED 설치 장소를 확인할 수 있어요.",
+    "emotion": "worried"
+  },
+  "emergency-hospitals": {
+    "title": "병원 검색",
+    "userSummary": "지역과 병원 이름을 기준으로 주변 의료기관 목록을 찾아보는 영역이에요.",
+    "details": [
+      "검색 결과에서 병원 이름과 위치를 확인할 수 있어요.",
+      "진료 시간과 진료 가능 여부는 방문 전에 해당 기관에 확인하세요."
+    ],
+    "suggestedQuestion": "병원 이름 검색창으로 결과를 좁혀 보세요.",
+    "visibleValueSelectors": ["#hospital-filter", "#hospital-list"],
+    "safetyLevel": "general",
+    "fallback": "이 영역에서 주변 병원을 검색할 수 있어요.",
+    "emotion": "talk"
+  },
+  "emergency-guides": {
+    "title": "재난 유형별 국민행동요령",
+    "userSummary": "자연재난·사회재난·생활안전·비상대비로 나뉜 재난 유형별 기본 행동요령을 확인하는 영역이에요.",
+    "details": [
+      "위쪽 탭에서 재난 유형을 고르고, 아이콘을 눌러 해당 상황의 행동요령을 확인하세요.",
+      "현장 위험이 있거나 상태가 위급하면 안내를 읽기보다 119 신고를 우선하세요."
+    ],
+    "suggestedQuestion": "지금 궁금한 재난 유형의 행동요령을 눌러 보세요.",
+    "visibleValueSelectors": ["#disaster-guide-detail-title", "#disaster-guide-detail-body"],
+    "safetyLevel": "emergency-fixed",
+    "fallback": "이 영역에서 재난 유형별 기본 행동요령을 확인할 수 있어요.",
+    "emotion": "alert"
+  },
+  "disaster-weather": {
+    "title": "오늘의 날씨",
+    "userSummary": "현재 지역의 단기예보를 시간대별로 확인하는 카드예요.",
+    "details": [
+      "기온과 하늘 상태 등 표시된 예보를 외출 전에 확인하세요.",
+      "예보는 갱신될 수 있으므로 기준 시각을 함께 확인하세요."
+    ],
+    "suggestedQuestion": "예보 기준 시각과 시간대별 변화를 함께 확인해 보세요.",
+    "visibleValueSelectors": ["#fcst-time", "#forecast-grid"],
+    "safetyLevel": "general",
+    "fallback": "이 카드에서 오늘의 단기예보를 확인할 수 있어요.",
+    "emotion": "talk"
+  },
+  "disaster-warnings": {
+    "title": "재난 기상특보",
+    "userSummary": "기상청에서 제공하는 현재 특보와 대상 지역을 확인하는 영역이에요.",
+    "details": [
+      "특보가 표시되면 종류와 적용 지역을 확인하세요.",
+      "대피나 이동 판단은 재난문자와 관계기관의 최신 안내를 우선하세요."
+    ],
+    "suggestedQuestion": "현재 발효 중인 특보가 있는지 확인해 보세요.",
+    "visibleValueSelectors": ["#warning-list"],
+    "safetyLevel": "safety-fixed",
+    "fallback": "이 영역에서 현재 재난 기상특보를 확인할 수 있어요.",
+    "emotion": "alert"
+  },
+  "disaster-guides": {
+    "title": "재난 상황 행동요령",
+    "userSummary": "재난 유형별로 준비와 대피 때 필요한 기본 행동을 확인하는 영역이에요.",
+    "details": [
+      "상황에 맞는 항목을 열어 순서대로 확인하세요.",
+      "실제 재난 중에는 현장 통제와 공식 재난 안내를 우선하세요."
+    ],
+    "suggestedQuestion": "필요한 재난 유형의 행동요령을 펼쳐 보세요.",
+    "visibleValueSelectors": ["#guide-accordion"],
+    "safetyLevel": "safety-fixed",
+    "fallback": "이 영역에서 재난 유형별 기본 행동요령을 확인할 수 있어요.",
+    "emotion": "worried"
+  },
+  "disaster-shelters": {
+    "title": "재난 대피시설",
+    "userSummary": "현재 지역 주변의 민방위 대피시설과 위치를 확인하는 영역이에요.",
+    "details": [
+      "평소 가까운 시설을 미리 확인해 두세요.",
+      "실제 대피 시에는 재난문자와 현장 안내에 따라 이동하세요."
+    ],
+    "suggestedQuestion": "가까운 대피시설의 위치를 확인해 보세요.",
+    "visibleValueSelectors": ["#shelter-count", "#shelter-list"],
+    "safetyLevel": "safety-fixed",
+    "fallback": "이 영역에서 주변 대피시설을 확인할 수 있어요.",
+    "emotion": "talk"
+  }
+}

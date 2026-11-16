@@ -1,0 +1,175 @@
+{
+  "ola": {
+    "brand": "OLA",
+    "settings": {
+      "title": "OLA Settings",
+      "sections": {
+        "basic": "General",
+        "autoSleep": "Auto Sleep",
+        "greetingGuide": "Greetings & Guidance",
+        "motion": "Movement",
+        "emotion": "Emotions",
+        "position": "Position"
+      },
+      "fields": {
+        "visible": "Show OLA",
+        "sleepTimeout": "Auto sleep time",
+        "sleepWarning": "Sleep warning",
+        "welcome": "Entrance Greeting",
+        "idleMessages": "Stories and Daily Tips",
+        "guideFrequency": "Automatic guidance",
+        "motionIntensity": "Motion Level",
+        "reduceMotion": "Reduce motion",
+        "autoFlight": "Automatic flight",
+        "emotionExpression": "Emotional expression",
+        "empathy": "Empathetic response",
+        "repeatDrag": "Repeated-drag response",
+        "dockPosition": "Default resting position",
+        "station": "Use OLA Station"
+      },
+      "options": {
+        "oneMinute": "1 minute",
+        "fiveMinutesDefault": "5 minutes (default)",
+        "oneHour": "1 hour",
+        "none": "None",
+        "minimal": "Minimal",
+        "normal": "Normal",
+        "active": "Active",
+        "system": "Follow system settings",
+        "always": "Always reduce",
+        "never": "Do not reduce",
+        "rich": "Expressive",
+        "right": "Right",
+        "left": "Left"
+      }
+    },
+    "actions": {
+      "close": "Close",
+      "confirmSleepYes": "Yes, let OLA rest",
+      "confirmSleepNo": "No, keep going",
+      "viewDetails": "View details",
+      "openPage": "Open page",
+      "recommended": "Recommended action",
+      "hideOnPage": "Hide on this page",
+      "restoreCompanion": "Show OLA again",
+      "resetPosition": "Reset OLA Position",
+      "viewGuide": "View guide",
+      "replayIntro": "Show the introduction again",
+      "restoreDefaults": "Restore default settings"
+    },
+    "greetings": {
+      "title": "Nice to see you!",
+      "home": "Hello! This is the Home page. You can check today’s safety information and OLA briefing here.",
+      "safety": "This is the Safety page. Let’s review the everyday safety information available here.",
+      "emergency": "This is the Action Guide page. You can quickly find what to do for each disaster or emergency type.",
+      "map": "This is the Safety Map page. You can find nearby hospitals, police stations, AEDs, and shelters."
+    },
+    "messages": {
+      "helpTitle": "How to use OLA",
+      "helpSummary": "Hello. Tap an empty area of an explainable card for a quick guide. Detail buttons navigate immediately. Hover over me to find the settings gear below my feet, and drag me to a comfortable position.",
+      "sleepWarningTitle": "OLA is getting sleepy",
+      "sleepWarning": "I’ll take a short rest soon. Call me and I’ll wake right up.",
+      "sleep": "I’ll rest here for a while.",
+      "confirmSleepTitle": "Just checking",
+      "confirmSleep": "Should I go to sleep mode now? Tap me again anytime to wake me up.",
+      "wake": "Did you call me? Let’s take another look together!",
+      "idleReturn": "I’m ready to look around with you again.",
+      "settingsSaved": "Your settings have been saved.",
+      "defaultsRestored": "Default settings have been restored."
+    },
+    "emotions": {
+      "happy": {
+        "title": "Happy",
+        "message": "Great! Let’s check it together."
+      },
+      "think": {
+        "title": "Thinking",
+        "message": "I’m taking a moment to review this."
+      },
+      "worried": {
+        "title": "Needs attention",
+        "message": "This may need attention. Please review it calmly."
+      },
+      "alert": {
+        "title": "Important notice",
+        "message": "This is important. Please make sure to check it."
+      },
+      "angry": {
+        "title": "OLA is feeling dizzy",
+        "message": "Whoa, I get a little dizzy when I’m moved that often!"
+      },
+      "empathy": {
+        "title": "I’m here with you",
+        "message": "I understand this may be worrying. Let’s review the information together."
+      },
+      "sad": {
+        "title": "I’m here with you",
+        "message": "I understand this may be worrying. Let’s review the information together."
+      },
+      "sleepy": {
+        "title": "OLA is getting sleepy",
+        "message": "I’ll take a short rest soon. Call me and I’ll wake right up."
+      },
+      "sleep": {
+        "title": "Resting",
+        "message": "Press my chest core whenever you need me."
+      },
+      "wake": {
+        "title": "I’m back",
+        "message": "Did you call me? Let’s take another look together!"
+      },
+      "guide": {
+        "title": "Here’s a guide",
+        "message": "Review the explanation for the selected area."
+      }
+    },
+    "help": {
+      "title": "OLA Help",
+      "items": [
+        "Drag OLA’s body to move OLA around the screen.",
+        "Press the chest core to switch between Sleep and Wake.",
+        "Select a card or panel to hear an explanation of that feature.",
+        "After auto sleep, press the chest core to wake OLA.",
+        "OLA responds with expressions and gentle guidance motions.",
+        "Reset the position to return OLA to the default resting place.",
+        "OLA Station keeps OLA in a safe resting position."
+      ]
+    },
+    "accessibility": {
+      "companion": "OLA AI companion robot",
+      "robotAlt": "OLA guidance robot",
+      "openSettings": "Open OLA settings",
+      "closeSettings": "Close OLA settings",
+      "restoreCompanion": "Show OLA again",
+      "wake": "Wake OLA",
+      "sleep": "Let OLA rest",
+      "move": "OLA body. Press Enter or Space to show the settings button",
+      "closeDescription": "Close OLA explanation",
+      "currentLanguage": "Current language",
+      "selected": "Selected"
+    },
+    "errors": {
+      "dataLoad": "We couldn’t load the data.",
+      "tryAgain": "Please check again in a moment.",
+      "noInformation": "There is no information available right now.",
+      "settingsLoad": "We couldn’t load the settings.",
+      "defaultsRestored": "Default settings have been restored.",
+      "contextLoad": "We couldn’t load the card explanation."
+    },
+    "context": {
+      "actions": {
+        "ask": "Ask OLA"
+      },
+      "form": {
+        "label": "What would you like to know?",
+        "placeholder": "Ask about this area.",
+        "submit": "Send question",
+        "cancel": "Cancel",
+        "empty": "Please enter a question.",
+        "loading": "Checking the answer.",
+        "unavailable": "AI chat is unavailable right now. You can still review the fixed guidance above.",
+        "failed": "We couldn’t load the AI answer. Please refer to the fixed guidance above."
+      }
+    }
+  }
+}
