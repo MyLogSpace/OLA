@@ -1,0 +1,200 @@
+{
+  "version": 2,
+  "schemaVersion": 2,
+  "officialCharacterSource": "assets/ola/2d/reference/OLA_REFERENCE_FRONT_v01.png",
+  "auditSource": "assets/ola/2d/motions/ola-motion-audit.json",
+  "manualDecisionSource": "assets/ola/2d/motions/ola-motion-decisions.json",
+  "canvas": {
+    "width": 1536,
+    "height": 1024,
+    "mode": "RGBA"
+  },
+  "canonicalAnchor": {
+    "type": "chest-core",
+    "x": 770,
+    "y": 527
+  },
+  "technicalReference": {
+    "path": "assets/ola/2d/reference/OLA_TECH_REFERENCE_v01.png",
+    "directCharacterFrameUse": false
+  },
+  "normalization": {
+    "anchorX": 770,
+    "anchorY": 527,
+    "baseline": 840,
+    "visualScale": 1,
+    "offsetX": 0,
+    "offsetY": 0,
+    "hitArea": ["head", "torso", "arm-left", "arm-right", "leg-left", "leg-right"]
+  },
+  "stateBindings": {
+    "idle": {"rendererState": "IDLE", "motion": "idle", "trigger": "입력과 이벤트가 없을 때", "fallback": "reference-css-hover-blink"},
+    "hover_soft": {"rendererState": "IDLE", "motion": "idle", "trigger": "기본 대기 중", "fallback": "reference-css-hover"},
+    "takeoff_prepare": {"rendererState": "TAKEOFF_PREPARE", "motion": "takeoff-prepare", "trigger": "120px 이상 곡선 이동 0~18%", "fallback": "reference-flight-lift-thruster"},
+    "fly_start": {"rendererState": "FLY_START", "motion": "fly-cruise", "trigger": "수동 호환 상태", "fallback": "reference-motion-engine-tilt"},
+    "fly_mid": {"rendererState": "FLY_CRUISE", "motion": "fly-cruise", "trigger": "곡선 이동 18~72%", "fallback": "reference-motion-engine-bezier"},
+    "fly_turn": {"rendererState": "FLY_TURN", "motion": "fly-turn", "trigger": "접선 방향 변화 42도 이상", "fallback": "reference-flight-speed-lines"},
+    "fly_brake": {"rendererState": "FLY_BRAKE", "motion": "fly-brake", "trigger": "곡선 이동 72~86%", "fallback": "reference-flight-tilt-reduce"},
+    "fly_arrive": {"rendererState": "LANDING", "motion": "landing", "trigger": "곡선 이동 86~100%", "fallback": "reference-css-landing"},
+    "guide_point": {"rendererState": "GUIDE", "motion": "guide", "trigger": "설명 가능한 카드 선택", "fallback": "reference-whole-body-point"},
+    "talk": {"rendererState": "GUIDE", "motion": "guide", "trigger": "고정 설명 말풍선 표시", "fallback": "reference-expression-talk"},
+    "happy": {"rendererState": "HAPPY", "motion": "happy", "trigger": "페이지 입장과 긍정 안내", "fallback": "reference-expression-happy"},
+    "think": {"rendererState": "THINK", "motion": "idle", "trigger": "설명 데이터를 확인하는 동안", "fallback": "reference-expression-think"},
+    "alert": {"rendererState": "ALERT", "motion": "alert", "trigger": "응급·재난 주의 안내", "fallback": "reference-expression-alert"},
+    "sad": {"rendererState": "SAD", "motion": "sad", "trigger": "공감 API 요청", "fallback": "reference-expression-sad"},
+    "angry": {"rendererState": "ANGRY", "motion": "angry", "trigger": "6초 안에 4회 이상 반복 드래그", "fallback": "reference-expression-angry"},
+    "worried": {"rendererState": "WORRIED", "motion": "worried", "trigger": "위험·불안 맥락 고정 설명", "fallback": "reference-expression-worried"},
+    "sleep_prepare": {"rendererState": "SLEEP_PREPARE", "motion": "sleep-prepare", "trigger": "자동수면 만료 또는 코어 클릭", "fallback": "reference-css-sleep-prepare"},
+    "sleep": {"rendererState": "SLEEP", "motion": "sleep", "trigger": "수면 준비 완료", "fallback": "reference-eyelid-zzz-breathe"},
+    "wake": {"rendererState": "WAKE_UP", "motion": "wake", "trigger": "코어 클릭 또는 자동수면 후 사용자 활동", "fallback": "reference-css-wake"},
+    "drag": {"rendererState": "FOLLOW", "motion": "drag", "trigger": "몸 hit region에서 5px 초과 이동", "fallback": "reference-stage-translation"},
+    "dock": {"rendererState": "IDLE", "motion": "dock", "trigger": "유효 카드가 아닌 곳에 놓기", "fallback": "reference-motion-engine-dock"}
+  },
+  "assetCatalog": [
+    {"filename": "0a43a65a-d8f1-4a23-9565-d91a7fb4f64a.png", "stateRole": "fly-accelerate", "emotionRole": "idle", "auditStatus": "manual-approved", "connected": false},
+    {"filename": "217f9b4c-35d8-4569-b2e6-fd3135987848.png", "stateRole": "guide-point", "emotionRole": "gentle", "auditStatus": "manual-approved", "connected": true},
+    {"filename": "2753aa19-f0e6-466d-bf55-08dc67389251.png", "stateRole": "idle", "emotionRole": "idle", "auditStatus": "manual-approved", "connected": false},
+    {"filename": "2bbf9ae0-f79c-4e37-b9b8-0f716628f783.png", "stateRole": "fly-turn", "emotionRole": "idle", "auditStatus": "manual-approved", "connected": true},
+    {"filename": "2c25452a-bb13-4bba-8cc2-15b4df3f8f8b.png", "stateRole": "takeoff-rise", "emotionRole": "happy", "auditStatus": "preview-only", "connected": false},
+    {"filename": "390bc61e-2963-446d-89a0-801bb28cae8f.png", "stateRole": "sleep", "emotionRole": "sleepy", "auditStatus": "manual-approved", "connected": true},
+    {"filename": "4ea92521-0324-4041-8f93-bc5d680e8e22.png", "stateRole": "happy", "emotionRole": "happy", "auditStatus": "manual-approved", "connected": true},
+    {"filename": "7a7c63f8-2ba2-4f5e-9736-b4fbeb2a75f7.png", "stateRole": "fly-cruise", "emotionRole": "idle", "auditStatus": "manual-approved", "connected": true},
+    {"filename": "9f525571-ae37-4276-b48c-4a1eb160b85a.png", "stateRole": "hover-high", "emotionRole": "idle", "auditStatus": "manual-approved", "connected": true},
+    {"filename": "a496f2f2-523e-4fba-9456-2ad632eac7d4.png", "stateRole": "sleep-prepare", "emotionRole": "sleepy", "auditStatus": "manual-approved", "connected": true},
+    {"filename": "a895a026-ca53-4411-9fc0-192ae071eafa.png", "stateRole": "happy", "emotionRole": "success", "auditStatus": "preview-only", "connected": false},
+    {"filename": "a9c2ab53-cf89-4a98-90e1-2bc44cca3bd4.png", "stateRole": "hover-mid", "emotionRole": "idle", "auditStatus": "manual-approved", "connected": true},
+    {"filename": "b21faa55-b1cb-403a-8fe1-d703793d2da0.png", "stateRole": "fly-accelerate", "emotionRole": "idle", "auditStatus": "manual-approved", "connected": false},
+    {"filename": "bb294960-5b65-4866-bf46-71b904ca2cd6.png", "stateRole": "hover-low", "emotionRole": "idle", "auditStatus": "manual-approved", "connected": true},
+    {"filename": "c5cfd3b6-5684-4ce6-96f7-fb632b05b62e.png", "stateRole": "alert", "emotionRole": "alert", "auditStatus": "manual-approved", "connected": true},
+    {"filename": "f3545f73-bb84-4926-ac2b-0fe1c973c21d.png", "stateRole": "idle", "emotionRole": "idle", "auditStatus": "manual-approved", "connected": true}
+  ],
+  "motions": {
+    "idle": {
+      "frames": [],
+      "loop": true,
+      "crossfade": 200,
+      "fallback": "reference"
+    },
+    "follow": {"frames": [], "loop": true, "crossfade": 180, "fallback": "reference-flight-effects"},
+    "takeoff-prepare": {
+      "frames": [
+        {"src": "normalized/9f525571-ae37-4276-b48c-4a1eb160b85a.png", "duration": 260, "visualScale": 1.350746, "offsetX": -285, "offsetY": -88, "baseline": 840, "sourceFilename": "9f525571-ae37-4276-b48c-4a1eb160b85a.png", "auditStatus": "manual-approved"}
+      ],
+      "loop": false, "crossfade": 160, "fallback": "reference-flight-effects"
+    },
+    "fly-start": {
+      "frames": [],
+      "loop": false, "crossfade": 180, "fallback": "reference-flight-effects"
+    },
+    "fly-cruise": {
+      "frames": [
+        {"src": "normalized/7a7c63f8-2ba2-4f5e-9736-b4fbeb2a75f7.png", "duration": 720, "visualScale": 0.947644, "offsetX": -13, "offsetY": -36, "baseline": 840, "sourceFilename": "7a7c63f8-2ba2-4f5e-9736-b4fbeb2a75f7.png", "auditStatus": "manual-approved"}
+      ],
+      "loop": false, "crossfade": 180, "fallback": "reference-flight-effects"
+    },
+    "fly-turn": {
+      "frames": [
+        {"src": "normalized/2bbf9ae0-f79c-4e37-b9b8-0f716628f783.png", "duration": 260, "visualScale": 1.227119, "offsetX": -174, "offsetY": -81, "baseline": 840, "sourceFilename": "2bbf9ae0-f79c-4e37-b9b8-0f716628f783.png", "auditStatus": "manual-approved"}
+      ],
+      "loop": false, "crossfade": 160, "fallback": "reference-flight-effects"
+    },
+    "fly-brake": {
+      "frames": [
+        {"src": "normalized/a9c2ab53-cf89-4a98-90e1-2bc44cca3bd4.png", "duration": 300, "visualScale": 1.149206, "offsetX": -134, "offsetY": -114, "baseline": 840, "sourceFilename": "a9c2ab53-cf89-4a98-90e1-2bc44cca3bd4.png", "auditStatus": "manual-approved"}
+      ],
+      "loop": false, "crossfade": 160, "fallback": "reference-flight-effects"
+    },
+    "landing": {
+      "frames": [
+        {"src": "normalized/bb294960-5b65-4866-bf46-71b904ca2cd6.png", "duration": 420, "visualScale": 1.274648, "offsetX": 117, "offsetY": -91, "baseline": 840, "sourceFilename": "bb294960-5b65-4866-bf46-71b904ca2cd6.png", "auditStatus": "manual-approved"}
+      ],
+      "loop": false, "crossfade": 180, "fallback": "reference-css-landing"
+    },
+    "guide": {
+      "frames": [
+        {
+          "src": "normalized/217f9b4c-35d8-4569-b2e6-fd3135987848.png",
+          "duration": 1000,
+          "visualScale": 1.014006,
+          "offsetX": 35,
+          "offsetY": -33,
+          "baseline": 840,
+          "sourceFilename": "217f9b4c-35d8-4569-b2e6-fd3135987848.png",
+          "auditStatus": "manual-approved"
+        }
+      ],
+      "loop": false,
+      "crossfade": 200,
+      "fallback": "reference"
+    },
+    "think": {
+      "frames": [],
+      "loop": false, "crossfade": 180, "fallback": "reference-expression-think"
+    },
+    "happy": {
+      "frames": [
+        {"src": "normalized/4ea92521-0324-4041-8f93-bc5d680e8e22.png", "duration": 900, "visualScale": 1.046243, "offsetX": -26, "offsetY": -22, "baseline": 840, "sourceFilename": "4ea92521-0324-4041-8f93-bc5d680e8e22.png", "auditStatus": "manual-approved"}
+      ],
+      "loop": false,
+      "crossfade": 160,
+      "fallback": "reference"
+    },
+    "worried": {
+      "frames": [
+        {"src": "normalized/a496f2f2-523e-4fba-9456-2ad632eac7d4.png", "duration": 900, "visualScale": 1.13125, "offsetX": -120, "offsetY": -117, "baseline": 840, "sourceFilename": "a496f2f2-523e-4fba-9456-2ad632eac7d4.png", "auditStatus": "manual-approved"}
+      ],
+      "loop": false, "crossfade": 140, "fallback": "reference-expression-worried"
+    },
+    "alert": {
+      "frames": [
+        {"src": "normalized/c5cfd3b6-5684-4ce6-96f7-fb632b05b62e.png", "duration": 900, "visualScale": 1.093656, "offsetX": -58, "offsetY": -124, "baseline": 840, "sourceFilename": "c5cfd3b6-5684-4ce6-96f7-fb632b05b62e.png", "auditStatus": "manual-approved"}
+      ],
+      "loop": false,
+      "crossfade": 160,
+      "fallback": "reference"
+    },
+    "angry": {
+      "frames": [
+        {"src": "normalized/c5cfd3b6-5684-4ce6-96f7-fb632b05b62e.png", "duration": 850, "visualScale": 1.093656, "offsetX": -58, "offsetY": -124, "baseline": 840, "sourceFilename": "c5cfd3b6-5684-4ce6-96f7-fb632b05b62e.png", "auditStatus": "manual-approved"}
+      ],
+      "loop": false, "crossfade": 120, "fallback": "reference-expression-angry"
+    },
+    "sad": {"frames": [], "loop": false, "crossfade": 140, "fallback": "reference-expression-sad"},
+    "sleep-prepare": {
+      "frames": [
+        {"src": "normalized/a496f2f2-523e-4fba-9456-2ad632eac7d4.png", "duration": 1000, "visualScale": 1.13125, "offsetX": -120, "offsetY": -117, "baseline": 840, "sourceFilename": "a496f2f2-523e-4fba-9456-2ad632eac7d4.png", "auditStatus": "manual-approved"}
+      ],
+      "loop": false,
+      "crossfade": 180,
+      "fallback": "reference"
+    },
+    "sleep": {
+      "frames": [
+        {"src": "normalized/390bc61e-2963-446d-89a0-801bb28cae8f.png", "duration": 1800, "visualScale": 0.907268, "offsetX": 76, "offsetY": -97, "baseline": 840, "sourceFilename": "390bc61e-2963-446d-89a0-801bb28cae8f.png", "auditStatus": "manual-approved"}
+      ],
+      "loop": true,
+      "crossfade": 180,
+      "fallback": "reference"
+    },
+    "wake": {
+      "frames": [
+        {"src": "normalized/f3545f73-bb84-4926-ac2b-0fe1c973c21d.png", "duration": 1000, "visualScale": 1.279152, "offsetX": 117, "offsetY": -127, "baseline": 840, "sourceFilename": "f3545f73-bb84-4926-ac2b-0fe1c973c21d.png", "auditStatus": "manual-approved"}
+      ],
+      "loop": false,
+      "crossfade": 180,
+      "fallback": "reference"
+    },
+    "dock": {
+      "frames": [],
+      "loop": false,
+      "crossfade": 180,
+      "fallback": "reference"
+    },
+    "drag": {
+      "frames": [],
+      "loop": false,
+      "crossfade": 120,
+      "fallback": "reference"
+    }
+  }
+}
