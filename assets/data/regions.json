@@ -1,0 +1,2180 @@
+{
+"서울특별시|종로구": {
+"sido": "서울특별시",
+"gu": "종로구",
+"center": {
+"lat": 37.570378,
+"lng": 126.981642
+},
+"kma_grid": {
+"nx": 60,
+"ny": 127
+},
+"crime": {
+"total_cases": 10015,
+"violent_cases": 223,
+"crime_risk_index": 24.0,
+"breakdown": {
+"강력범죄": 223,
+"절도범죄": 1180,
+"폭력범죄": 1360,
+"지능범죄": 3370,
+"교통범죄": 715,
+"기타": 3167
+}
+},
+"medical": {
+"hospital_count": 11,
+"clinic_count": 458,
+"general_count": 7,
+"er_beds": 90,
+"total_beds": 3366
+},
+"shelter_count": 107
+},
+"서울특별시|중구": {
+"sido": "서울특별시",
+"gu": "중구",
+"center": {
+"lat": 37.561003,
+"lng": 126.999642
+},
+"kma_grid": {
+"nx": 60,
+"ny": 127
+},
+"crime": {
+"total_cases": 9919,
+"violent_cases": 198,
+"crime_risk_index": 23.8,
+"breakdown": {
+"강력범죄": 198,
+"절도범죄": 1410,
+"폭력범죄": 1378,
+"지능범죄": 2784,
+"교통범죄": 717,
+"기타": 3432
+}
+},
+"medical": {
+"hospital_count": 11,
+"clinic_count": 604,
+"general_count": 4,
+"er_beds": 33,
+"total_beds": 902
+},
+"shelter_count": 72
+},
+"서울특별시|용산구": {
+"sido": "서울특별시",
+"gu": "용산구",
+"center": {
+"lat": 37.536094,
+"lng": 126.967522
+},
+"kma_grid": {
+"nx": 60,
+"ny": 126
+},
+"crime": {
+"total_cases": 10736,
+"violent_cases": 282,
+"crime_risk_index": 25.8,
+"breakdown": {
+"강력범죄": 282,
+"절도범죄": 1072,
+"폭력범죄": 1941,
+"지능범죄": 2875,
+"교통범죄": 978,
+"기타": 3588
+}
+},
+"medical": {
+"hospital_count": 4,
+"clinic_count": 327,
+"general_count": 2,
+"er_beds": 27,
+"total_beds": 811
+},
+"shelter_count": 65
+},
+"서울특별시|성동구": {
+"sido": "서울특별시",
+"gu": "성동구",
+"center": {
+"lat": 37.560611,
+"lng": 127.039
+},
+"kma_grid": {
+"nx": 61,
+"ny": 127
+},
+"crime": {
+"total_cases": 8798,
+"violent_cases": 128,
+"crime_risk_index": 21.0,
+"breakdown": {
+"강력범죄": 128,
+"절도범죄": 968,
+"폭력범죄": 1033,
+"지능범죄": 3409,
+"교통범죄": 768,
+"기타": 2492
+}
+},
+"medical": {
+"hospital_count": 12,
+"clinic_count": 477,
+"general_count": 6,
+"er_beds": 38,
+"total_beds": 1677
+},
+"shelter_count": 121
+},
+"서울특별시|광진구": {
+"sido": "서울특별시",
+"gu": "광진구",
+"center": {
+"lat": 37.535739,
+"lng": 127.084533
+},
+"kma_grid": {
+"nx": 62,
+"ny": 126
+},
+"crime": {
+"total_cases": 9803,
+"violent_cases": 252,
+"crime_risk_index": 23.5,
+"breakdown": {
+"강력범죄": 252,
+"절도범죄": 1321,
+"폭력범죄": 1303,
+"지능범죄": 2976,
+"교통범죄": 899,
+"기타": 3052
+}
+},
+"medical": {
+"hospital_count": 14,
+"clinic_count": 583,
+"general_count": 6,
+"er_beds": 41,
+"total_beds": 2136
+},
+"shelter_count": 81
+},
+"서울특별시|동대문구": {
+"sido": "서울특별시",
+"gu": "동대문구",
+"center": {
+"lat": 37.571625,
+"lng": 127.042142
+},
+"kma_grid": {
+"nx": 61,
+"ny": 127
+},
+"crime": {
+"total_cases": 10817,
+"violent_cases": 144,
+"crime_risk_index": 26.0,
+"breakdown": {
+"강력범죄": 144,
+"절도범죄": 1618,
+"폭력범죄": 1462,
+"지능범죄": 3424,
+"교통범죄": 1265,
+"기타": 2904
+}
+},
+"medical": {
+"hospital_count": 33,
+"clinic_count": 614,
+"general_count": 16,
+"er_beds": 77,
+"total_beds": 4297
+},
+"shelter_count": 75
+},
+"서울특별시|중랑구": {
+"sido": "서울특별시",
+"gu": "중랑구",
+"center": {
+"lat": 37.603806,
+"lng": 127.094778
+},
+"kma_grid": {
+"nx": 62,
+"ny": 128
+},
+"crime": {
+"total_cases": 10744,
+"violent_cases": 159,
+"crime_risk_index": 25.8,
+"breakdown": {
+"강력범죄": 159,
+"절도범죄": 1439,
+"폭력범죄": 1579,
+"지능범죄": 3386,
+"교통범죄": 1051,
+"기타": 3130
+}
+},
+"medical": {
+"hospital_count": 21,
+"clinic_count": 555,
+"general_count": 16,
+"er_beds": 46,
+"total_beds": 3018
+},
+"shelter_count": 162
+},
+"서울특별시|성북구": {
+"sido": "서울특별시",
+"gu": "성북구",
+"center": {
+"lat": 37.586383,
+"lng": 127.020333
+},
+"kma_grid": {
+"nx": 61,
+"ny": 127
+},
+"crime": {
+"total_cases": 9158,
+"violent_cases": 154,
+"crime_risk_index": 21.9,
+"breakdown": {
+"강력범죄": 154,
+"절도범죄": 884,
+"폭력범죄": 1149,
+"지능범죄": 3380,
+"교통범죄": 933,
+"기타": 2658
+}
+},
+"medical": {
+"hospital_count": 20,
+"clinic_count": 542,
+"general_count": 7,
+"er_beds": 43,
+"total_beds": 3519
+},
+"shelter_count": 114
+},
+"서울특별시|강북구": {
+"sido": "서울특별시",
+"gu": "강북구",
+"center": {
+"lat": 37.636956,
+"lng": 127.027719
+},
+"kma_grid": {
+"nx": 61,
+"ny": 128
+},
+"crime": {
+"total_cases": 8620,
+"violent_cases": 151,
+"crime_risk_index": 20.5,
+"breakdown": {
+"강력범죄": 151,
+"절도범죄": 968,
+"폭력범죄": 1169,
+"지능범죄": 2806,
+"교통범죄": 747,
+"기타": 2779
+}
+},
+"medical": {
+"hospital_count": 18,
+"clinic_count": 458,
+"general_count": 10,
+"er_beds": 19,
+"total_beds": 2420
+},
+"shelter_count": 77
+},
+"서울특별시|도봉구": {
+"sido": "서울특별시",
+"gu": "도봉구",
+"center": {
+"lat": 37.665833,
+"lng": 127.049522
+},
+"kma_grid": {
+"nx": 61,
+"ny": 129
+},
+"crime": {
+"total_cases": 6356,
+"violent_cases": 86,
+"crime_risk_index": 14.9,
+"breakdown": {
+"강력범죄": 86,
+"절도범죄": 800,
+"폭력범죄": 858,
+"지능범죄": 2127,
+"교통범죄": 461,
+"기타": 2024
+}
+},
+"medical": {
+"hospital_count": 19,
+"clinic_count": 365,
+"general_count": 5,
+"er_beds": 27,
+"total_beds": 2206
+},
+"shelter_count": 96
+},
+"서울특별시|노원구": {
+"sido": "서울특별시",
+"gu": "노원구",
+"center": {
+"lat": 37.651461,
+"lng": 127.058389
+},
+"kma_grid": {
+"nx": 61,
+"ny": 129
+},
+"crime": {
+"total_cases": 10005,
+"violent_cases": 162,
+"crime_risk_index": 24.0,
+"breakdown": {
+"강력범죄": 162,
+"절도범죄": 1506,
+"폭력범죄": 1434,
+"지능범죄": 2839,
+"교통범죄": 918,
+"기타": 3146
+}
+},
+"medical": {
+"hospital_count": 24,
+"clinic_count": 745,
+"general_count": 8,
+"er_beds": 57,
+"total_beds": 3220
+},
+"shelter_count": 178
+},
+"서울특별시|은평구": {
+"sido": "서울특별시",
+"gu": "은평구",
+"center": {
+"lat": 37.599969,
+"lng": 126.931242
+},
+"kma_grid": {
+"nx": 59,
+"ny": 127
+},
+"crime": {
+"total_cases": 10708,
+"violent_cases": 151,
+"crime_risk_index": 25.8,
+"breakdown": {
+"강력범죄": 151,
+"절도범죄": 1520,
+"폭력범죄": 1559,
+"지능범죄": 3467,
+"교통범죄": 968,
+"기타": 3043
+}
+},
+"medical": {
+"hospital_count": 27,
+"clinic_count": 694,
+"general_count": 13,
+"er_beds": 60,
+"total_beds": 3255
+},
+"shelter_count": 111
+},
+"서울특별시|서대문구": {
+"sido": "서울특별시",
+"gu": "서대문구",
+"center": {
+"lat": 37.576367,
+"lng": 126.938897
+},
+"kma_grid": {
+"nx": 59,
+"ny": 127
+},
+"crime": {
+"total_cases": 7453,
+"violent_cases": 136,
+"crime_risk_index": 17.6,
+"breakdown": {
+"강력범죄": 136,
+"절도범죄": 1012,
+"폭력범죄": 900,
+"지능범죄": 2583,
+"교통범죄": 631,
+"기타": 2191
+}
+},
+"medical": {
+"hospital_count": 15,
+"clinic_count": 433,
+"general_count": 4,
+"er_beds": 68,
+"total_beds": 3519
+},
+"shelter_count": 116
+},
+"서울특별시|마포구": {
+"sido": "서울특별시",
+"gu": "마포구",
+"center": {
+"lat": 37.560706,
+"lng": 126.910531
+},
+"kma_grid": {
+"nx": 59,
+"ny": 127
+},
+"crime": {
+"total_cases": 13488,
+"violent_cases": 518,
+"crime_risk_index": 32.7,
+"breakdown": {
+"강력범죄": 518,
+"절도범죄": 1469,
+"폭력범죄": 1912,
+"지능범죄": 3855,
+"교통범죄": 1402,
+"기타": 4332
+}
+},
+"medical": {
+"hospital_count": 16,
+"clinic_count": 782,
+"general_count": 6,
+"er_beds": 6,
+"total_beds": 1060
+},
+"shelter_count": 115
+},
+"서울특별시|양천구": {
+"sido": "서울특별시",
+"gu": "양천구",
+"center": {
+"lat": 37.514231,
+"lng": 126.868708
+},
+"kma_grid": {
+"nx": 58,
+"ny": 126
+},
+"crime": {
+"total_cases": 9869,
+"violent_cases": 119,
+"crime_risk_index": 23.7,
+"breakdown": {
+"강력범죄": 119,
+"절도범죄": 1513,
+"폭력범죄": 1364,
+"지능범죄": 3145,
+"교통범죄": 861,
+"기타": 2867
+}
+},
+"medical": {
+"hospital_count": 20,
+"clinic_count": 680,
+"general_count": 7,
+"er_beds": 63,
+"total_beds": 2907
+},
+"shelter_count": 116
+},
+"서울특별시|강서구": {
+"sido": "서울특별시",
+"gu": "강서구",
+"center": {
+"lat": 37.548156,
+"lng": 126.851675
+},
+"kma_grid": {
+"nx": 58,
+"ny": 126
+},
+"crime": {
+"total_cases": 15073,
+"violent_cases": 288,
+"crime_risk_index": 36.7,
+"breakdown": {
+"강력범죄": 288,
+"절도범죄": 1671,
+"폭력범죄": 2049,
+"지능범죄": 5059,
+"교통범죄": 1374,
+"기타": 4632
+}
+},
+"medical": {
+"hospital_count": 43,
+"clinic_count": 938,
+"general_count": 24,
+"er_beds": 50,
+"total_beds": 5158
+},
+"shelter_count": 160
+},
+"서울특별시|구로구": {
+"sido": "서울특별시",
+"gu": "구로구",
+"center": {
+"lat": 37.49265,
+"lng": 126.889597
+},
+"kma_grid": {
+"nx": 58,
+"ny": 125
+},
+"crime": {
+"total_cases": 11726,
+"violent_cases": 199,
+"crime_risk_index": 28.3,
+"breakdown": {
+"강력범죄": 199,
+"절도범죄": 1572,
+"폭력범죄": 1616,
+"지능범죄": 3924,
+"교통범죄": 900,
+"기타": 3515
+}
+},
+"medical": {
+"hospital_count": 24,
+"clinic_count": 597,
+"general_count": 11,
+"er_beds": 48,
+"total_beds": 4450
+},
+"shelter_count": 147
+},
+"서울특별시|금천구": {
+"sido": "서울특별시",
+"gu": "금천구",
+"center": {
+"lat": 37.449108,
+"lng": 126.904197
+},
+"kma_grid": {
+"nx": 59,
+"ny": 124
+},
+"crime": {
+"total_cases": 8965,
+"violent_cases": 141,
+"crime_risk_index": 21.4,
+"breakdown": {
+"강력범죄": 141,
+"절도범죄": 887,
+"폭력범죄": 992,
+"지능범죄": 3559,
+"교통범죄": 817,
+"기타": 2569
+}
+},
+"medical": {
+"hospital_count": 15,
+"clinic_count": 360,
+"general_count": 6,
+"er_beds": 10,
+"total_beds": 1798
+},
+"shelter_count": 71
+},
+"서울특별시|영등포구": {
+"sido": "서울특별시",
+"gu": "영등포구",
+"center": {
+"lat": 37.523611,
+"lng": 126.898342
+},
+"kma_grid": {
+"nx": 58,
+"ny": 126
+},
+"crime": {
+"total_cases": 15467,
+"violent_cases": 300,
+"crime_risk_index": 37.7,
+"breakdown": {
+"강력범죄": 300,
+"절도범죄": 1790,
+"폭력범죄": 2070,
+"지능범죄": 5218,
+"교통범죄": 1683,
+"기타": 4406
+}
+},
+"medical": {
+"hospital_count": 31,
+"clinic_count": 825,
+"general_count": 16,
+"er_beds": 113,
+"total_beds": 5349
+},
+"shelter_count": 105
+},
+"서울특별시|동작구": {
+"sido": "서울특별시",
+"gu": "동작구",
+"center": {
+"lat": 37.509656,
+"lng": 126.941575
+},
+"kma_grid": {
+"nx": 59,
+"ny": 125
+},
+"crime": {
+"total_cases": 9014,
+"violent_cases": 190,
+"crime_risk_index": 21.5,
+"breakdown": {
+"강력범죄": 190,
+"절도범죄": 1091,
+"폭력범죄": 1187,
+"지능범죄": 3015,
+"교통범죄": 828,
+"기타": 2703
+}
+},
+"medical": {
+"hospital_count": 13,
+"clinic_count": 604,
+"general_count": 7,
+"er_beds": 68,
+"total_beds": 2284
+},
+"shelter_count": 103
+},
+"서울특별시|관악구": {
+"sido": "서울특별시",
+"gu": "관악구",
+"center": {
+"lat": 37.475386,
+"lng": 126.953844
+},
+"kma_grid": {
+"nx": 59,
+"ny": 125
+},
+"crime": {
+"total_cases": 16539,
+"violent_cases": 353,
+"crime_risk_index": 40.3,
+"breakdown": {
+"강력범죄": 353,
+"절도범죄": 1967,
+"폭력범죄": 2167,
+"지능범죄": 5793,
+"교통범죄": 1125,
+"기타": 5134
+}
+},
+"medical": {
+"hospital_count": 20,
+"clinic_count": 700,
+"general_count": 12,
+"er_beds": 40,
+"total_beds": 2332
+},
+"shelter_count": 158
+},
+"서울특별시|서초구": {
+"sido": "서울특별시",
+"gu": "서초구",
+"center": {
+"lat": 37.480786,
+"lng": 127.034811
+},
+"kma_grid": {
+"nx": 61,
+"ny": 125
+},
+"crime": {
+"total_cases": 17238,
+"violent_cases": 384,
+"crime_risk_index": 42.1,
+"breakdown": {
+"강력범죄": 384,
+"절도범죄": 1587,
+"폭력범죄": 1812,
+"지능범죄": 6121,
+"교통범죄": 1787,
+"기타": 5547
+}
+},
+"medical": {
+"hospital_count": 34,
+"clinic_count": 1550,
+"general_count": 16,
+"er_beds": 45,
+"total_beds": 3970
+},
+"shelter_count": 140
+},
+"서울특별시|강남구": {
+"sido": "서울특별시",
+"gu": "강남구",
+"center": {
+"lat": 37.514575,
+"lng": 127.049556
+},
+"kma_grid": {
+"nx": 61,
+"ny": 126
+},
+"crime": {
+"total_cases": 31705,
+"violent_cases": 677,
+"crime_risk_index": 78.3,
+"breakdown": {
+"강력범죄": 677,
+"절도범죄": 2094,
+"폭력범죄": 3335,
+"지능범죄": 12706,
+"교통범죄": 2991,
+"기타": 9902
+}
+},
+"medical": {
+"hospital_count": 66,
+"clinic_count": 3045,
+"general_count": 38,
+"er_beds": 105,
+"total_beds": 8108
+},
+"shelter_count": 161
+},
+"서울특별시|송파구": {
+"sido": "서울특별시",
+"gu": "송파구",
+"center": {
+"lat": 37.511756,
+"lng": 127.107931
+},
+"kma_grid": {
+"nx": 62,
+"ny": 126
+},
+"crime": {
+"total_cases": 18321,
+"violent_cases": 334,
+"crime_risk_index": 44.8,
+"breakdown": {
+"강력범죄": 334,
+"절도범죄": 2500,
+"폭력범죄": 2346,
+"지능범죄": 6611,
+"교통범죄": 1767,
+"기타": 4763
+}
+},
+"medical": {
+"hospital_count": 46,
+"clinic_count": 1270,
+"general_count": 24,
+"er_beds": 103,
+"total_beds": 6393
+},
+"shelter_count": 124
+},
+"서울특별시|강동구": {
+"sido": "서울특별시",
+"gu": "강동구",
+"center": {
+"lat": 37.527367,
+"lng": 127.125864
+},
+"kma_grid": {
+"nx": 62,
+"ny": 126
+},
+"crime": {
+"total_cases": 11267,
+"violent_cases": 178,
+"crime_risk_index": 27.2,
+"breakdown": {
+"강력범죄": 178,
+"절도범죄": 1662,
+"폭력범죄": 1519,
+"지능범죄": 3441,
+"교통범죄": 1028,
+"기타": 3439
+}
+},
+"medical": {
+"hospital_count": 39,
+"clinic_count": 924,
+"general_count": 20,
+"er_beds": 70,
+"total_beds": 6290
+},
+"shelter_count": 126
+},
+"경기도|고양시": {
+"sido": "경기도",
+"gu": "고양시",
+"center": {
+"lat": 37.634583,
+"lng": 126.834197
+},
+"kma_grid": {
+"nx": 57,
+"ny": 128
+},
+"crime": {
+"total_cases": 26595,
+"violent_cases": 306,
+"crime_risk_index": 65.5,
+"breakdown": {
+"강력범죄": 306,
+"절도범죄": 2645,
+"폭력범죄": 3767,
+"지능범죄": 8127,
+"교통범죄": 3548,
+"기타": 8202
+}
+},
+"medical": {
+"hospital_count": 81,
+"clinic_count": 1305,
+"general_count": 32,
+"er_beds": 198,
+"total_beds": 12133
+},
+"shelter_count": 464
+},
+"경기도|과천시": {
+"sido": "경기도",
+"gu": "과천시",
+"center": {
+"lat": 37.426372,
+"lng": 126.9898
+},
+"kma_grid": {
+"nx": 60,
+"ny": 124
+},
+"crime": {
+"total_cases": 1677,
+"violent_cases": 18,
+"crime_risk_index": 3.2,
+"breakdown": {
+"강력범죄": 18,
+"절도범죄": 327,
+"폭력범죄": 179,
+"지능범죄": 611,
+"교통범죄": 155,
+"기타": 387
+}
+},
+"medical": {
+"hospital_count": 2,
+"clinic_count": 116,
+"general_count": 0,
+"er_beds": 0,
+"total_beds": 8
+},
+"shelter_count": 27
+},
+"경기도|광명시": {
+"sido": "경기도",
+"gu": "광명시",
+"center": {
+"lat": 37.47575,
+"lng": 126.866708
+},
+"kma_grid": {
+"nx": 58,
+"ny": 125
+},
+"crime": {
+"total_cases": 7241,
+"violent_cases": 66,
+"crime_risk_index": 17.1,
+"breakdown": {
+"강력범죄": 66,
+"절도범죄": 872,
+"폭력범죄": 1094,
+"지능범죄": 2247,
+"교통범죄": 868,
+"기타": 2094
+}
+},
+"medical": {
+"hospital_count": 14,
+"clinic_count": 469,
+"general_count": 8,
+"er_beds": 43,
+"total_beds": 2541
+},
+"shelter_count": 85
+},
+"경기도|광주시": {
+"sido": "경기도",
+"gu": "광주시",
+"center": {
+"lat": 37.414506,
+"lng": 127.257786
+},
+"kma_grid": {
+"nx": 65,
+"ny": 123
+},
+"crime": {
+"total_cases": 11494,
+"violent_cases": 114,
+"crime_risk_index": 27.7,
+"breakdown": {
+"강력범죄": 114,
+"절도범죄": 1015,
+"폭력범죄": 1670,
+"지능범죄": 3702,
+"교통범죄": 2144,
+"기타": 2849
+}
+},
+"medical": {
+"hospital_count": 16,
+"clinic_count": 346,
+"general_count": 4,
+"er_beds": 20,
+"total_beds": 2189
+},
+"shelter_count": 108
+},
+"경기도|구리시": {
+"sido": "경기도",
+"gu": "구리시",
+"center": {
+"lat": 37.591625,
+"lng": 127.131864
+},
+"kma_grid": {
+"nx": 62,
+"ny": 127
+},
+"crime": {
+"total_cases": 5387,
+"violent_cases": 81,
+"crime_risk_index": 12.4,
+"breakdown": {
+"강력범죄": 81,
+"절도범죄": 572,
+"폭력범죄": 709,
+"지능범죄": 1503,
+"교통범죄": 952,
+"기타": 1570
+}
+},
+"medical": {
+"hospital_count": 17,
+"clinic_count": 336,
+"general_count": 9,
+"er_beds": 28,
+"total_beds": 2528
+},
+"shelter_count": 58
+},
+"경기도|군포시": {
+"sido": "경기도",
+"gu": "군포시",
+"center": {
+"lat": 37.358658,
+"lng": 126.9375
+},
+"kma_grid": {
+"nx": 59,
+"ny": 122
+},
+"crime": {
+"total_cases": 6274,
+"violent_cases": 76,
+"crime_risk_index": 14.7,
+"breakdown": {
+"강력범죄": 76,
+"절도범죄": 876,
+"폭력범죄": 771,
+"지능범죄": 2213,
+"교통범죄": 757,
+"기타": 1581
+}
+},
+"medical": {
+"hospital_count": 15,
+"clinic_count": 324,
+"general_count": 6,
+"er_beds": 41,
+"total_beds": 1778
+},
+"shelter_count": 80
+},
+"경기도|김포시": {
+"sido": "경기도",
+"gu": "김포시",
+"center": {
+"lat": 37.612458,
+"lng": 126.717778
+},
+"kma_grid": {
+"nx": 55,
+"ny": 128
+},
+"crime": {
+"total_cases": 16015,
+"violent_cases": 151,
+"crime_risk_index": 39.0,
+"breakdown": {
+"강력범죄": 151,
+"절도범죄": 1964,
+"폭력범죄": 2057,
+"지능범죄": 5359,
+"교통범죄": 2599,
+"기타": 3885
+}
+},
+"medical": {
+"hospital_count": 41,
+"clinic_count": 517,
+"general_count": 15,
+"er_beds": 42,
+"total_beds": 3637
+},
+"shelter_count": 201
+},
+"경기도|남양주시": {
+"sido": "경기도",
+"gu": "남양주시",
+"center": {
+"lat": 37.633178,
+"lng": 127.218633
+},
+"kma_grid": {
+"nx": 64,
+"ny": 128
+},
+"crime": {
+"total_cases": 17045,
+"violent_cases": 208,
+"crime_risk_index": 41.6,
+"breakdown": {
+"강력범죄": 208,
+"절도범죄": 1566,
+"폭력범죄": 2258,
+"지능범죄": 5353,
+"교통범죄": 2487,
+"기타": 5173
+}
+},
+"medical": {
+"hospital_count": 50,
+"clinic_count": 786,
+"general_count": 19,
+"er_beds": 68,
+"total_beds": 5784
+},
+"shelter_count": 107
+},
+"경기도|동두천시": {
+"sido": "경기도",
+"gu": "동두천시",
+"center": {
+"lat": 37.900917,
+"lng": 127.062653
+},
+"kma_grid": {
+"nx": 61,
+"ny": 134
+},
+"crime": {
+"total_cases": 3077,
+"violent_cases": 66,
+"crime_risk_index": 6.7,
+"breakdown": {
+"강력범죄": 66,
+"절도범죄": 360,
+"폭력범죄": 558,
+"지능범죄": 893,
+"교통범죄": 383,
+"기타": 817
+}
+},
+"medical": {
+"hospital_count": 11,
+"clinic_count": 82,
+"general_count": 2,
+"er_beds": 7,
+"total_beds": 1976
+},
+"shelter_count": 53
+},
+"경기도|부천시": {
+"sido": "경기도",
+"gu": "부천시",
+"center": {
+"lat": 37.496593,
+"lng": 126.786997
+},
+"kma_grid": {
+"nx": 57,
+"ny": 125
+},
+"crime": {
+"total_cases": 26541,
+"violent_cases": 368,
+"crime_risk_index": 65.4,
+"breakdown": {
+"강력범죄": 368,
+"절도범죄": 3659,
+"폭력범죄": 3866,
+"지능범죄": 7966,
+"교통범죄": 3458,
+"기타": 7224
+}
+},
+"medical": {
+"hospital_count": 72,
+"clinic_count": 1100,
+"general_count": 27,
+"er_beds": 130,
+"total_beds": 9911
+},
+"shelter_count": 221
+},
+"경기도|성남시": {
+"sido": "경기도",
+"gu": "성남시",
+"center": {
+"lat": 37.447492,
+"lng": 127.147719
+},
+"kma_grid": {
+"nx": 63,
+"ny": 124
+},
+"crime": {
+"total_cases": 28987,
+"violent_cases": 356,
+"crime_risk_index": 71.5,
+"breakdown": {
+"강력범죄": 356,
+"절도범죄": 3074,
+"폭력범죄": 3852,
+"지능범죄": 9006,
+"교통범죄": 4035,
+"기타": 8664
+}
+},
+"medical": {
+"hospital_count": 62,
+"clinic_count": 1850,
+"general_count": 26,
+"er_beds": 198,
+"total_beds": 9942
+},
+"shelter_count": 239
+},
+"경기도|수원시": {
+"sido": "경기도",
+"gu": "수원시",
+"center": {
+"lat": 37.301011,
+"lng": 127.012222
+},
+"kma_grid": {
+"nx": 60,
+"ny": 121
+},
+"crime": {
+"total_cases": 40371,
+"violent_cases": 551,
+"crime_risk_index": 100.0,
+"breakdown": {
+"강력범죄": 551,
+"절도범죄": 5042,
+"폭력범죄": 5230,
+"지능범죄": 13381,
+"교통범죄": 5690,
+"기타": 10477
+}
+},
+"medical": {
+"hospital_count": 83,
+"clinic_count": 1716,
+"general_count": 40,
+"er_beds": 218,
+"total_beds": 12518
+},
+"shelter_count": 281
+},
+"경기도|시흥시": {
+"sido": "경기도",
+"gu": "시흥시",
+"center": {
+"lat": 37.377319,
+"lng": 126.805078
+},
+"kma_grid": {
+"nx": 57,
+"ny": 123
+},
+"crime": {
+"total_cases": 18852,
+"violent_cases": 225,
+"crime_risk_index": 46.1,
+"breakdown": {
+"강력범죄": 225,
+"절도범죄": 1726,
+"폭력범죄": 2598,
+"지능범죄": 5165,
+"교통범죄": 4305,
+"기타": 4833
+}
+},
+"medical": {
+"hospital_count": 44,
+"clinic_count": 529,
+"general_count": 11,
+"er_beds": 64,
+"total_beds": 5016
+},
+"shelter_count": 140
+},
+"경기도|안산시": {
+"sido": "경기도",
+"gu": "안산시",
+"center": {
+"lat": 37.298519,
+"lng": 126.846819
+},
+"kma_grid": {
+"nx": 58,
+"ny": 121
+},
+"crime": {
+"total_cases": 24971,
+"violent_cases": 363,
+"crime_risk_index": 61.5,
+"breakdown": {
+"강력범죄": 363,
+"절도범죄": 2722,
+"폭력범죄": 3737,
+"지능범죄": 7418,
+"교통범죄": 4169,
+"기타": 6562
+}
+},
+"medical": {
+"hospital_count": 68,
+"clinic_count": 731,
+"general_count": 24,
+"er_beds": 115,
+"total_beds": 8867
+},
+"shelter_count": 156
+},
+"경기도|안성시": {
+"sido": "경기도",
+"gu": "안성시",
+"center": {
+"lat": 37.005175,
+"lng": 127.281844
+},
+"kma_grid": {
+"nx": 65,
+"ny": 115
+},
+"crime": {
+"total_cases": 6324,
+"violent_cases": 67,
+"crime_risk_index": 14.8,
+"breakdown": {
+"강력범죄": 67,
+"절도범죄": 680,
+"폭력범죄": 836,
+"지능범죄": 1845,
+"교통범죄": 1317,
+"기타": 1579
+}
+},
+"medical": {
+"hospital_count": 24,
+"clinic_count": 199,
+"general_count": 4,
+"er_beds": 28,
+"total_beds": 1611
+},
+"shelter_count": 65
+},
+"경기도|안양시": {
+"sido": "경기도",
+"gu": "안양시",
+"center": {
+"lat": 37.383778,
+"lng": 126.9345
+},
+"kma_grid": {
+"nx": 59,
+"ny": 123
+},
+"crime": {
+"total_cases": 12683,
+"violent_cases": 223,
+"crime_risk_index": 30.7,
+"breakdown": {
+"강력범죄": 223,
+"절도범죄": 1596,
+"폭력범죄": 1808,
+"지능범죄": 3822,
+"교통범죄": 1889,
+"기타": 3345
+}
+},
+"medical": {
+"hospital_count": 34,
+"clinic_count": 905,
+"general_count": 14,
+"er_beds": 69,
+"total_beds": 3973
+},
+"shelter_count": 224
+},
+"경기도|양주시": {
+"sido": "경기도",
+"gu": "양주시",
+"center": {
+"lat": 37.78245,
+"lng": 127.047819
+},
+"kma_grid": {
+"nx": 61,
+"ny": 131
+},
+"crime": {
+"total_cases": 7103,
+"violent_cases": 97,
+"crime_risk_index": 16.7,
+"breakdown": {
+"강력범죄": 97,
+"절도범죄": 660,
+"폭력범죄": 1075,
+"지능범죄": 2054,
+"교통범죄": 1218,
+"기타": 1999
+}
+},
+"medical": {
+"hospital_count": 23,
+"clinic_count": 229,
+"general_count": 5,
+"er_beds": 21,
+"total_beds": 2627
+},
+"shelter_count": 89
+},
+"경기도|여주시": {
+"sido": "경기도",
+"gu": "여주시",
+"center": {
+"lat": 37.295358,
+"lng": 127.639622
+},
+"kma_grid": {
+"nx": 71,
+"ny": 121
+},
+"crime": {
+"total_cases": 3715,
+"violent_cases": 49,
+"crime_risk_index": 8.3,
+"breakdown": {
+"강력범죄": 49,
+"절도범죄": 298,
+"폭력범죄": 436,
+"지능범죄": 1195,
+"교통범죄": 913,
+"기타": 824
+}
+},
+"medical": {
+"hospital_count": 19,
+"clinic_count": 123,
+"general_count": 2,
+"er_beds": 29,
+"total_beds": 1414
+},
+"shelter_count": 32
+},
+"경기도|오산시": {
+"sido": "경기도",
+"gu": "오산시",
+"center": {
+"lat": 37.146914,
+"lng": 127.079642
+},
+"kma_grid": {
+"nx": 62,
+"ny": 118
+},
+"crime": {
+"total_cases": 8246,
+"violent_cases": 104,
+"crime_risk_index": 19.6,
+"breakdown": {
+"강력범죄": 104,
+"절도범죄": 953,
+"폭력범죄": 1257,
+"지능범죄": 2362,
+"교통범죄": 1360,
+"기타": 2210
+}
+},
+"medical": {
+"hospital_count": 19,
+"clinic_count": 242,
+"general_count": 9,
+"er_beds": 30,
+"total_beds": 2251
+},
+"shelter_count": 71
+},
+"경기도|용인시": {
+"sido": "경기도",
+"gu": "용인시",
+"center": {
+"lat": 37.231478,
+"lng": 127.203844
+},
+"kma_grid": {
+"nx": 64,
+"ny": 119
+},
+"crime": {
+"total_cases": 25505,
+"violent_cases": 284,
+"crime_risk_index": 62.8,
+"breakdown": {
+"강력범죄": 284,
+"절도범죄": 3200,
+"폭력범죄": 3245,
+"지능범죄": 8267,
+"교통범죄": 4013,
+"기타": 6496
+}
+},
+"medical": {
+"hospital_count": 68,
+"clinic_count": 1215,
+"general_count": 28,
+"er_beds": 98,
+"total_beds": 8200
+},
+"shelter_count": 299
+},
+"경기도|의왕시": {
+"sido": "경기도",
+"gu": "의왕시",
+"center": {
+"lat": 37.34195,
+"lng": 126.970389
+},
+"kma_grid": {
+"nx": 60,
+"ny": 122
+},
+"crime": {
+"total_cases": 3307,
+"violent_cases": 43,
+"crime_risk_index": 7.2,
+"breakdown": {
+"강력범죄": 43,
+"절도범죄": 237,
+"폭력범죄": 363,
+"지능범죄": 1021,
+"교통범죄": 907,
+"기타": 736
+}
+},
+"medical": {
+"hospital_count": 11,
+"clinic_count": 154,
+"general_count": 1,
+"er_beds": 0,
+"total_beds": 986
+},
+"shelter_count": 86
+},
+"경기도|의정부시": {
+"sido": "경기도",
+"gu": "의정부시",
+"center": {
+"lat": 37.735289,
+"lng": 127.035842
+},
+"kma_grid": {
+"nx": 61,
+"ny": 130
+},
+"crime": {
+"total_cases": 13724,
+"violent_cases": 201,
+"crime_risk_index": 33.3,
+"breakdown": {
+"강력범죄": 201,
+"절도범죄": 1475,
+"폭력범죄": 2129,
+"지능범죄": 4422,
+"교통범죄": 1699,
+"기타": 3798
+}
+},
+"medical": {
+"hospital_count": 40,
+"clinic_count": 585,
+"general_count": 18,
+"er_beds": 142,
+"total_beds": 5515
+},
+"shelter_count": 114
+},
+"경기도|이천시": {
+"sido": "경기도",
+"gu": "이천시",
+"center": {
+"lat": 37.275436,
+"lng": 127.443219
+},
+"kma_grid": {
+"nx": 68,
+"ny": 121
+},
+"crime": {
+"total_cases": 6965,
+"violent_cases": 91,
+"crime_risk_index": 16.4,
+"breakdown": {
+"강력범죄": 91,
+"절도범죄": 605,
+"폭력범죄": 960,
+"지능범죄": 2197,
+"교통범죄": 1402,
+"기타": 1710
+}
+},
+"medical": {
+"hospital_count": 20,
+"clinic_count": 246,
+"general_count": 5,
+"er_beds": 24,
+"total_beds": 1539
+},
+"shelter_count": 81
+},
+"경기도|파주시": {
+"sido": "경기도",
+"gu": "파주시",
+"center": {
+"lat": 37.757083,
+"lng": 126.781953
+},
+"kma_grid": {
+"nx": 56,
+"ny": 131
+},
+"crime": {
+"total_cases": 15840,
+"violent_cases": 196,
+"crime_risk_index": 38.6,
+"breakdown": {
+"강력범죄": 196,
+"절도범죄": 1421,
+"폭력범죄": 2058,
+"지능범죄": 5810,
+"교통범죄": 2113,
+"기타": 4242
+}
+},
+"medical": {
+"hospital_count": 51,
+"clinic_count": 481,
+"general_count": 17,
+"er_beds": 54,
+"total_beds": 5220
+},
+"shelter_count": 191
+},
+"경기도|평택시": {
+"sido": "경기도",
+"gu": "평택시",
+"center": {
+"lat": 36.989439,
+"lng": 127.114656
+},
+"kma_grid": {
+"nx": 62,
+"ny": 114
+},
+"crime": {
+"total_cases": 26803,
+"violent_cases": 307,
+"crime_risk_index": 66.0,
+"breakdown": {
+"강력범죄": 307,
+"절도범죄": 2436,
+"폭력범죄": 3418,
+"지능범죄": 7810,
+"교통범죄": 5652,
+"기타": 7180
+}
+},
+"medical": {
+"hospital_count": 44,
+"clinic_count": 652,
+"general_count": 16,
+"er_beds": 102,
+"total_beds": 4622
+},
+"shelter_count": 131
+},
+"경기도|포천시": {
+"sido": "경기도",
+"gu": "포천시",
+"center": {
+"lat": 37.892156,
+"lng": 127.202419
+},
+"kma_grid": {
+"nx": 64,
+"ny": 134
+},
+"crime": {
+"total_cases": 4987,
+"violent_cases": 73,
+"crime_risk_index": 11.4,
+"breakdown": {
+"강력범죄": 73,
+"절도범죄": 411,
+"폭력범죄": 715,
+"지능범죄": 1377,
+"교통범죄": 915,
+"기타": 1496
+}
+},
+"medical": {
+"hospital_count": 17,
+"clinic_count": 142,
+"general_count": 4,
+"er_beds": 60,
+"total_beds": 1186
+},
+"shelter_count": 89
+},
+"경기도|하남시": {
+"sido": "경기도",
+"gu": "하남시",
+"center": {
+"lat": 37.536497,
+"lng": 127.217
+},
+"kma_grid": {
+"nx": 64,
+"ny": 126
+},
+"crime": {
+"total_cases": 9339,
+"violent_cases": 87,
+"crime_risk_index": 22.3,
+"breakdown": {
+"강력범죄": 87,
+"절도범죄": 876,
+"폭력범죄": 1042,
+"지능범죄": 3570,
+"교통범죄": 1260,
+"기타": 2504
+}
+},
+"medical": {
+"hospital_count": 20,
+"clinic_count": 436,
+"general_count": 8,
+"er_beds": 0,
+"total_beds": 2471
+},
+"shelter_count": 90
+},
+"경기도|화성시": {
+"sido": "경기도",
+"gu": "화성시",
+"center": {
+"lat": 37.137701,
+"lng": 126.925662
+},
+"kma_grid": {
+"nx": 59,
+"ny": 117
+},
+"crime": {
+"total_cases": 27300,
+"violent_cases": 293,
+"crime_risk_index": 67.3,
+"breakdown": {
+"강력범죄": 293,
+"절도범죄": 2895,
+"폭력범죄": 3483,
+"지능범죄": 8162,
+"교통범죄": 5194,
+"기타": 7273
+}
+},
+"medical": {
+"hospital_count": 56,
+"clinic_count": 971,
+"general_count": 19,
+"er_beds": 86,
+"total_beds": 5218
+},
+"shelter_count": 169
+},
+"경기도|연천군": {
+"sido": "경기도",
+"gu": "연천군",
+"center": {
+"lat": 38.093364,
+"lng": 127.077067
+},
+"kma_grid": {
+"nx": 61,
+"ny": 138
+},
+"crime": {
+"total_cases": 1520,
+"violent_cases": 14,
+"crime_risk_index": 2.8,
+"breakdown": {
+"강력범죄": 14,
+"절도범죄": 131,
+"폭력범죄": 278,
+"지능범죄": 418,
+"교통범죄": 164,
+"기타": 515
+}
+},
+"medical": {
+"hospital_count": 8,
+"clinic_count": 46,
+"general_count": 0,
+"er_beds": 10,
+"total_beds": 306
+},
+"shelter_count": 36
+},
+"경기도|가평군": {
+"sido": "경기도",
+"gu": "가평군",
+"center": {
+"lat": 37.828831,
+"lng": 127.511778
+},
+"kma_grid": {
+"nx": 69,
+"ny": 133
+},
+"crime": {
+"total_cases": 2314,
+"violent_cases": 36,
+"crime_risk_index": 4.7,
+"breakdown": {
+"강력범죄": 36,
+"절도범죄": 139,
+"폭력범죄": 306,
+"지능범죄": 779,
+"교통범죄": 342,
+"기타": 712
+}
+},
+"medical": {
+"hospital_count": 14,
+"clinic_count": 80,
+"general_count": 2,
+"er_beds": 8,
+"total_beds": 673
+},
+"shelter_count": 32
+},
+"경기도|양평군": {
+"sido": "경기도",
+"gu": "양평군",
+"center": {
+"lat": 37.488936,
+"lng": 127.489886
+},
+"kma_grid": {
+"nx": 69,
+"ny": 125
+},
+"crime": {
+"total_cases": 3797,
+"violent_cases": 45,
+"crime_risk_index": 8.5,
+"breakdown": {
+"강력범죄": 45,
+"절도범죄": 288,
+"폭력범죄": 483,
+"지능범죄": 1459,
+"교통범죄": 557,
+"기타": 965
+}
+},
+"medical": {
+"hospital_count": 20,
+"clinic_count": 129,
+"general_count": 2,
+"er_beds": 11,
+"total_beds": 1403
+},
+"shelter_count": 30
+},
+"인천광역시|중구": {
+"sido": "인천광역시",
+"gu": "중구",
+"center": {
+"lat": 37.470933,
+"lng": 126.623567
+},
+"kma_grid": {
+"nx": 54,
+"ny": 125
+},
+"crime": {
+"total_cases": 7858,
+"violent_cases": 128,
+"crime_risk_index": 18.6,
+"breakdown": {
+"강력범죄": 128,
+"절도범죄": 791,
+"폭력범죄": 936,
+"지능범죄": 2759,
+"교통범죄": 1104,
+"기타": 2140
+}
+},
+"medical": {
+"hospital_count": 16,
+"clinic_count": 134,
+"general_count": 5,
+"er_beds": 44,
+"total_beds": 2319
+},
+"shelter_count": 76
+},
+"인천광역시|동구": {
+"sido": "인천광역시",
+"gu": "동구",
+"center": {
+"lat": 37.470933,
+"lng": 126.623567
+},
+"kma_grid": {
+"nx": 54,
+"ny": 125
+},
+"crime": {
+"total_cases": 1237,
+"violent_cases": 17,
+"crime_risk_index": 2.0,
+"breakdown": {
+"강력범죄": 17,
+"절도범죄": 206,
+"폭력범죄": 204,
+"지능범죄": 333,
+"교통범죄": 145,
+"기타": 332
+}
+},
+"medical": {
+"hospital_count": 3,
+"clinic_count": 84,
+"general_count": 2,
+"er_beds": 23,
+"total_beds": 578
+},
+"shelter_count": 128
+},
+"인천광역시|미추홀구": {
+"sido": "인천광역시",
+"gu": "미추홀구",
+"center": {
+"lat": 37.460681,
+"lng": 126.652686
+},
+"kma_grid": {
+"nx": 54,
+"ny": 124
+},
+"crime": {
+"total_cases": 15339,
+"violent_cases": 295,
+"crime_risk_index": 37.3,
+"breakdown": {
+"강력범죄": 295,
+"절도범죄": 1444,
+"폭력범죄": 2392,
+"지능범죄": 4961,
+"교통범죄": 1904,
+"기타": 4343
+}
+},
+"medical": {
+"hospital_count": 45,
+"clinic_count": 478,
+"general_count": 16,
+"er_beds": 41,
+"total_beds": 5981
+},
+"shelter_count": 109
+},
+"인천광역시|연수구": {
+"sido": "인천광역시",
+"gu": "연수구",
+"center": {
+"lat": 37.407122,
+"lng": 126.680442
+},
+"kma_grid": {
+"nx": 55,
+"ny": 123
+},
+"crime": {
+"total_cases": 9903,
+"violent_cases": 132,
+"crime_risk_index": 23.7,
+"breakdown": {
+"강력범죄": 132,
+"절도범죄": 1185,
+"폭력범죄": 1363,
+"지능범죄": 3439,
+"교통범죄": 1026,
+"기타": 2758
+}
+},
+"medical": {
+"hospital_count": 20,
+"clinic_count": 497,
+"general_count": 6,
+"er_beds": 33,
+"total_beds": 2032
+},
+"shelter_count": 77
+},
+"인천광역시|남동구": {
+"sido": "인천광역시",
+"gu": "남동구",
+"center": {
+"lat": 37.444519,
+"lng": 126.733797
+},
+"kma_grid": {
+"nx": 56,
+"ny": 124
+},
+"crime": {
+"total_cases": 15488,
+"violent_cases": 240,
+"crime_risk_index": 37.7,
+"breakdown": {
+"강력범죄": 240,
+"절도범죄": 1242,
+"폭력범죄": 2212,
+"지능범죄": 5122,
+"교통범죄": 2060,
+"기타": 4612
+}
+},
+"medical": {
+"hospital_count": 46,
+"clinic_count": 712,
+"general_count": 15,
+"er_beds": 74,
+"total_beds": 6928
+},
+"shelter_count": 0
+},
+"인천광역시|부평구": {
+"sido": "인천광역시",
+"gu": "부평구",
+"center": {
+"lat": 37.504267,
+"lng": 126.7241
+},
+"kma_grid": {
+"nx": 55,
+"ny": 125
+},
+"crime": {
+"total_cases": 15875,
+"violent_cases": 325,
+"crime_risk_index": 38.7,
+"breakdown": {
+"강력범죄": 325,
+"절도범죄": 2143,
+"폭력범죄": 2701,
+"지능범죄": 4671,
+"교통범죄": 1768,
+"기타": 4267
+}
+},
+"medical": {
+"hospital_count": 29,
+"clinic_count": 654,
+"general_count": 10,
+"er_beds": 59,
+"total_beds": 3575
+},
+"shelter_count": 105
+},
+"인천광역시|계양구": {
+"sido": "인천광역시",
+"gu": "계양구",
+"center": {
+"lat": 37.534792,
+"lng": 126.739753
+},
+"kma_grid": {
+"nx": 56,
+"ny": 126
+},
+"crime": {
+"total_cases": 7963,
+"violent_cases": 106,
+"crime_risk_index": 18.9,
+"breakdown": {
+"강력범죄": 106,
+"절도범죄": 825,
+"폭력범죄": 1154,
+"지능범죄": 2584,
+"교통범죄": 965,
+"기타": 2329
+}
+},
+"medical": {
+"hospital_count": 29,
+"clinic_count": 350,
+"general_count": 10,
+"er_beds": 44,
+"total_beds": 3397
+},
+"shelter_count": 46
+},
+"인천광역시|서구": {
+"sido": "인천광역시",
+"gu": "서구",
+"center": {
+"lat": 37.542692,
+"lng": 126.6782
+},
+"kma_grid": {
+"nx": 55,
+"ny": 126
+},
+"crime": {
+"total_cases": 16771,
+"violent_cases": 261,
+"crime_risk_index": 40.9,
+"breakdown": {
+"강력범죄": 261,
+"절도범죄": 1356,
+"폭력범죄": 2121,
+"지능범죄": 5850,
+"교통범죄": 2211,
+"기타": 4972
+}
+},
+"medical": {
+"hospital_count": 43,
+"clinic_count": 642,
+"general_count": 15,
+"er_beds": 111,
+"total_beds": 5887
+},
+"shelter_count": 106
+},
+"인천광역시|강화군": {
+"sido": "인천광역시",
+"gu": "강화군",
+"center": {
+"lat": 37.743858,
+"lng": 126.49
+},
+"kma_grid": {
+"nx": 51,
+"ny": 130
+},
+"crime": {
+"total_cases": 1800,
+"violent_cases": 22,
+"crime_risk_index": 3.5,
+"breakdown": {
+"강력범죄": 22,
+"절도범죄": 168,
+"폭력범죄": 312,
+"지능범죄": 469,
+"교통범죄": 346,
+"기타": 483
+}
+},
+"medical": {
+"hospital_count": 19,
+"clinic_count": 66,
+"general_count": 2,
+"er_beds": 13,
+"total_beds": 606
+},
+"shelter_count": 90
+},
+"인천광역시|옹진군": {
+"sido": "인천광역시",
+"gu": "옹진군",
+"center": {
+"lat": 37.443725,
+"lng": 126.638889
+},
+"kma_grid": {
+"nx": 54,
+"ny": 124
+},
+"crime": {
+"total_cases": 418,
+"violent_cases": 10,
+"crime_risk_index": 0.0,
+"breakdown": {
+"강력범죄": 10,
+"절도범죄": 15,
+"폭력범죄": 65,
+"지능범죄": 88,
+"교통범죄": 88,
+"기타": 152
+}
+},
+"medical": {
+"hospital_count": 9,
+"clinic_count": 18,
+"general_count": 1,
+"er_beds": 7,
+"total_beds": 93
+},
+"shelter_count": 52
+}
+}
