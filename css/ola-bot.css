@@ -1,0 +1,625 @@
+:root {
+  --ola-size: clamp(130px, 10vw, 145px);
+  --ola-bubble-radius: 14px;
+  --ola-bubble-padding-x: 14px;
+  --ola-bubble-padding-y: 12px;
+  --ola-bubble-gap: 12px;
+  --ola-bubble-tail-size: 9px;
+  --ola-bubble-border-width: 1px;
+  --ola-bubble-max-width: 292px;
+}
+
+#ola-layer {
+  position: fixed;
+  inset: 0;
+  z-index: 9990;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+#ola-layer [hidden] {
+  display: none !important;
+}
+
+#ola-stage {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  width: var(--ola-size);
+  aspect-ratio: 1 / 1.35;
+  pointer-events: none;
+  touch-action: none;
+  user-select: none;
+  transition: left 1050ms cubic-bezier(.22, .72, .28, 1), top 1050ms cubic-bezier(.22, .72, .28, 1), transform 420ms ease, opacity 180ms ease;
+}
+
+#ola-stage.is-dragging { transition: none; }
+#ola-stage.is-ola-moving { transition: none; }
+#ola-stage.is-ola-flying { transition: none; }
+
+#ola-layer.is-user-hidden #ola-stage {
+  visibility: hidden;
+  opacity: 0;
+  transform: translateY(8px) scale(.92);
+}
+
+#ola-render-area,
+#ola-render-area img,
+#ola-render-area canvas {
+  width: 100%;
+  height: 100%;
+}
+
+#ola-render-area {
+  position: relative;
+  pointer-events: none;
+  transition: transform 360ms ease, filter 360ms ease;
+}
+
+#ola-render-area img,
+#ola-render-area canvas {
+  display: block;
+  object-fit: contain;
+  filter: drop-shadow(0 12px 16px rgba(15, 55, 75, 0.2));
+  pointer-events: none;
+}
+
+#ola-stage.is-sleep-preparing #ola-render-area {
+  animation: ola-yawn 850ms ease-in-out both;
+}
+
+#ola-stage.is-sleeping #ola-render-area {
+  transform: translateY(11%) scaleY(.9) rotate(2deg);
+  filter: saturate(.72) brightness(.94);
+}
+
+#ola-stage.is-waking #ola-render-area {
+  animation: ola-wake 1.35s cubic-bezier(.22, .75, .28, 1) both;
+}
+
+#ola-message {
+  position: fixed;
+  z-index: 20;
+  right: auto;
+  bottom: auto;
+  left: 0;
+  top: 0;
+  width: clamp(220px, 26vw, var(--ola-bubble-max-width));
+  max-width: calc(100vw - 20px);
+  box-sizing: border-box;
+  padding: var(--ola-bubble-padding-y) calc(var(--ola-bubble-padding-x) + 20px) var(--ola-bubble-padding-y) var(--ola-bubble-padding-x);
+  border: var(--ola-bubble-border-width) solid rgba(68, 199, 205, 0.35);
+  border-radius: var(--ola-bubble-radius);
+  background: rgba(255, 255, 255, 0.95);
+  color: #24424d;
+  box-shadow: 0 8px 25px rgba(15, 55, 75, 0.13);
+  font-size: 12px;
+  line-height: 1.45;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(6px);
+  transition: opacity 160ms ease, transform 160ms ease;
+  pointer-events: none;
+  max-height: min(52vh, 360px);
+  overflow-y: auto;
+  /* overflow-y만 지정하면 CSS 스펙상 overflow-x도 자동으로 "auto"로 계산되어(둘 다 visible이
+     아니게 됨), 세로 내용이 짧아 스크롤이 필요 없는 말풍선에서도 서브픽셀 반올림 등으로 가로
+     스크롤바가 얇게 나타날 수 있다("글이 짧은데도 스크롤 같은 게 생긴다"는 원인). 가로 스크롤은
+     쓰지 않으므로 명시적으로 막아 준다. */
+  overflow-x: hidden;
+}
+
+#ola-message::after {
+  content: "";
+  position: absolute;
+  right: 22px;
+  bottom: calc(-1 * var(--ola-bubble-tail-size));
+  width: calc(var(--ola-bubble-tail-size) * 1.35);
+  height: calc(var(--ola-bubble-tail-size) * 1.35);
+  border-right: var(--ola-bubble-border-width) solid rgba(68, 199, 205, .35);
+  border-bottom: var(--ola-bubble-border-width) solid rgba(68, 199, 205, .35);
+  background: rgba(255, 255, 255, .98);
+  transform: rotate(45deg);
+}
+
+#ola-message[data-placement="above"]::after {
+  right: auto;
+  left: var(--ola-tail-offset, 50%);
+  bottom: calc(-1 * var(--ola-bubble-tail-size));
+  top: auto;
+  border: 0;
+  border-right: var(--ola-bubble-border-width) solid rgba(68, 199, 205, .35);
+  border-bottom: var(--ola-bubble-border-width) solid rgba(68, 199, 205, .35);
+}
+
+#ola-message[data-placement="below"]::after {
+  right: auto;
+  left: var(--ola-tail-offset, 50%);
+  top: calc(-1 * var(--ola-bubble-tail-size));
+  bottom: auto;
+  border: 0;
+  border-left: var(--ola-bubble-border-width) solid rgba(68, 199, 205, .35);
+  border-top: var(--ola-bubble-border-width) solid rgba(68, 199, 205, .35);
+}
+
+#ola-message[data-placement="left"]::after {
+  right: calc(-1 * var(--ola-bubble-tail-size));
+  left: auto;
+  top: var(--ola-tail-offset, 50%);
+  bottom: auto;
+  border: 0;
+  border-right: var(--ola-bubble-border-width) solid rgba(68, 199, 205, .35);
+  border-top: var(--ola-bubble-border-width) solid rgba(68, 199, 205, .35);
+}
+
+#ola-message[data-placement="right"]::after {
+  left: calc(-1 * var(--ola-bubble-tail-size));
+  right: auto;
+  top: var(--ola-tail-offset, 50%);
+  bottom: auto;
+  border: 0;
+  border-left: var(--ola-bubble-border-width) solid rgba(68, 199, 205, .35);
+  border-bottom: var(--ola-bubble-border-width) solid rgba(68, 199, 205, .35);
+}
+
+#ola-message.is-visible {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+#ola-message.is-open-right {
+  right: auto;
+  left: 0;
+}
+
+#ola-message.is-open-right::after { right: auto; left: 22px; }
+
+#ola-message.is-below {
+  top: calc(100% + var(--ola-bubble-gap));
+  bottom: auto;
+}
+
+#ola-message.is-below::after {
+  top: calc(-1 * var(--ola-bubble-tail-size));
+  bottom: auto;
+  border: 0;
+  border-left: var(--ola-bubble-border-width) solid rgba(68, 199, 205, .35);
+  border-top: var(--ola-bubble-border-width) solid rgba(68, 199, 205, .35);
+}
+
+#ola-message-title {
+  display: block;
+  margin-bottom: 4px;
+  color: #173e4b;
+  font-size: 13px;
+  line-height: 1.35;
+}
+
+#ola-message-title:empty,
+#ola-message-details:empty,
+#ola-message-actions:empty {
+  display: none;
+}
+
+#ola-message-text {
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+
+#ola-message-details {
+  margin: 7px 0 0;
+  padding-left: 16px;
+  color: #45636d;
+}
+
+#ola-message-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 10px;
+}
+
+#ola-message-actions button {
+  min-height: 32px;
+  padding: 6px 10px;
+  border: 1px solid rgba(26, 174, 181, .32);
+  border-radius: 999px;
+  background: #e9fbf9;
+  color: #115e68;
+  font: 700 11px/1.2 system-ui, sans-serif;
+  cursor: pointer;
+}
+
+#ola-message-actions button:hover {
+  background: #d8f7f3;
+}
+
+#ola-message-actions button:focus-visible,
+#ola-message-close:focus-visible,
+#ola-settings-help-guide:focus-visible {
+  outline: 3px solid rgba(24, 198, 190, .42);
+  outline-offset: 2px;
+}
+
+#ola-message-actions label,
+#ola-message-actions input,
+#ola-message-actions .ola-ai-response {
+  width: 100%;
+}
+
+#ola-message-actions input {
+  min-height: 34px;
+  padding: 7px 9px;
+  border: 1px solid rgba(68, 199, 205, .42);
+  border-radius: 9px;
+  background: #fff;
+  color: #24424d;
+  font: inherit;
+}
+
+#ola-message-actions .ola-ai-response {
+  margin: 2px 0 0;
+  padding-top: 8px;
+  border-top: 1px solid rgba(68, 199, 205, .2);
+  color: #31545f;
+}
+
+#ola-message-close {
+  position: absolute;
+  top: 5px;
+  right: 6px;
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: #6b828a;
+  font: 700 18px/1 system-ui, sans-serif;
+  cursor: pointer;
+}
+
+#ola-message-close:hover {
+  background: rgba(68, 199, 205, .11);
+  color: #24424d;
+}
+
+#ola-settings-trigger {
+  position: absolute;
+  z-index: 32;
+  left: 50%;
+  top: calc(100% + 6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  padding: 4px;
+  border: 1px solid rgba(39, 176, 184, .38);
+  border-radius: 50%;
+  background: rgba(239, 255, 252, .94);
+  box-shadow: 0 5px 18px rgba(15, 94, 100, .17), 0 0 14px rgba(69, 234, 242, .16);
+  cursor: pointer;
+  overflow: hidden;
+  pointer-events: auto;
+  transform: translateX(-50%);
+  transition: transform 150ms ease, box-shadow 150ms ease, opacity 120ms ease;
+}
+
+#ola-settings-trigger img {
+  display: block;
+  flex: 0 0 64px;
+  width: 64px;
+  height: 64px;
+  max-width: none;
+  object-fit: contain;
+  pointer-events: none;
+}
+
+#ola-stage.is-settings-gear-below #ola-settings-trigger {
+  top: calc(100% + 6px);
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+#ola-stage.is-settings-gear-below.is-settings-gear-right #ola-settings-trigger {
+  right: auto;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+#ola-settings-trigger:hover {
+  transform: translateX(-50%) translateY(-2px) rotate(-3deg);
+  box-shadow: 0 7px 22px rgba(15, 94, 100, .22), 0 0 18px rgba(69, 234, 242, .25);
+}
+
+#ola-stage.is-settings-gear-below #ola-settings-trigger:hover {
+  transform: translateX(-50%) translateY(2px) rotate(-3deg);
+}
+
+#ola-stage.is-settings-gear-below.is-settings-gear-right #ola-settings-trigger:hover {
+  transform: translateX(-50%) translateY(2px) rotate(-3deg);
+}
+
+#ola-settings-trigger:active {
+  transform: translateX(-50%) scale(.94);
+}
+
+#ola-stage.is-settings-gear-below #ola-settings-trigger:active {
+  transform: translateX(-50%) scale(.94);
+}
+
+#ola-stage.is-settings-gear-below.is-settings-gear-right #ola-settings-trigger:active {
+  transform: translateX(-50%) scale(.94);
+}
+
+#ola-settings-trigger:focus-visible,
+#ola-restore-trigger:focus-visible,
+#ola-settings-panel button:focus-visible,
+#ola-settings-panel select:focus-visible,
+#ola-settings-panel input:focus-visible {
+  outline: 3px solid rgba(23, 181, 190, .52);
+  outline-offset: 2px;
+}
+
+#ola-settings-panel {
+  position: fixed;
+  z-index: 31;
+  top: 16px;
+  right: 16px;
+  bottom: 16px;
+  width: min(360px, calc(100vw - 32px));
+  padding: 14px 14px 12px;
+  border: 1px solid rgba(39, 176, 184, .32);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, .97);
+  color: #24424d;
+  box-shadow: 0 16px 45px rgba(15, 55, 75, .2);
+  pointer-events: auto;
+  display: flex;
+  flex-direction: column;
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity 150ms ease, transform 150ms ease;
+}
+
+#ola-settings-panel header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex: 0 0 auto;
+  margin-bottom: 6px;
+  color: #176b73;
+}
+
+#ola-settings-panel header strong {
+  font-size: 14px;
+}
+
+#ola-settings-close {
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(39, 176, 184, .08);
+  color: #53747d;
+  font: 800 18px/1 system-ui, sans-serif;
+  cursor: pointer;
+}
+
+#ola-settings-panel .ola-settings-content {
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding-right: 3px;
+}
+
+#ola-settings-panel .ola-settings-group {
+  margin: 0;
+  padding: 8px 0 4px;
+  border-top: 1px solid rgba(68, 199, 205, .15);
+}
+
+#ola-settings-panel .ola-settings-group:first-child {
+  border-top: 0;
+}
+
+#ola-settings-panel h3 {
+  margin: 0 0 3px;
+  color: #39707a;
+  font: 800 11px/1.3 system-ui, sans-serif;
+  letter-spacing: .02em;
+}
+
+#ola-settings-panel label {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  min-height: 34px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+#ola-settings-panel select {
+  max-width: 172px;
+  min-width: 0;
+  padding: 5px 28px 5px 8px;
+  border: 1px solid rgba(68, 199, 205, .3);
+  border-radius: 9px;
+  background: #f8fffe;
+  color: #31545f;
+  font: 700 11px system-ui, sans-serif;
+}
+
+#ola-settings-panel input[type="checkbox"] {
+  width: 17px;
+  height: 17px;
+  accent-color: #27b8b6;
+}
+
+#ola-settings-panel button:not(#ola-settings-close) {
+  min-height: 34px;
+  padding: 7px 10px;
+  border: 1px solid rgba(39, 176, 184, .3);
+  border-radius: 10px;
+  background: #effbf9;
+  color: #176b73;
+  font: 800 11px/1.2 system-ui, sans-serif;
+  cursor: pointer;
+  pointer-events: auto;
+}
+
+#ola-settings-panel .ola-settings-group > button {
+  width: 100%;
+  margin-top: 4px;
+}
+
+#ola-settings-panel .ola-settings-help ul {
+  margin: 5px 0 8px;
+  padding-left: 17px;
+  color: #4c6b74;
+  font: 600 11px/1.5 system-ui, sans-serif;
+}
+
+#ola-settings-panel footer {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 7px;
+  flex: 0 0 auto;
+  padding-top: 9px;
+  border-top: 1px solid rgba(68, 199, 205, .18);
+}
+
+#ola-restore-trigger {
+  position: fixed;
+  z-index: 32;
+  right: 12px;
+  bottom: 12px;
+  min-height: 44px;
+  padding: 9px 13px;
+  border: 1px solid rgba(39, 176, 184, .38);
+  border-radius: 999px;
+  background: rgba(239, 255, 252, .97);
+  color: #176b73;
+  box-shadow: 0 6px 20px rgba(15, 94, 100, .18);
+  font: 800 12px/1 system-ui, sans-serif;
+  cursor: pointer;
+  pointer-events: auto;
+}
+
+[data-ola-drop-zone="true"] {
+  transition: box-shadow 180ms ease, outline-color 180ms ease;
+}
+
+#ola-zzz {
+  position: absolute;
+  right: 8%;
+  top: 4%;
+  color: #25aebd;
+  font: 800 14px/1 system-ui, sans-serif;
+  letter-spacing: 2px;
+  pointer-events: none;
+}
+
+#ola-zzz[aria-hidden="true"] { visibility: hidden; }
+#ola-zzz[aria-hidden="false"] { animation: ola-zzz-rise 2.2s ease-in-out infinite; }
+#ola-stage.has-ola-svg #ola-zzz { visibility: hidden; }
+#ola-stage.has-ola-reference #ola-zzz { visibility: hidden; }
+
+@keyframes ola-yawn {
+  0% { transform: translateY(0) rotate(0); }
+  38% { transform: translateY(3%) scaleY(.96) rotate(-2deg); }
+  70% { transform: translateY(7%) scaleY(.91) rotate(2deg); }
+  100% { transform: translateY(9%) scaleY(.9); }
+}
+
+@keyframes ola-wake {
+  0% { transform: translateY(11%) scaleY(.9) rotate(2deg); }
+  38% { transform: translateY(-4%) scaleX(1.08) scaleY(.94) rotate(-2deg); }
+  70% { transform: translateY(-2%) scaleX(.96) scaleY(1.08) rotate(1deg); }
+  100% { transform: none; }
+}
+
+@keyframes ola-zzz-rise {
+  0% { opacity: 0; transform: translate(0, 8px) scale(.85); }
+  28% { opacity: .9; }
+  75% { opacity: .65; }
+  100% { opacity: 0; transform: translate(10px, -20px) scale(1.08); }
+}
+
+@media (max-width: 640px) {
+  :root { --ola-size: clamp(90px, 26vw, 105px); }
+  #ola-stage { right: 8px; bottom: 10px; }
+  #ola-message {
+    width: min(250px, calc(100vw - 16px));
+    max-height: min(56vh, 340px);
+  }
+  #ola-settings-trigger {
+    top: calc(100% + 6px);
+    width: 48px;
+    height: 48px;
+  }
+  #ola-settings-trigger img { width: 64px; height: 64px; }
+  #ola-settings-panel {
+    top: auto;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    max-height: min(82vh, 680px);
+    border-right: 0;
+    border-bottom: 0;
+    border-left: 0;
+    border-radius: 22px 22px 0 0;
+    padding: 14px max(14px, env(safe-area-inset-right))
+      max(14px, env(safe-area-inset-bottom))
+      max(14px, env(safe-area-inset-left));
+  }
+  #ola-restore-trigger {
+    right: max(10px, env(safe-area-inset-right));
+    bottom: max(10px, env(safe-area-inset-bottom));
+    min-height: 48px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #ola-stage,
+  #ola-render-area,
+  #ola-message,
+  #ola-settings-trigger,
+  #ola-restore-trigger,
+  #ola-settings-panel {
+    transition-duration: .01ms;
+  }
+
+  #ola-stage.is-sleep-preparing #ola-render-area,
+  #ola-stage.is-waking #ola-render-area,
+  #ola-zzz[aria-hidden="false"] {
+    animation: none;
+  }
+}
+
+#ola-layer.is-motion-reduced #ola-stage,
+#ola-layer.is-motion-reduced #ola-render-area,
+#ola-layer.is-motion-reduced .ola-reference-asset,
+#ola-layer.is-motion-reduced .ola-reference-shadow,
+#ola-layer.is-motion-reduced .ola-motion-frame,
+#ola-layer.is-motion-reduced #ola-zzz {
+  animation-duration: .01ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 80ms !important;
+}
+
+#ola-layer.is-motion-minimal .ola-reference-asset,
+#ola-layer.is-motion-minimal .ola-reference-shadow {
+  animation-duration: 5.2s;
+}
+
+#ola-layer.is-motion-active .ola-reference-asset,
+#ola-layer.is-motion-active .ola-reference-shadow {
+  animation-duration: 3.1s;
+}

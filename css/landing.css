@@ -1,0 +1,30 @@
+/* css/landing.css
+   랜딩 페이지(landing.html) 전용 스타일
+*/
+
+.landing-illustration-plate {
+    aspect-ratio: 16 / 9;
+    background: var(--color-border);
+}
+
+#location-toast {
+    animation: landing-toast-in 0.25s ease-out;
+}
+
+@keyframes landing-toast-in {
+    from {
+        opacity: 0;
+        transform: translateY(-6px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 480px) {
+    #location-toast {
+        max-width: calc(100vw - 2rem);
+    }
+}

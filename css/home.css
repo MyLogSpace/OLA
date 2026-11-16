@@ -1,0 +1,471 @@
+/* css/home.css
+   Home 화면 전용 스타일 (히어로 배너)
+*/
+
+.hero-bg {
+    background: linear-gradient(135deg, var(--color-bg) 0%, var(--color-border) 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-bg::after {
+    content: '';
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(184, 227, 233, 0.4) 0%, transparent 70%);
+    top: -50px;
+    right: -50px;
+    border-radius: 50%;
+}
+
+/* AI 로봇 캐릭터 - 콩콩 뛰는 모션 */
+@keyframes robot-hop {
+
+    0%,
+    100% {
+        transform: translateY(0) scale(1, 1);
+    }
+
+    30% {
+        transform: translateY(-14px) scale(0.97, 1.03);
+    }
+
+    50% {
+        transform: translateY(-18px) scale(1, 1);
+    }
+
+    70% {
+        transform: translateY(-14px) scale(0.97, 1.03);
+    }
+}
+
+.robot-hop {
+    animation: robot-hop 1.3s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .robot-hop {
+        animation: none;
+    }
+}
+
+/* 상태 점 깜빡임 (서버 상태 · 실시간 지도 마커 등) */
+.pulse-active {
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+    animation: pulsing 2s infinite;
+}
+
+@keyframes pulsing {
+    70% {
+        box-shadow: 0 0 0 8px rgba(16, 185, 129, 0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(16, 185, 129, 0);
+    }
+}
+
+/* 응급/위험 표시 깜빡임 (빨강 계열) */
+.pulse-danger {
+    box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7);
+    animation: pulsing-red 1.8s infinite;
+}
+
+@keyframes pulsing-red {
+    70% {
+        box-shadow: 0 0 0 8px rgba(239, 68, 68, 0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(239, 68, 68, 0);
+    }
+}
+
+/* 알림 벨 딸랑딸랑 흔들림 (새로고침 시 한 번) */
+@keyframes bell-ring {
+
+    0%,
+    100% {
+        transform: rotate(0);
+    }
+
+    10%,
+    30%,
+    50%,
+    70% {
+        transform: rotate(-15deg);
+    }
+
+    20%,
+    40%,
+    60%,
+    80% {
+        transform: rotate(15deg);
+    }
+
+    90% {
+        transform: rotate(0);
+    }
+}
+
+.bell-ring {
+    transform-origin: top center;
+    animation: bell-ring 0.9s ease-in-out 0.6s 2;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .bell-ring {
+        animation: none;
+    }
+}
+
+/* 오늘의 올라 브리핑 - 음성 재생 중 확성기 아이콘이 좌우로 흔들리며 소리치는 듯한 모션 */
+@keyframes speak-pulse {
+
+    0%,
+    100% {
+        transform: rotate(0) scale(1);
+    }
+
+    25% {
+        transform: rotate(-12deg) scale(1.08);
+    }
+
+    50% {
+        transform: rotate(0) scale(1.15);
+    }
+
+    75% {
+        transform: rotate(12deg) scale(1.08);
+    }
+}
+
+.briefing-speak-active {
+    animation: speak-pulse 0.5s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .briefing-speak-active {
+        animation: none;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    .pulse-active,
+    .pulse-danger {
+        animation: none;
+    }
+}
+
+/* Ask OLA 검색창 - 예시 문구가 위로 슬라이드되며 순환 표시 */
+@keyframes home-search-rotate {
+
+    0%,
+    20% {
+        transform: translateY(0);
+    }
+
+    25%,
+    45% {
+        transform: translateY(-20px);
+    }
+
+    50%,
+    70% {
+        transform: translateY(-40px);
+    }
+
+    75%,
+    95% {
+        transform: translateY(-60px);
+    }
+
+    100% {
+        transform: translateY(-80px);
+    }
+}
+
+.home-search-rotator-list {
+    animation: home-search-rotate 10s infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .home-search-rotator-list {
+        animation: none;
+    }
+}
+
+/* 브리핑 신뢰도 바 - 로드 시 채워지는 애니메이션 */
+@keyframes fill-progress {
+    from {
+        width: 0%;
+    }
+}
+
+.animate-progress {
+    animation: fill-progress 1.2s ease-out forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .animate-progress {
+        animation: none;
+    }
+}
+
+/* 안심 지킴이 카드 - 원형 배지 살짝 떠 있는 모션 */
+@keyframes subtle-float {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-6px);
+    }
+}
+
+.animate-subtle-float {
+    animation: subtle-float 3.5s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .animate-subtle-float {
+        animation: none;
+    }
+}
+
+/* 생활 지수 우측 여백 - 보호막이 형성되는 듯한 쉴드 워터마크 모션 */
+@keyframes shield-ring-pulse {
+    0% {
+        transform: scale(0);
+        opacity: 0.6;
+    }
+
+    100% {
+        transform: scale(1.65);
+        opacity: 0;
+    }
+}
+
+.shield-watermark-ring {
+    animation: shield-ring-pulse 3.6s ease-out infinite;
+}
+
+@keyframes shield-glow-breathe {
+
+    0%,
+    100% {
+        opacity: 0.5;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 0.8;
+        transform: scale(1.05);
+    }
+}
+
+.shield-watermark-icon {
+    animation: shield-glow-breathe 3.6s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    .shield-watermark-ring,
+    .shield-watermark-icon {
+        animation: none;
+    }
+}
+
+/* 안심·비상 시설 지도 - 지도 핀이 살짝 두근거리는 모션 */
+@keyframes pulse-subtle {
+
+    0%,
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 0.85;
+        transform: scale(1.03);
+    }
+}
+
+.animate-pulse-subtle {
+    animation: pulse-subtle 3s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .animate-pulse-subtle {
+        animation: none;
+    }
+}
+
+/* 실시간 커뮤니티 톡 - 새 글이 위에서 슬라이드로 나타나는 모션 */
+@keyframes slide-in-down {
+    0% {
+        opacity: 0;
+        transform: translateY(-15px);
+        background-color: #ecfdf5;
+    }
+
+    50% {
+        background-color: #d1fae5;
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-new-talk {
+    animation: slide-in-down 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .animate-new-talk {
+        animation: none;
+    }
+}
+
+/* 안심·비상 시설 지도 - 속보 티커 (우측에서 좌측으로 흐르는 텍스트, 박스/배경 없음) */
+.ticker-scroll {
+    padding-left: 100%;
+    animation: ticker-marquee 38s linear infinite;
+}
+
+@keyframes ticker-marquee {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .ticker-scroll {
+        animation: none;
+        padding-left: 0;
+    }
+}
+
+/* 안심·비상 시설 지도 - 지도 이미지 위에 올리는 실제 위치 핀(말풍선 + 통통 튀는 호버 모션) */
+.map-pin-drop {
+    position: absolute;
+    transform: translate(-50%, -100%);
+    cursor: pointer;
+    z-index: 10;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+/* 실데이터가 채워진 핀 중, 등장 순서가 된 핀만 서서히 나타남 (js/home.js의 순차 등장 루프가 토글) */
+.map-pin-drop.pin-visible {
+    opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .map-pin-drop {
+        transition: none;
+    }
+}
+
+/* 동그라미가 아니라 아래로 뾰족한 "핀/물방울" 모양 배지 (구글맵 마커와 동일한 방식):
+   정사각형 한쪽 모서리만 각지게 남기고 나머지 세 모서리를 둥글게 만든 뒤 45도 회전시키면
+   위쪽은 원, 아래쪽은 뾰족한 핀 모양이 됨. currentColor로 카테고리 색을 그대로 물려받음. */
+.map-pin-drop .map-pin-icon-wrap {
+    position: relative;
+    width: 34px;
+    height: 34px;
+    border-radius: 50% 50% 50% 0;
+    background: currentColor;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3), 0 0 0 3px #fff;
+    transform: rotate(-45deg);
+    transition: transform 0.15s ease;
+}
+
+/* 핀 안의 아이콘은 배지의 45도 회전을 반대로 되돌려 항상 똑바로 서 있게 하고,
+   배경(카테고리 색)과 대비되도록 흰색으로 표시 */
+.map-pin-drop .map-pin-icon-wrap i,
+.map-pin-drop .map-pin-icon-wrap svg {
+    transform: rotate(45deg);
+    color: #fff;
+}
+
+.map-pin-drop:hover .map-pin-icon-wrap {
+    animation: map-pin-bounce 0.6s ease-in-out infinite;
+}
+
+@keyframes map-pin-bounce {
+
+    0%,
+    100% {
+        transform: translateY(0) rotate(-45deg);
+    }
+
+    50% {
+        transform: translateY(-10px) rotate(-45deg);
+    }
+}
+
+/* 핀 위에 뜨는 말풍선 (기본 숨김 → 호버 시에만 표시) */
+.map-pin-bubble {
+    position: absolute;
+    bottom: calc(100% + 10px);
+    left: 50%;
+    transform: translate(-50%, 6px);
+    background: #fff;
+    border-radius: 10px;
+    padding: 6px 10px;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.18);
+    white-space: nowrap;
+    text-align: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.15s ease, transform 0.15s ease;
+}
+
+.map-pin-bubble::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 6px solid transparent;
+    border-top-color: #fff;
+}
+
+.map-pin-bubble .map-pin-name {
+    display: block;
+    font-size: 11px;
+    font-weight: 800;
+    color: #1e293b;
+}
+
+.map-pin-bubble .map-pin-sub {
+    display: block;
+    font-size: 10px;
+    font-weight: 700;
+    color: #64748b;
+}
+
+.map-pin-drop:hover .map-pin-bubble {
+    opacity: 1;
+    transform: translate(-50%, 0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .map-pin-drop:hover .map-pin-icon-wrap {
+        animation: none;
+    }
+}

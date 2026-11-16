@@ -1,0 +1,739 @@
+#ola-render-area .ola-reference-character {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.ola-core-toggle {
+  position: absolute;
+  z-index: 6;
+  left: 50.1302%;
+  top: 51.4648%;
+  /* 원래 36px였는데, 캐릭터 가슴 한가운데의 아주 작은 점이라 몸통 아무 데나 눌러도 대부분
+     빗나가서(드래그 감지 영역(.ola-drag-hit)이 대신 잡혀 톱니바퀴만 나타나고) "수면 확인
+     팝업이 아예 안 뜬다"는 문제의 실제 원인이었다. 시각적으로 보이는 점(아래 ::before)은
+     그대로 두고, 실제로 클릭을 받는 히트박스만 몸통 중앙 대부분을 덮도록 넉넉하게 키운다
+     — z-index(6)가 드래그 히트 영역(.ola-drag-hit-regions, z-index:5)보다 높아서 겹치는
+     구간에서는 이 토글이 우선하고, 머리/팔/다리 가장자리는 여전히 드래그 영역으로 남는다. */
+  width: 64px;
+  height: 64px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  transform: translate(-50%, -50%);
+  pointer-events: auto;
+  touch-action: none;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.ola-core-toggle::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: clamp(11px, calc(var(--ola-size) * .115), 17px);
+  height: clamp(11px, calc(var(--ola-size) * .115), 17px);
+  border-radius: 50%;
+  background: rgba(69, 234, 242, .08);
+  box-shadow: 0 0 7px rgba(69, 234, 242, .42);
+  transform: translate(-50%, -50%);
+  transition: opacity 180ms ease, box-shadow 180ms ease, transform 140ms ease;
+}
+
+.ola-core-toggle:hover::before {
+  box-shadow: 0 0 10px rgba(69, 234, 242, .62);
+  transform: translate(-50%, -50%) scale(1.08);
+}
+
+.ola-core-toggle:active::before,
+#ola-stage.is-dragging .ola-core-toggle::before {
+  transform: translate(-50%, -50%) scale(.91);
+}
+
+.ola-core-toggle:focus-visible {
+  outline: 3px solid rgba(23, 181, 190, .72);
+  outline-offset: 1px;
+}
+
+.ola-core-toggle[aria-pressed="false"]::before {
+  opacity: .34;
+  box-shadow: 0 0 3px rgba(69, 234, 242, .2);
+}
+
+.ola-core-toggle--fallback {
+  left: 50%;
+  top: 57%;
+}
+
+#ola-render-area .ola-reference-motion,
+#ola-render-area .ola-reference-tracker,
+#ola-render-area .ola-reference-asset {
+  position: absolute;
+  inset: 0;
+  transform-origin: 50% 48%;
+}
+
+#ola-render-area .ola-reference-motion {
+  --ola-flight-tilt: 0deg;
+  z-index: 2;
+  transform: rotate(var(--ola-flight-tilt));
+  transition: transform 190ms cubic-bezier(.22, .72, .28, 1);
+}
+
+#ola-render-area .ola-reference-tracker {
+  --ola-head-rx: 0deg;
+  --ola-head-ry: 0deg;
+  transform: perspective(900px) rotateX(var(--ola-head-rx)) rotateY(var(--ola-head-ry));
+  transition: transform 140ms ease-out;
+}
+
+#ola-render-area .ola-reference-frame {
+  position: absolute;
+  left: -66.7%;
+  top: -8.9%;
+  width: 233.3%;
+  aspect-ratio: 3 / 2;
+}
+
+#ola-render-area .ola-motion-frame-stack {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+#ola-render-area .ola-reference-body,
+#ola-render-area .ola-reference-overlay {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+#ola-render-area .ola-reference-body {
+  object-fit: contain;
+  filter: drop-shadow(0 10px 12px rgba(25, 38, 61, .12));
+  pointer-events: none;
+}
+
+#ola-render-area .ola-motion-frame {
+  opacity: 0;
+  transform: translateY(2px) scale(.996);
+  transition:
+    opacity var(--ola-frame-crossfade, 180ms) cubic-bezier(.22, .72, .28, 1),
+    transform var(--ola-frame-crossfade, 180ms) cubic-bezier(.22, .72, .28, 1);
+}
+
+#ola-render-area .ola-motion-frame.is-active {
+  opacity: 1;
+  transform: none;
+}
+
+#ola-render-area .ola-drag-hit-regions {
+  position: absolute;
+  z-index: 5;
+  inset: 0;
+  pointer-events: none;
+}
+
+#ola-render-area .ola-drag-hit {
+  position: absolute;
+  display: block;
+  pointer-events: auto;
+  touch-action: none;
+  cursor: grab;
+  -webkit-tap-highlight-color: transparent;
+}
+
+#ola-render-area .ola-drag-hit:focus-visible {
+  outline: 3px solid rgba(45, 207, 205, .72);
+  outline-offset: 3px;
+}
+
+#ola-render-area .ola-drag-hit--head {
+  left: 34.18%;
+  top: 7.71%;
+  width: 32.1%;
+  height: 39.2%;
+  border-radius: 48%;
+}
+
+#ola-render-area .ola-drag-hit--torso {
+  left: 40.7%;
+  top: 43.5%;
+  width: 18.9%;
+  height: 26.8%;
+  border-radius: 45%;
+}
+
+#ola-render-area .ola-drag-hit--arm-left {
+  left: 34.8%;
+  top: 46.5%;
+  width: 7.7%;
+  height: 19.5%;
+  border-radius: 48%;
+  transform: rotate(12deg);
+}
+
+#ola-render-area .ola-drag-hit--arm-right {
+  left: 57.7%;
+  top: 46.5%;
+  width: 7.7%;
+  height: 19.5%;
+  border-radius: 48%;
+  transform: rotate(-12deg);
+}
+
+#ola-render-area .ola-drag-hit--leg-left {
+  left: 41%;
+  top: 65%;
+  width: 9.2%;
+  height: 18%;
+  border-radius: 45%;
+}
+
+#ola-render-area .ola-drag-hit--leg-right {
+  left: 50%;
+  top: 65%;
+  width: 9.2%;
+  height: 18%;
+  border-radius: 45%;
+}
+
+#ola-stage.is-dragging .ola-drag-hit {
+  cursor: grabbing;
+}
+
+#ola-stage.is-dragging .ola-reference-asset {
+  animation-play-state: paused !important;
+}
+
+#ola-stage.is-ola-flying .ola-reference-asset {
+  animation-play-state: paused !important;
+}
+
+#ola-render-area .ola-reference-overlay {
+  overflow: visible;
+  pointer-events: none;
+}
+
+#ola-stage.has-ola-approved-frame .ola-reference-overlay {
+  opacity: 0;
+}
+
+.ola-reference-character::before,
+.ola-reference-character::after {
+  position: absolute;
+  z-index: 1;
+  content: "";
+  opacity: 0;
+  pointer-events: none;
+}
+
+#ola-stage.is-ola-motion-fallback.is-ola-flying .ola-reference-character::before {
+  left: 48%;
+  bottom: 18%;
+  width: 22px;
+  height: 10px;
+  border-radius: 50%;
+  background: radial-gradient(ellipse at center, rgba(94, 255, 245, .95), rgba(45, 207, 205, .42) 48%, transparent 74%);
+  filter: blur(.8px) drop-shadow(0 0 8px rgba(69, 234, 242, .62));
+  opacity: .68;
+  transform: translateX(-50%) rotate(-12deg);
+  animation: ola-reference-thruster 360ms ease-in-out infinite alternate;
+}
+
+#ola-stage.is-ola-motion-fallback.is-ola-flying .ola-reference-character::after {
+  top: 26%;
+  right: 72%;
+  width: 48px;
+  height: 42%;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent 0 8px,
+    rgba(69, 234, 242, .42) 9px 11px,
+    transparent 12px 18px
+  );
+  filter: blur(.2px);
+  opacity: .3;
+  transform: skewX(-13deg);
+  mask-image: linear-gradient(90deg, transparent, #000);
+}
+
+#ola-stage.is-ola-motion-fallback[data-ola-flight-direction="left"] .ola-reference-character::before {
+  transform: translateX(-50%) rotate(12deg);
+}
+
+#ola-stage.is-ola-motion-fallback[data-ola-flight-direction="left"] .ola-reference-character::after {
+  right: auto;
+  left: 72%;
+  transform: scaleX(-1) skewX(-13deg);
+}
+
+#ola-stage.is-ola-motion-fallback[data-ola-motion-phase="TAKEOFF_PREPARE"] .ola-reference-motion {
+  transform: translateY(-3px) scale(.995) rotate(var(--ola-flight-tilt));
+}
+
+#ola-stage[data-ola-motion-phase="FLY_CRUISE"] .ola-reference-motion,
+#ola-stage[data-ola-motion-phase="FLY_TURN"] .ola-reference-motion {
+  transform: translateY(-2px) rotate(var(--ola-flight-tilt));
+}
+
+#ola-stage[data-ola-motion-phase="FLY_BRAKE"] .ola-reference-motion {
+  transform: translateY(1px) scale(.997) rotate(var(--ola-flight-tilt));
+}
+
+#ola-stage[data-ola-motion-phase="LANDING"] .ola-reference-motion {
+  transform: translateY(2px) scale(1.003, .995) rotate(var(--ola-flight-tilt));
+}
+
+.ola-reference-shadow {
+  position: absolute;
+  left: 19%;
+  bottom: 13.5%;
+  width: 62%;
+  height: 5.5%;
+  border-radius: 50%;
+  background: rgba(25, 38, 61, .16);
+  filter: blur(3px);
+  transform-origin: center;
+  animation: ola-reference-shadow 3.8s ease-in-out infinite;
+}
+
+.ola-reference-eyelids {
+  opacity: 0;
+  fill: #0B1020;
+  transition: opacity 140ms ease;
+}
+
+.ola-reference-closed-eyes {
+  fill: none;
+  stroke: #45EAF2;
+  stroke-width: 10;
+  stroke-linecap: round;
+  opacity: 0;
+}
+
+.ola-reference-heart-glow {
+  fill: #45EAF2;
+  opacity: 0;
+}
+
+.ola-reference-sparkle,
+.ola-reference-zzz,
+.ola-reference-alert {
+  fill: none;
+  stroke: #45EAF2;
+  stroke-width: 10;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  opacity: 0;
+}
+
+.ola-reference-alert {
+  fill: #FF7657;
+  stroke: #FF7657;
+}
+
+.ola-reference-character[data-state="IDLE"] .ola-reference-asset,
+.ola-reference-character[data-state="FOLLOW"] .ola-reference-asset {
+  animation: ola-reference-hover 3.8s ease-in-out infinite;
+}
+
+#ola-stage[data-ola-guide-direction="left"] .ola-reference-character[data-state="GUIDE"] .ola-reference-asset {
+  transform: rotate(-1.1deg) scale(1.006);
+}
+
+#ola-stage[data-ola-guide-direction="right"] .ola-reference-character[data-state="GUIDE"] .ola-reference-asset {
+  transform: rotate(1.1deg) scale(1.006);
+}
+
+.ola-reference-character.expression-blink .ola-reference-eyelids,
+.ola-reference-character.expression-sleepy .ola-reference-eyelids {
+  opacity: .98;
+}
+
+.ola-reference-character.expression-sleepy .ola-reference-closed-eyes {
+  opacity: 1;
+}
+
+.ola-reference-character.expression-sleepy .ola-reference-zzz {
+  opacity: 1;
+  animation: ola-reference-zzz 2.2s ease-in-out infinite;
+}
+
+.ola-reference-character.expression-happy .ola-reference-sparkle,
+.ola-reference-character.expression-love .ola-reference-sparkle,
+.ola-reference-character.expression-gentle .ola-reference-sparkle,
+.ola-reference-character.expression-success .ola-reference-sparkle {
+  opacity: .82;
+  animation: ola-reference-sparkle 720ms ease-out 1;
+}
+
+.ola-reference-character.expression-alert .ola-reference-alert {
+  opacity: .9;
+}
+
+.ola-reference-character.expression-angry .ola-reference-alert {
+  opacity: .58;
+}
+
+.ola-reference-character.expression-happy .ola-reference-heart-glow,
+.ola-reference-character.expression-wake .ola-reference-heart-glow,
+.ola-reference-character.expression-love .ola-reference-heart-glow,
+.ola-reference-character.expression-gentle .ola-reference-heart-glow,
+.ola-reference-character.expression-success .ola-reference-heart-glow {
+  animation: ola-reference-heart 780ms ease-out 1;
+}
+
+.ola-reference-character.expression-talk .ola-reference-heart-glow {
+  opacity: .16;
+  animation: ola-reference-heart 1.3s ease-in-out infinite;
+}
+
+.ola-reference-character.expression-think .ola-reference-asset {
+  transform: rotate(-.4deg);
+}
+
+.ola-reference-character.expression-sad .ola-reference-asset,
+.ola-reference-character.expression-worried .ola-reference-asset {
+  transform: translateY(1px) rotate(.35deg) scale(.995);
+  filter: saturate(.9);
+}
+
+.ola-reference-character.expression-angry .ola-reference-asset {
+  transform: rotate(-.8deg) scale(1.004);
+}
+
+.ola-reference-character[data-state="SLEEP_PREPARE"] .ola-reference-asset {
+  transform: translateY(5px) scale(.99);
+  transition: transform 720ms ease;
+}
+
+.ola-reference-character[data-state="SLEEP"] .ola-reference-asset {
+  animation: ola-reference-breathe 3.8s ease-in-out infinite;
+}
+
+.ola-reference-character[data-state="SLEEP"] .ola-reference-shadow {
+  opacity: .12;
+  transform: scaleX(.94);
+}
+
+.ola-reference-character[data-state="WAKE_UP"] .ola-reference-asset {
+  animation: ola-reference-wake 1.2s ease-out both;
+}
+
+#ola-stage.is-ola-flying .ola-reference-shadow {
+  transform: scale(.72);
+  opacity: .08;
+}
+
+#ola-stage.is-ola-landing .ola-reference-motion {
+  animation: ola-reference-land 320ms cubic-bezier(.22, .72, .28, 1);
+}
+
+@keyframes ola-reference-hover {
+  0%, 100% { transform: translateY(0) rotate(-.18deg); }
+  50% { transform: translateY(-3px) rotate(.18deg); }
+}
+
+@keyframes ola-reference-shadow {
+  0%, 100% { transform: scaleX(1); opacity: .16; }
+  50% { transform: scaleX(.97); opacity: .13; }
+}
+
+@keyframes ola-reference-zzz {
+  0%, 100% { transform: translateY(8px); opacity: .18; }
+  50% { transform: translateY(-10px); opacity: .9; }
+}
+
+@keyframes ola-reference-sparkle {
+  0% { transform: scale(.6) rotate(-10deg); opacity: 0; }
+  48% { transform: scale(1.1) rotate(3deg); opacity: .9; }
+  100% { transform: scale(1); opacity: .72; }
+}
+
+@keyframes ola-reference-heart {
+  0%, 100% { opacity: 0; }
+  45% { opacity: .26; }
+}
+
+@keyframes ola-reference-breathe {
+  0%, 100% { transform: translateY(6px) scaleY(.99); }
+  50% { transform: translateY(4px) scaleY(1); }
+}
+
+@keyframes ola-reference-wake {
+  0% { transform: translateY(7px) scaleY(.98); }
+  52% { transform: translateY(-5px) scaleY(1.015); }
+  100% { transform: none; }
+}
+
+@keyframes ola-reference-land {
+  0% { transform: translateY(-3px); }
+  55% { transform: scaleY(.988) scaleX(1.006); }
+  100% { transform: none; }
+}
+
+@keyframes ola-reference-thruster {
+  from { opacity: .42; transform: translateX(-50%) scaleX(.82); }
+  to { opacity: .72; transform: translateX(-50%) scaleX(1.02); }
+}
+
+#ola-render-area .ola-2d-svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  pointer-events: none;
+}
+
+.ola-2d-svg g {
+  transform-box: view-box;
+}
+
+.ola-2d-svg #ola-root {
+  --ola-flight-tilt: 0deg;
+  transform-origin: 1024px 1024px;
+  transform: rotate(var(--ola-flight-tilt));
+}
+
+.ola-2d-svg #head {
+  --ola-head-rx: 0deg;
+  --ola-head-ry: 0deg;
+  transform-origin: 1024px 1010px;
+  transform: perspective(1800px) rotateX(var(--ola-head-rx)) rotateY(var(--ola-head-ry));
+  transition: transform 120ms ease-out;
+}
+
+.ola-2d-svg #eye-left,
+.ola-2d-svg #eye-right {
+  transition: transform 80ms ease-out;
+}
+
+.ola-2d-svg #shadow {
+  transform-origin: 1024px 1810px;
+  animation: ola-svg-shadow 2.8s ease-in-out infinite;
+}
+
+.ola-2d-svg #body,
+.ola-2d-svg #head,
+.ola-2d-svg #arm-left,
+.ola-2d-svg #arm-right,
+.ola-2d-svg #leg-left,
+.ola-2d-svg #leg-right,
+.ola-2d-svg #chest-led {
+  transition: transform 360ms ease, opacity 260ms ease, filter 260ms ease;
+}
+
+.ola-2d-svg[data-state="IDLE"] #ola-root,
+.ola-2d-svg[data-state="FOLLOW"] #ola-root {
+  animation: ola-svg-hover 2.8s ease-in-out infinite;
+}
+
+.ola-2d-svg.expression-blink .ola-eye-shape,
+.ola-2d-svg.expression-sleepy .ola-eye-shape {
+  transform-origin: center;
+  transform: scaleY(.08);
+}
+
+.ola-2d-svg.expression-wake .ola-eye-shape {
+  transform-origin: center;
+  animation: ola-svg-eye-wake 850ms ease-out both;
+}
+
+.ola-2d-svg.expression-happy .ola-eye-shape {
+  transform-origin: center;
+  transform: translateY(18px) scaleY(.45) rotate(4deg);
+}
+
+.ola-2d-svg.expression-happy #eye-right .ola-eye-shape {
+  transform: translateY(18px) scaleY(.45) rotate(-4deg);
+}
+
+.ola-2d-svg.expression-happy #mouth {
+  transform-origin: 1024px 790px;
+  transform: scaleX(1.22) translateY(-5px);
+}
+
+.ola-2d-svg.expression-happy #chest-led,
+.ola-2d-svg.expression-love #chest-led {
+  transform-origin: 1024px 1215px;
+  animation: ola-svg-heart-pop 650ms ease-out 1;
+}
+
+.ola-2d-svg.expression-think #head {
+  transform: rotate(-1.5deg);
+}
+
+.ola-2d-svg.expression-think #eye-left,
+.ola-2d-svg.expression-think #eye-right {
+  transform: translate(-14px, -9px);
+}
+
+.ola-2d-svg.expression-think #mouth {
+  transform-origin: 1024px 790px;
+  transform: scale(.45) rotate(12deg);
+}
+
+.ola-2d-svg.expression-alert #alert-mark {
+  opacity: 1;
+}
+
+.ola-2d-svg.expression-alert .ola-eye-shape,
+.ola-2d-svg.expression-alert #chest-led path {
+  fill: #FF7657;
+}
+
+.ola-2d-svg.expression-sad #mouth {
+  transform-origin: 1024px 800px;
+  transform: scaleY(-1) translateY(-25px) scaleX(.7);
+}
+
+.ola-2d-svg.expression-sad #eye-left { transform: rotate(-7deg); }
+.ola-2d-svg.expression-sad #eye-right { transform: rotate(7deg); }
+
+.ola-2d-svg.expression-worried #mouth,
+.ola-2d-svg.expression-angry #mouth {
+  transform: scaleY(.76);
+}
+
+.ola-2d-svg.expression-angry #alert-mark {
+  opacity: .6;
+}
+
+.ola-2d-svg.expression-gentle #chest-led,
+.ola-2d-svg.expression-success #chest-led,
+.ola-2d-svg.expression-talk #chest-led {
+  filter: brightness(1.18) drop-shadow(0 0 8px rgba(69, 234, 242, .52));
+}
+
+.ola-2d-svg.expression-love .ola-eye-shape {
+  fill: #FF9FB2;
+  transform-origin: center;
+  transform: rotate(45deg) scale(.72);
+}
+
+.ola-2d-svg.expression-sleepy #sleep-zzz {
+  opacity: 1;
+  animation: ola-svg-zzz 2.2s ease-in-out infinite;
+}
+
+.ola-2d-svg.expression-sleepy #cheek-left,
+.ola-2d-svg.expression-sleepy #cheek-right {
+  opacity: .35;
+}
+
+.ola-2d-svg[data-state="SLEEP_PREPARE"] #arm-left { transform: rotate(-8deg) translateX(28px); }
+.ola-2d-svg[data-state="SLEEP_PREPARE"] #arm-right { transform: rotate(8deg) translateX(-28px); }
+.ola-2d-svg[data-state="SLEEP"] #ola-root {
+  animation: ola-svg-sleep-breathe 3.6s ease-in-out infinite;
+}
+
+.ola-2d-svg[data-state="WAKE_UP"] #ola-root {
+  transform-origin: 1024px 1750px;
+  animation: ola-svg-stretch 1.25s ease-out both;
+}
+
+#ola-stage.is-ola-flying .ola-2d-svg #shadow {
+  transform: scale(.72);
+  opacity: .09;
+}
+
+#ola-stage.is-ola-flying .ola-2d-svg #chest-led {
+  filter: brightness(1.25);
+}
+
+#ola-stage.is-ola-landing .ola-2d-svg #ola-root {
+  transform-origin: 1024px 1750px;
+  animation: ola-svg-land 400ms ease-out;
+}
+
+@keyframes ola-svg-hover {
+  0%, 100% { transform: translateY(0) rotate(-.5deg); }
+  50% { transform: translateY(-7px) rotate(.5deg); }
+}
+
+@keyframes ola-svg-shadow {
+  0%, 100% { transform: scaleX(1); opacity: .16; }
+  50% { transform: scaleX(.94); opacity: .12; }
+}
+
+@keyframes ola-svg-eye-wake {
+  0% { transform: scaleY(.08); }
+  55% { transform: scaleY(.55); }
+  100% { transform: scaleY(1); }
+}
+
+@keyframes ola-svg-heart-pop {
+  0%, 100% { transform: scale(1); }
+  45% { transform: scale(1.16); }
+}
+
+@keyframes ola-svg-zzz {
+  0%, 100% { opacity: .25; transform: translateY(12px); }
+  50% { opacity: 1; transform: translateY(-12px); }
+}
+
+@keyframes ola-svg-sleep-breathe {
+  0%, 100% { transform: translateY(18px) scaleY(.965); }
+  50% { transform: translateY(14px) scaleY(.98); }
+}
+
+@keyframes ola-svg-stretch {
+  0% { transform: translateY(18px) scaleY(.94); }
+  48% { transform: translateY(-10px) scaleX(.96) scaleY(1.055); }
+  100% { transform: none; }
+}
+
+@keyframes ola-svg-land {
+  0% { transform: translateY(-8px); }
+  52% { transform: scaleY(.96) scaleX(1.025); }
+  78% { transform: translateY(-3px); }
+  100% { transform: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ola-reference-shadow,
+  .ola-reference-asset,
+  .ola-reference-motion,
+  .ola-reference-zzz,
+  .ola-reference-heart-glow,
+  .ola-reference-sparkle {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+
+  .ola-reference-tracker,
+  .ola-reference-eyelids,
+  .ola-motion-frame {
+    transition-duration: .01ms;
+  }
+
+  .ola-2d-svg #shadow,
+  .ola-2d-svg #ola-root,
+  .ola-2d-svg #chest-led,
+  .ola-2d-svg #sleep-zzz {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+
+  .ola-2d-svg #head,
+  .ola-2d-svg #eye-left,
+  .ola-2d-svg #eye-right {
+    transition-duration: .01ms;
+  }
+
+  #ola-stage.is-ola-motion-fallback .ola-reference-character::before,
+  #ola-stage.is-ola-motion-fallback .ola-reference-character::after {
+    display: none;
+  }
+}
+
+#ola-layer.is-motion-reduced #ola-stage.is-ola-motion-fallback .ola-reference-character::before,
+#ola-layer.is-motion-reduced #ola-stage.is-ola-motion-fallback .ola-reference-character::after {
+  display: none;
+}

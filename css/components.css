@@ -1,0 +1,103 @@
+/* css/components.css
+   공통 컴포넌트: 카드 · 버튼 · 입력창 · 뱃지
+*/
+
+.ola-card {
+    background: var(--color-white);
+    border-radius: var(--radius-card);
+    box-shadow: var(--shadow-soft);
+    border: 1px solid var(--color-border);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.ola-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-soft-hover);
+}
+
+/* 입력창 (로그인 / 민원 작성 등에서 공통 사용) */
+.ola-input {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border-radius: var(--radius-input);
+    border: 1px solid var(--color-border);
+    background: var(--color-white);
+}
+
+.ola-input:focus {
+    outline: none;
+    border-color: var(--color-primary);
+}
+
+/* 기본 버튼 */
+.ola-btn-primary {
+    width: 100%;
+    background: var(--color-primary);
+    color: var(--color-white);
+    font-weight: 700;
+    padding: 0.75rem 1rem;
+    border-radius: var(--radius-input);
+    transition: opacity 0.2s;
+}
+
+.ola-btn-primary:hover {
+    opacity: 0.9;
+}
+
+/* 뱃지 */
+.badge {
+    padding: 4px 10px;
+    border-radius: 999px;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.badge-safe {
+    background-color: var(--color-point2);
+    color: #1a532d;
+}
+
+.badge-warn {
+    background-color: var(--color-point1);
+    color: #7a4600;
+}
+
+/* 야간 안심 모드 — 헤더의 "야간 안심" 버튼 클릭 시 js/home.js의 olaTheme.set('night')이
+   #sidebar에 .sidebar-dark 클래스를 붙였다 뗐다 함. Tailwind CDN 유틸리티 클래스(.bg-white 등)를
+   덮어써야 해서 이 규칙들은 #sidebar(id)로 특정도를 확보함. */
+#sidebar.sidebar-dark {
+    background-color: #111827;
+    border-color: #1f2937;
+}
+
+#sidebar.sidebar-dark .border-border {
+    border-color: #1f2937;
+}
+
+#sidebar.sidebar-dark .text-dark {
+    color: #e5e7eb;
+}
+
+#sidebar.sidebar-dark .text-gray-400,
+#sidebar.sidebar-dark .text-gray-500 {
+    color: #9ca3af;
+}
+
+#sidebar.sidebar-dark .nav-item:hover {
+    background-color: #1f2937;
+}
+
+#sidebar.sidebar-dark #location-btn,
+#sidebar.sidebar-dark [data-lang-btn] {
+    background-color: #1f2937;
+    border-color: #374151;
+}
+
+#sidebar.sidebar-dark #location-btn:hover {
+    background-color: #263140;
+}
+
+#sidebar.sidebar-dark [data-lang-menu] {
+    background-color: #1f2937;
+    border-color: #374151;
+}

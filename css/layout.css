@@ -1,0 +1,101 @@
+/* css/layout.css
+   페이지 레이아웃: 좌측 사이드바 · 상단 헤더 · 반응형 그리드
+   (현재 디자인은 상단바 대신 좌측 사이드바 내비게이션을 씁니다 — 원본 시안 유지)
+*/
+
+.sidebar-expanded {
+    width: 240px;
+}
+
+.sidebar-collapsed {
+    width: 80px;
+}
+
+.sidebar-transition {
+    transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* 숨김 텍스트 처리 (사이드바 축소 시) */
+.sidebar-collapsed .nav-text,
+.sidebar-collapsed .logo-text {
+    display: none;
+    opacity: 0;
+}
+
+.sidebar-expanded .nav-text,
+.sidebar-expanded .logo-text {
+    display: inline-block;
+    opacity: 1;
+    transition: opacity 0.2s 0.1s;
+}
+
+/* 오늘의 속보 티커 (헤더) */
+.news-ticker-scroll {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.9rem;
+    animation: news-ticker-scroll linear infinite;
+    animation-duration: 30s;
+}
+
+.news-ticker-scroll:hover {
+    animation-play-state: paused;
+}
+
+@keyframes news-ticker-scroll {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(-50%);
+    }
+}
+
+/* 사이드바 접힘 상태: 로고 아이콘이 곧 "사이드바 열기" 버튼 역할을 함 */
+.sidebar-toggle-standalone {
+    display: block;
+}
+
+.sidebar-collapsed .sidebar-toggle-standalone {
+    display: none;
+}
+
+.logo-toggle-icon-hover,
+.logo-toggle-tooltip {
+    display: none;
+}
+
+.sidebar-collapsed .logo-link:hover .logo-toggle-icon-default {
+    display: none;
+}
+
+.sidebar-collapsed .logo-link:hover .logo-toggle-icon-hover {
+    display: block;
+}
+
+.sidebar-collapsed .logo-link:hover .logo-toggle-tooltip {
+    display: block;
+    opacity: 1;
+    visibility: visible;
+}
+
+/* 페이지 본문 스크롤 영역 — 스크롤바가 항상 컨테이너의 진짜 오른쪽 끝에 붙어 있도록,
+   양쪽 거터를 예약하는 both-edges는 쓰지 않음 (스크롤바가 안쪽으로 떠 보이는 원인이었음) */
+.page-scroll {
+    scrollbar-gutter: stable;
+}
+
+/* 반응형 디테일 */
+@media (max-width: 768px) {
+    .sidebar-expanded {
+        position: absolute;
+        z-index: 50;
+        height: 100vh;
+    }
+
+    .sidebar-collapsed {
+        transform: translateX(-100%);
+        width: 0;
+    }
+}
