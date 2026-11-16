@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ask OLA | 행동요령</title>
+
+    <!-- 폰트 설정 (Pretendard) -->
+    <link rel="stylesheet" as="style" crossorigin
+        href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" />
+
+    <!-- 아이콘 라이브러리 (추후 assets/icons/ 내부의 svg 파일로 교체 가능) -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Tailwind CSS (CDN) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="../js/tailwind-config.js"></script>
+
+    <!-- CSS 모음 -->
+    <link rel="stylesheet" href="../css/variables.css">
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/layout.css">
+    <link rel="stylesheet" href="../css/components.css">
+    
+</head>
+
+<body class="flex h-screen overflow-hidden text-sm sm:text-base font-sans">
+
+    <!-- 좌측 내비게이션 사이드바 -->
+    <aside id="sidebar"
+        class="sidebar-expanded sidebar-transition bg-white h-full border-r border-border flex flex-col relative flex-shrink-0 z-40 shadow-sm">
+        <!-- 로고 영역 + 토글 버튼 (Gemini 스타일) -->
+        <div class="h-20 flex items-center justify-between pl-7 pr-4 border-b border-border">
+            <a href="../landing.html" onclick="return uiJS.handleLogoClick(event)"
+                class="logo-link flex items-center gap-2.5 cursor-pointer relative">
+                <span class="relative w-7 h-7 flex-shrink-0 block">
+                    <img src="../assets/logo/connect.png" alt="OLA"
+                        class="logo-toggle-icon-default w-7 h-7 object-contain absolute inset-0">
+                    <i data-lucide="panel-left-open"
+                        class="logo-toggle-icon-hover w-7 h-7 absolute inset-0 text-gray-400"></i>
+                </span>
+                <span class="logo-text text-xl font-bold text-dark tracking-tight">OLA</span>
+                <span
+                    class="logo-toggle-tooltip pointer-events-none absolute left-full ml-2 top-1/2 -translate-y-1/2 whitespace-nowrap bg-dark text-white text-xs font-medium px-3 py-1.5 rounded-lg opacity-0 invisible transition-opacity z-50">사이드바
+                    열기</span>
+            </a>
+            <div class="sidebar-toggle-standalone relative group flex-shrink-0">
+                <button id="toggleBtn" onclick="uiJS.toggleSidebar()"
+                    class="flex items-center justify-center w-8 h-8 rounded-lg text-gray-400 hover:bg-bg hover:text-dark transition-colors">
+                    <i data-lucide="panel-left" class="w-5 h-5 group-hover:hidden"></i>
+                    <i data-lucide="panel-left-close" id="toggleIcon" class="w-5 h-5 hidden group-hover:block"></i>
+                </button>
+                <span id="toggleText"
+                    class="pointer-events-none absolute left-full ml-2 top-1/2 -translate-y-1/2 whitespace-nowrap bg-dark text-white text-xs font-medium px-3 py-1.5 rounded-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity z-50">사이드바
+                    닫기</span>
+            </div>
+        </div>
+
+        <!-- 메뉴 영역 -->
+        <nav class="flex-1 overflow-y-auto py-4 px-4 flex flex-col gap-1.5">
+            <p class="nav-text px-3 text-[10px] font-bold text-gray-400 tracking-wider">MAIN</p>
+            <a href="../index.html"
+                class="nav-item nav-home flex items-center gap-3 px-3 py-2.5 rounded-xl text-dark hover:bg-bg transition-colors">
+                <i data-lucide="home" class="w-5 h-5 text-gray-400"></i>
+                <span class="nav-text" data-i18n="nav.home">홈</span>
+            </a>
+
+            <p class="nav-text px-3 text-[10px] font-bold text-gray-400 tracking-wider mt-2">SAFETY SERVICES</p>
+            <a href="map.html"
+                class="nav-item nav-map flex items-center gap-3 px-3 py-2.5 rounded-xl text-dark hover:bg-bg transition-colors">
+                <i data-lucide="map" class="w-5 h-5 text-gray-400"></i>
+                <span class="nav-text" data-i18n="nav.map">안전지도</span>
+            </a>
+
+            <a href="safety.html"
+                class="nav-item nav-safety flex items-center gap-3 px-3 py-2.5 rounded-xl text-dark hover:bg-bg transition-colors">
+                <i data-lucide="shield-check" class="w-5 h-5 text-gray-400"></i>
+                <span class="nav-text" data-i18n="nav.safety">생활안전</span>
+            </a>
+
+            <a href="emergency.html"
+                class="nav-item nav-emergency flex items-center gap-3 px-3 py-2.5 rounded-xl bg-white text-red-600 border-l-4 border-red-500 shadow-md relative z-10 transition-colors">
+                <i data-lucide="heart-pulse" class="w-5 h-5 text-red-500"></i>
+                <span class="nav-text" data-i18n="nav.emergency">행동요령</span>
+            </a>
+
+            <p class="nav-text px-3 text-[10px] font-bold text-gray-400 tracking-wider mt-2">SUPPORT &amp; AI</p>
+            <a href="complaint.html"
+                class="nav-item nav-complaint flex items-center gap-3 px-3 py-2.5 rounded-xl text-dark hover:bg-bg transition-colors">
+                <i data-lucide="file-text" class="w-5 h-5 text-gray-400"></i>
+                <span class="nav-text" data-i18n="nav.complaint">민원</span>
+            </a>
+
+            <a href="consult.html"
+                class="nav-item nav-consult flex items-center gap-3 px-3 py-2.5 rounded-xl text-dark hover:bg-bg transition-colors">
+                <i data-lucide="message-circle" class="w-5 h-5 text-gray-400"></i>
+                <span class="nav-text" data-i18n="nav.consult">AI 상담</span>
+            </a>
+
+            <a href="../index.html#community-talk"
+                class="nav-item nav-community flex items-center gap-3 px-3 py-2.5 rounded-xl text-dark hover:bg-bg transition-colors">
+                <i data-lucide="users" class="w-5 h-5 text-gray-400"></i>
+                <span class="nav-text" data-i18n="nav.community">커뮤니티 톡</span>
+            </a>
+
+            <!-- 위치 기반 설정 (반경 2km 디폴트) -->
+            <button id="location-btn" onclick="olaLocationUI.useMyLocation()"
+                class="w-full mt-4 flex flex-col items-start gap-1 bg-white px-4 py-2.5 rounded-xl border border-border shadow-sm text-left hover:bg-gray-50 hover:border-primary transition-colors">
+                <span class="w-full flex items-center gap-2">
+                    <i data-lucide="map-pin" class="w-5 h-5 text-primary flex-shrink-0"></i>
+                    <span id="current-location" class="nav-text flex-1 font-bold text-dark text-sm">서울시청</span>
+                    <i data-lucide="navigation" id="location-btn-icon"
+                        class="nav-text w-3.5 h-3.5 text-gray-300 flex-shrink-0"></i>
+                </span>
+                <span class="nav-text text-xs text-gray-500 pl-7" data-i18n="nav.currentAreaLabel">현재 정밀 분석 지역</span>
+                <span id="current-location-radius" class="nav-text text-xs text-gray-400 pl-7">반경 2.0km 범위 밀착 감시</span>
+            </button>
+        </nav>
+
+        <!-- 하단 메뉴 -->
+        <div class="p-4 border-t border-border flex flex-col gap-1 mb-2">
+            <div class="relative" data-i18n-switcher>
+                <button type="button" data-lang-btn
+                    class="w-full flex items-center gap-3 px-3 py-2 rounded-lg text-gray-500 hover:text-dark transition-colors">
+                    <i data-lucide="globe" class="w-5 h-5 flex-shrink-0"></i>
+                    <span class="nav-text text-sm flex-1 text-left" data-i18n="common.language">언어</span>
+                    <i data-lucide="chevron-up" class="w-4 h-4 nav-text flex-shrink-0"></i>
+                </button>
+                <div data-lang-menu class="hidden absolute left-0 bottom-full mb-1 w-40 bg-white border border-border rounded-xl shadow-lg overflow-hidden z-50"></div>
+            </div>
+            <a href="mypage.html"
+                class="flex items-center gap-3 px-3 py-2 rounded-lg text-gray-500 hover:text-dark transition-colors">
+                <i data-lucide="settings" class="w-5 h-5"></i>
+                <span class="nav-text text-sm" data-i18n="nav.settings">설정</span>
+            </a>
+            <a href="#" id="sidebar-auth-link" onclick="olaAuthUI.handleSidebarAuthClick(); return false;"
+                class="flex items-center gap-3 px-3 py-2 rounded-lg text-gray-500 hover:text-dark transition-colors">
+                <i data-lucide="log-in" class="w-5 h-5" id="sidebar-auth-icon"></i>
+                <span class="nav-text text-sm" id="sidebar-auth-text">로그인</span>
+            </a>
+        </div>
+    </aside>
+
+    <!-- 메인 컨텐츠 영역 -->
+    <main class="flex-1 flex flex-col h-full bg-bg relative w-full">
+
+        <!-- 상단 헤더 -->
+        <header class="h-20 bg-white z-10 border-b border-border px-4 sm:px-6 lg:px-10">
+            <div class="max-w-6xl mx-auto h-full flex items-center justify-between lg:grid lg:grid-cols-4 lg:gap-6">
+                <!-- 모바일용 메뉴 버튼 -->
+                <button onclick="uiJS.toggleSidebar()" class="md:hidden text-dark p-2">
+                    <i data-lucide="menu" class="w-6 h-6"></i>
+                </button>
+
+                <div class="flex-1 lg:col-span-3 mx-2 lg:mx-0 min-w-0 flex items-center">
+                    <div
+                        class="relative flex-1 min-w-0 max-w-md bg-white border border-blue-200 rounded-full focus-within:border-blue-400 transition-colors flex items-center">
+                        <span class="flex items-center gap-1.5 text-sm font-bold text-blue-900 flex-shrink-0 pl-4 pr-2 py-2">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4" aria-hidden="true">
+                                <line x1="12" y1="2" x2="12" y2="5"></line>
+                                <circle cx="12" cy="2" r="1" fill="currentColor" stroke="none"></circle>
+                                <rect x="5" y="5" width="14" height="12" rx="3"></rect>
+                                <circle cx="9.5" cy="11" r="1.2" fill="currentColor" stroke="none"></circle>
+                                <circle cx="14.5" cy="11" r="1.2" fill="currentColor" stroke="none"></circle>
+                            </svg>
+                            <span class="hidden sm:inline">Ask OLA</span>
+                        </span>
+                        <span class="w-px h-4 bg-blue-100 flex-shrink-0"></span>
+                        <div class="relative flex-1 min-w-0">
+                            <input type="text" id="home-search-input" placeholder=""
+                                oninput="olaSearchPlaceholderToggle()" onfocus="olaSearchPlaceholderToggle()"
+                                onblur="olaSearchPlaceholderToggle()"
+                                onkeydown="if(event.key==='Enter'){event.preventDefault();olaHomeSearchSubmit();}"
+                                class="relative z-10 w-full bg-transparent pl-3 pr-16 py-2 text-sm text-dark outline-none">
+                            <div id="home-search-rotator"
+                                class="absolute left-3 right-16 top-1/2 -translate-y-1/2 h-5 overflow-hidden pointer-events-none"
+                                aria-hidden="true">
+                                <ul class="home-search-rotator-list text-sm text-gray-400 leading-5">
+                                    <li class="h-5" data-i18n="search.rotator1">오늘의 안심 길 추천해줘</li>
+                                    <li class="h-5" data-i18n="search.rotator2">골목 안전도 확인해줘</li>
+                                    <li class="h-5" data-i18n="search.rotator3">가까운 대피소 찾아줘</li>
+                                    <li class="h-5" data-i18n="search.rotator4">우리 동네 위험지역 알려줘</li>
+                                    <li class="h-5" aria-hidden="true" data-i18n="search.rotator1">오늘의 안심 길 추천해줘</li>
+                                </ul>
+                            </div>
+                            <button type="button" id="home-voice-btn" onclick="olaVoiceSearch()" title="음성으로 검색" data-i18n-title="header.voiceSearch"
+                                class="absolute right-8 top-1/2 -translate-y-1/2 text-blue-900 hover:text-blue-950 transition-colors z-20">
+                                <i data-lucide="mic" class="w-4 h-4"></i>
+                            </button>
+                            <button type="button" title="검색" data-i18n-title="header.search" onclick="olaHomeSearchSubmit()"
+                                class="absolute right-2.5 top-1/2 -translate-y-1/2 text-blue-900 hover:text-blue-950 transition-colors z-20">
+                                <i data-lucide="search" class="w-4 h-4"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex items-center justify-end gap-2 flex-shrink-0">
+                    <!-- 주간/야간 모드 토글 -->
+                    <div class="bg-gray-100 rounded-full p-1 flex items-center gap-1 whitespace-nowrap flex-shrink-0">
+                        <button id="theme-btn-day" onclick="olaTheme.set('day')"
+                            class="flex items-center gap-1 px-3 py-1.5 text-xs font-bold rounded-full bg-white text-dark shadow-sm transition-all duration-300 whitespace-nowrap">
+                            <i data-lucide="sun" class="w-3.5 h-3.5 text-amber-400"></i> <span class="hidden md:inline" data-i18n="header.dayMode">주간 모드</span>
+                        </button>
+                        <button id="theme-btn-night" onclick="olaTheme.set('night')"
+                            class="flex items-center gap-1 px-3 py-1.5 text-xs font-semibold rounded-full text-gray-500 hover:text-dark transition-all duration-300 whitespace-nowrap">
+                            <i data-lucide="moon" class="w-3.5 h-3.5"></i> <span class="hidden md:inline" data-i18n="header.nightMode">야간 안심</span>
+                        </button>
+                    </div>
+                    <!-- 긴급 SOS -->
+                    <button type="button" onclick="olaSOS.open()"
+                        class="flex items-center gap-1 px-3 py-1.5 rounded-full bg-red-50 text-red-600 text-xs font-bold hover:bg-red-100 transition-colors whitespace-nowrap flex-shrink-0">
+                        <i data-lucide="siren" class="w-3.5 h-3.5"></i> <span class="hidden md:inline" data-i18n="header.sos">긴급 SOS</span>
+                    </button>
+                    <span class="w-px h-5 bg-slate-200 flex-shrink-0"></span>
+                    <div class="relative flex-shrink-0">
+                        <button id="notif-bell-btn" onclick="olaNotif.toggle()"
+                            class="relative p-2 text-gray-500 hover:text-primary transition-colors">
+                            <i data-lucide="bell" id="notif-bell-icon" class="w-6 h-6 bell-ring"></i>
+                            <span class="absolute top-1 right-1 w-2 h-2 bg-amber-500 rounded-full"></span>
+                        </button>
+                        <div id="notif-panel"
+                            class="hidden absolute -right-14 top-full mt-2 w-80 bg-white rounded-2xl shadow-xl border border-border overflow-hidden z-[9999] text-left">
+                            <div
+                                class="absolute -top-1.5 right-16 w-3 h-3 bg-white border-t border-l border-border rotate-45">
+                            </div>
+                            <div class="flex items-center justify-between px-4 pt-4 pb-2">
+                                <h4 class="font-bold text-dark text-sm" data-i18n="header.notifTitle">OLA 안심 브리핑 알림</h4>
+                                <button onclick="olaNotif.close()" class="text-gray-400 hover:text-dark">
+                                    <i data-lucide="x" class="w-4 h-4"></i>
+                                </button>
+                            </div>
+                            <div class="px-4 pb-4">
+                                <p class="text-xs text-gray-500 leading-relaxed" data-i18n="header.notifSample">오늘 저녁 퇴근길 폭우 주의보가 예정되어 있습니다.
+                                    우산을 챙기시고 하천 주변 도로로 우회해 주세요.</p>
+                            </div>
+                            <div class="flex border-t border-border">
+                                <button onclick="olaNotif.close()"
+                                    class="flex-1 py-3 text-xs font-bold text-gray-500 hover:bg-bg transition-colors" data-i18n="common.close">닫기</button>
+                                <a href="#" onclick="filterDisasterGuideTab('natural'); document.getElementById('disaster-guide-grid').scrollIntoView({behavior:'smooth'}); olaNotif.close(); return false;"
+                                    class="flex-1 py-3 text-xs font-bold text-primary hover:bg-emerald-50 transition-colors text-center border-l border-border"><span data-i18n="header.viewShelterGuide">대피
+                                    가이드 보기</span></a>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="mypage.html" id="header-avatar-link"
+                        class="w-10 h-10 flex-shrink-0 rounded-full bg-emerald-600 text-white flex items-center justify-center font-bold cursor-pointer border border-white shadow-sm">
+                        <span id="header-avatar-inner"><i data-lucide="user" class="w-5 h-5"></i></span>
+                    </a>
+                </div>
+            </div>
+        </header>
+
+        <!-- 본문 (카드 목록 영역만 자체 스크롤) -->
+        <div class="page-scroll flex-1 overflow-hidden px-4 sm:px-6 lg:px-10 pt-8 pb-10 flex flex-col">
+
+            <section id="view-emergency" class="max-w-6xl mx-auto w-full flex flex-col flex-1 min-h-0 space-y-6">
+                <div class="flex items-center justify-between pb-4 mb-8 border-b border-slate-200 flex-shrink-0">
+                    <h2 class="text-3xl font-bold flex-shrink-0" data-i18n="emergency.title">행동요령</h2>
+                    <div id="disaster-guide-detail" class="hidden items-center min-w-0 flex-1 px-6">
+                        <div class="min-w-0">
+                            <h4 id="disaster-guide-detail-title" class="font-bold text-sm leading-tight"></h4>
+                            <p id="disaster-guide-detail-body" class="text-xs text-gray-500 leading-snug"></p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 재난 유형별 국민행동요령 -->
+                <div data-ola-drop-zone="true" data-ola-context="emergency-guides" data-ola-ignore="true" class="flex flex-col flex-1 min-h-0">
+                    <div class="flex justify-center overflow-x-auto scrollbar-none mb-8 flex-shrink-0">
+                        <div class="relative flex items-center gap-8" id="disaster-tab-row">
+                            <button type="button" data-guide-tab="all" onclick="filterDisasterGuideTab('all')" class="disaster-tab-btn px-1 pb-3 shrink-0 transition text-base font-bold text-primary" data-i18n="emergency.tabAll">전체</button>
+                            <button type="button" data-guide-tab="natural" onclick="filterDisasterGuideTab('natural')" class="disaster-tab-btn px-1 pb-3 shrink-0 transition text-base font-medium text-gray-400 hover:text-gray-600" data-i18n="emergency.tabNatural">자연재난</button>
+                            <button type="button" data-guide-tab="social" onclick="filterDisasterGuideTab('social')" class="disaster-tab-btn px-1 pb-3 shrink-0 transition text-base font-medium text-gray-400 hover:text-gray-600" data-i18n="emergency.tabSocial">사회재난</button>
+                            <button type="button" data-guide-tab="life" onclick="filterDisasterGuideTab('life')" class="disaster-tab-btn px-1 pb-3 shrink-0 transition text-base font-medium text-gray-400 hover:text-gray-600" data-i18n="emergency.tabLife">생활안전</button>
+                            <button type="button" data-guide-tab="prepare" onclick="filterDisasterGuideTab('prepare')" class="disaster-tab-btn px-1 pb-3 shrink-0 transition text-base font-medium text-gray-400 hover:text-gray-600" data-i18n="emergency.tabPrepare">비상대비</button>
+                            <div class="absolute left-0 bottom-0 w-full h-1.5 bg-slate-200 rounded-full"></div>
+                            <div id="disaster-tab-indicator" class="absolute bottom-0 h-1.5 rounded-full bg-green-500 transition-all duration-300 ease-out"></div>
+                        </div>
+                    </div>
+                    <div id="disaster-guide-grid" class="grid content-start grid-cols-[repeat(auto-fill,minmax(112px,1fr))] gap-x-6 gap-y-4 overflow-y-auto flex-1 min-h-0 pb-4"></div>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+            <!-- 로그인 팝업 (모든 페이지 공통) -->
+    <div id="loginModal"
+        class="fixed inset-0 bg-dark bg-opacity-50 z-50 flex items-center justify-center hidden opacity-0 transition-opacity duration-300">
+        <div class="bg-white w-[90%] max-w-md rounded-2xl shadow-xl overflow-hidden transform scale-95 transition-transform duration-300"
+            id="loginModalContent">
+            <div class="p-8">
+                <div class="flex justify-between items-center mb-6">
+                    <div class="text-primary font-bold text-2xl tracking-tighter flex items-center gap-2">
+                        <i data-lucide="compass" class="w-6 h-6"></i> OLA.
+                    </div>
+                    <button onclick="uiJS.closeLoginModal()" class="text-gray-400 hover:text-dark">
+                        <i data-lucide="x" class="w-6 h-6"></i>
+                    </button>
+                </div>
+
+                <!-- 로그인/회원가입 탭 (아이디·비밀번호 찾기 화면에서는 숨김) -->
+                <div id="authTabBar" class="flex gap-2 mb-6 bg-bg p-1 rounded-xl">
+                    <button id="authTabLogin" onclick="olaAuthUI.switchTab('login')"
+                        class="flex-1 py-2 rounded-lg text-sm font-bold transition-colors bg-white text-primary shadow-sm" data-i18n="auth.login">로그인</button>
+                    <button id="authTabSignup" onclick="olaAuthUI.switchTab('signup')"
+                        class="flex-1 py-2 rounded-lg text-sm font-bold transition-colors text-gray-500" data-i18n="auth.signup">회원가입</button>
+                </div>
+
+                <!-- 아이디/비밀번호 찾기 화면 상단 뒤로가기 -->
+                <button id="authBackBtn" onclick="olaAuthUI.switchTab('login')"
+                    class="hidden items-center gap-1 text-xs text-gray-400 hover:text-primary mb-4">
+                    <i data-lucide="chevron-left" class="w-4 h-4"></i> <span data-i18n="auth.backToLogin">로그인으로 돌아가기</span>
+                </button>
+
+                <p id="authMessage" class="text-sm text-red-500 mb-3 hidden"></p>
+                <p id="authSuccessMessage" class="text-sm text-point2 mb-3 hidden"></p>
+
+                <!-- 로그인 폼 -->
+                <div id="loginPanel" class="space-y-4">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1" data-i18n="auth.email">이메일</label>
+                        <input type="email" id="loginEmail" placeholder="example@ola.com" class="ola-input">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1" data-i18n="auth.password">비밀번호</label>
+                        <input type="password" id="loginPassword" placeholder="••••••••" class="ola-input">
+                    </div>
+                    <button id="loginSubmitBtn" onclick="olaAuthUI.handleLogin()" class="ola-btn-primary mt-2"><span data-i18n="auth.login">로그인</span></button>
+                    <div class="flex justify-center gap-3 text-xs text-gray-400 pt-1">
+                        <button onclick="olaAuthUI.switchTab('findId')" class="hover:text-primary"><span data-i18n="auth.findId">아이디 찾기</span></button>
+                        <span>|</span>
+                        <button onclick="olaAuthUI.switchTab('resetPw')" class="hover:text-primary"><span data-i18n="auth.resetPw">비밀번호 찾기</span></button>
+                    </div>
+                </div>
+
+                <!-- 회원가입 폼 -->
+                <div id="signupPanel" class="space-y-4 hidden">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1" data-i18n="auth.name">이름</label>
+                        <input type="text" id="signupName" placeholder="홍길동" data-i18n-placeholder="auth.namePlaceholder" class="ola-input">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1" data-i18n="auth.email">이메일</label>
+                        <input type="email" id="signupEmail" placeholder="example@ola.com" class="ola-input">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1" data-i18n="auth.password">비밀번호</label>
+                        <input type="password" id="signupPassword" placeholder="6자 이상" data-i18n-placeholder="auth.passwordPlaceholder" class="ola-input">
+                    </div>
+                    <button id="signupSubmitBtn" onclick="olaAuthUI.handleSignup()" class="ola-btn-primary mt-2"><span data-i18n="auth.signup">회원가입</span></button>
+                </div>
+
+                <!-- 아이디 찾기 -->
+                <div id="findIdPanel" class="space-y-4 hidden">
+                    <p class="text-sm text-gray-500" data-i18n="auth.findIdDesc">가입 시 입력한 이름을 입력하면 등록된 이메일(아이디)을 알려드려요.</p>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1" data-i18n="auth.name">이름</label>
+                        <input type="text" id="findIdName" placeholder="홍길동" data-i18n-placeholder="auth.namePlaceholder" class="ola-input">
+                    </div>
+                    <button onclick="olaAuthUI.handleFindId()" class="ola-btn-primary mt-2"><span data-i18n="auth.findId">아이디 찾기</span></button>
+                    <div id="findIdResult" class="space-y-2"></div>
+                </div>
+
+                <!-- 비밀번호 찾기(재설정) -->
+                <div id="resetPwPanel" class="space-y-4 hidden">
+                    <p class="text-sm text-gray-500" data-i18n="auth.resetPwDesc">이름과 아이디(이메일)가 모두 일치하면 새 비밀번호로 바꿀 수 있어요.</p>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1" data-i18n="auth.name">이름</label>
+                        <input type="text" id="resetPwName" placeholder="홍길동" data-i18n-placeholder="auth.namePlaceholder" class="ola-input">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1" data-i18n="auth.email">아이디(이메일)</label>
+                        <input type="email" id="resetPwEmail" placeholder="example@ola.com" class="ola-input">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1" data-i18n="auth.newPassword">새 비밀번호</label>
+                        <input type="password" id="resetPwNew" placeholder="6자 이상" data-i18n-placeholder="auth.passwordPlaceholder" class="ola-input">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1" data-i18n="auth.confirmPassword">새 비밀번호 확인</label>
+                        <input type="password" id="resetPwConfirm" placeholder="6자 이상" data-i18n-placeholder="auth.passwordPlaceholder" class="ola-input">
+                    </div>
+                    <button onclick="olaAuthUI.handleResetPassword()" class="ola-btn-primary mt-2"><span data-i18n="auth.changePw">비밀번호 변경</span></button>
+                </div>
+
+                <p class="text-xs text-gray-400 mt-6 text-center leading-relaxed"><span data-i18n-html="auth.demoNotice">이 계정 정보는 서버가 아닌 이 브라우저(localStorage)에만 저장되는 데모용 로그인입니다.</span></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- JS 스크립트 모음 -->
+    <script>window.OLA_BASE = '../';</script>
+    <script src="../js/config.js"></script>
+    <script src="../js/i18n.js"></script>
+    <script src="../js/settings.js"></script>
+    <script src="../js/favorites.js"></script>
+    <script src="../js/auth.js"></script>
+    <script src="../js/auth-ui.js"></script>
+    <script src="../js/api.js"></script>
+    <script src="../js/data.js"></script>
+    <script src="../js/regions-list.js"></script>
+    <script src="../js/location.js"></script>
+    <script src="../js/location-ui.js"></script>
+    <script src="../js/ui.js"></script>
+    <script src="../js/app.js"></script>
+    <script src="../js/news.js"></script>
+    <script src="../js/emergency-i18n-data.js"></script>
+    <script src="../js/emergency.js"></script>
+
+    <!-- OLA 안내 로봇 (전체 스크립트/스타일/레이어를 이 한 줄이 자동으로 주입함) -->
+    <script src="../js/ola/ola-page-loader.js"></script>
+
+</body>
+
+</html>

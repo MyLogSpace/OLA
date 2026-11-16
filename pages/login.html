@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ask OLA | 로그인</title>
+
+    <!-- 폰트 설정 (Pretendard) -->
+    <link rel="stylesheet" as="style" crossorigin
+        href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" />
+
+    <!-- 아이콘 라이브러리 -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Tailwind CSS (CDN) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="../js/tailwind-config.js"></script>
+
+    <!-- CSS 모음 -->
+    <link rel="stylesheet" href="../css/variables.css">
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/components.css">
+</head>
+
+<!--
+    참고: 로그인은 기본적으로 모든 페이지 공통 "모달(팝업)"로 뜹니다 (ui.js openLoginModal 참고).
+    이 파일은 모달 안의 내용만 따로 뽑아 독립된 페이지로 만든 버전으로,
+    - 로그인 화면만 따로 디자인/작업하고 싶을 때
+    - 나중에 모달 대신 페이지 이동 방식으로 바꾸고 싶을 때
+    참고용으로 사용하면 됩니다. 모달 콘텐츠와 항상 내용을 동일하게 맞춰주세요.
+-->
+<body class="min-h-screen flex items-center justify-center hero-bg-fallback" style="background: linear-gradient(135deg, #F8FAFC 0%, #E7EEF5 100%);">
+
+    <a href="../index.html" class="absolute top-6 left-6 flex items-center gap-2 text-sm text-gray-500 hover:text-primary">
+        <i data-lucide="arrow-left" class="w-4 h-4"></i> 홈으로
+    </a>
+
+    <div class="bg-white w-[90%] max-w-md rounded-2xl shadow-xl overflow-hidden">
+        <div class="p-8">
+            <div class="flex justify-between items-center mb-6">
+                <div class="text-primary font-bold text-2xl tracking-tighter flex items-center gap-2">
+                    <i data-lucide="compass" class="w-6 h-6"></i> OLA.
+                </div>
+                <div class="relative" data-i18n-switcher>
+                    <button type="button" data-lang-btn
+                        class="flex items-center gap-1 text-xs border border-border rounded-lg px-2 py-1 text-gray-500 bg-white hover:text-dark transition-colors">
+                        <i data-lucide="globe" class="w-3.5 h-3.5"></i>
+                        <span data-i18n="common.language">언어</span>
+                        <i data-lucide="chevron-down" class="w-3.5 h-3.5"></i>
+                    </button>
+                    <div data-lang-menu class="hidden absolute right-0 top-full mt-1 w-32 bg-white border border-border rounded-xl shadow-lg overflow-hidden z-50"></div>
+                </div>
+            </div>
+
+            <div id="authTabBar" class="flex gap-2 mb-6 bg-bg p-1 rounded-xl">
+                <button id="authTabLogin" onclick="olaAuthUI.switchTab('login')"
+                    class="flex-1 py-2 rounded-lg text-sm font-bold transition-colors bg-white text-primary shadow-sm" data-i18n="auth.login">로그인</button>
+                <button id="authTabSignup" onclick="olaAuthUI.switchTab('signup')"
+                    class="flex-1 py-2 rounded-lg text-sm font-bold transition-colors text-gray-500" data-i18n="auth.signup">회원가입</button>
+            </div>
+
+            <button id="authBackBtn" onclick="olaAuthUI.switchTab('login')"
+                class="hidden items-center gap-1 text-xs text-gray-400 hover:text-primary mb-4">
+                <i data-lucide="chevron-left" class="w-4 h-4"></i> <span data-i18n="auth.backToLogin">로그인으로 돌아가기</span>
+            </button>
+
+            <p id="authMessage" class="text-sm text-red-500 mb-3 hidden"></p>
+            <p id="authSuccessMessage" class="text-sm text-point2 mb-3 hidden"></p>
+
+            <div id="loginPanel" class="space-y-4">
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1" data-i18n="auth.email">이메일</label>
+                    <input type="email" id="loginEmail" placeholder="example@ola.com" class="ola-input">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1" data-i18n="auth.password">비밀번호</label>
+                    <input type="password" id="loginPassword" placeholder="••••••••" class="ola-input">
+                </div>
+                <button id="loginSubmitBtn" onclick="handleStandaloneLogin()" class="ola-btn-primary mt-2"><span data-i18n="auth.login">로그인</span></button>
+                <div class="flex justify-center gap-3 text-xs text-gray-400 pt-1">
+                    <button onclick="olaAuthUI.switchTab('findId')" class="hover:text-primary"><span data-i18n="auth.findId">아이디 찾기</span></button>
+                    <span>|</span>
+                    <button onclick="olaAuthUI.switchTab('resetPw')" class="hover:text-primary"><span data-i18n="auth.resetPw">비밀번호 찾기</span></button>
+                </div>
+            </div>
+
+            <div id="signupPanel" class="space-y-4 hidden">
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1" data-i18n="auth.name">이름</label>
+                    <input type="text" id="signupName" placeholder="홍길동" data-i18n-placeholder="auth.namePlaceholder" class="ola-input">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1" data-i18n="auth.email">이메일</label>
+                    <input type="email" id="signupEmail" placeholder="example@ola.com" class="ola-input">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1" data-i18n="auth.password">비밀번호</label>
+                    <input type="password" id="signupPassword" placeholder="6자 이상" data-i18n-placeholder="auth.passwordPlaceholder" class="ola-input">
+                </div>
+                <button id="signupSubmitBtn" onclick="handleStandaloneSignup()" class="ola-btn-primary mt-2"><span data-i18n="auth.signup">회원가입</span></button>
+            </div>
+
+            <div id="findIdPanel" class="space-y-4 hidden">
+                <p class="text-sm text-gray-500" data-i18n="auth.findIdDesc">가입 시 입력한 이름을 입력하면 등록된 이메일(아이디)을 알려드려요.</p>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1" data-i18n="auth.name">이름</label>
+                    <input type="text" id="findIdName" placeholder="홍길동" data-i18n-placeholder="auth.namePlaceholder" class="ola-input">
+                </div>
+                <button onclick="olaAuthUI.handleFindId()" class="ola-btn-primary mt-2"><span data-i18n="auth.findId">아이디 찾기</span></button>
+                <div id="findIdResult" class="space-y-2"></div>
+            </div>
+
+            <div id="resetPwPanel" class="space-y-4 hidden">
+                <p class="text-sm text-gray-500" data-i18n="auth.resetPwDesc">이름과 아이디(이메일)가 모두 일치하면 새 비밀번호로 바꿀 수 있어요.</p>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1" data-i18n="auth.name">이름</label>
+                    <input type="text" id="resetPwName" placeholder="홍길동" data-i18n-placeholder="auth.namePlaceholder" class="ola-input">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1" data-i18n="auth.email">아이디(이메일)</label>
+                    <input type="email" id="resetPwEmail" placeholder="example@ola.com" class="ola-input">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1" data-i18n="auth.newPassword">새 비밀번호</label>
+                    <input type="password" id="resetPwNew" placeholder="6자 이상" data-i18n-placeholder="auth.passwordPlaceholder" class="ola-input">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1" data-i18n="auth.confirmPassword">새 비밀번호 확인</label>
+                    <input type="password" id="resetPwConfirm" placeholder="6자 이상" data-i18n-placeholder="auth.passwordPlaceholder" class="ola-input">
+                </div>
+                <button onclick="olaAuthUI.handleResetPassword()" class="ola-btn-primary mt-2"><span data-i18n="auth.changePw">비밀번호 변경</span></button>
+            </div>
+
+            <p class="text-xs text-gray-400 mt-6 text-center leading-relaxed"><span data-i18n-html="auth.demoNotice">이 계정 정보는 서버가 아닌 이 브라우저(localStorage)에만 저장되는 데모용 로그인입니다.</span></p>
+        </div>
+    </div>
+
+    <script src="../js/i18n.js"></script>
+    <script src="../js/auth.js"></script>
+    <script src="../js/auth-ui.js"></script>
+    <script>
+        lucide.createIcons();
+        async function handleStandaloneLogin() {
+            await olaAuthUI.handleLogin();
+            if (olaAuth.isLoggedIn()) window.location.href = '../index.html';
+        }
+        async function handleStandaloneSignup() {
+            await olaAuthUI.handleSignup();
+            if (olaAuth.isLoggedIn()) window.location.href = '../index.html';
+        }
+    </script>
+</body>
+
+</html>
