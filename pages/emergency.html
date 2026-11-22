@@ -219,7 +219,7 @@
                         <button id="notif-bell-btn" onclick="olaNotif.toggle()"
                             class="relative p-2 text-gray-500 hover:text-primary transition-colors">
                             <i data-lucide="bell" id="notif-bell-icon" class="w-6 h-6 bell-ring"></i>
-                            <span class="absolute top-1 right-1 w-2 h-2 bg-amber-500 rounded-full"></span>
+                            <span id="notif-dot" class="hidden absolute top-1 right-1 w-2 h-2 bg-amber-500 rounded-full"></span>
                         </button>
                         <div id="notif-panel"
                             class="hidden absolute -right-14 top-full mt-2 w-80 bg-white rounded-2xl shadow-xl border border-border overflow-hidden z-[9999] text-left">
@@ -233,8 +233,7 @@
                                 </button>
                             </div>
                             <div class="px-4 pb-4">
-                                <p class="text-xs text-gray-500 leading-relaxed" data-i18n="header.notifSample">오늘 저녁 퇴근길 폭우 주의보가 예정되어 있습니다.
-                                    우산을 챙기시고 하천 주변 도로로 우회해 주세요.</p>
+                                <p id="notif-body" class="text-xs text-gray-500 leading-relaxed">특보 현황을 확인하는 중이에요…</p>
                             </div>
                             <div class="flex border-t border-border">
                                 <button onclick="olaNotif.close()"
@@ -281,6 +280,7 @@
                         </div>
                     </div>
                     <div id="disaster-guide-grid" class="grid content-start grid-cols-[repeat(auto-fill,minmax(112px,1fr))] gap-x-6 gap-y-4 overflow-y-auto flex-1 min-h-0 pb-4"></div>
+                    <p class="text-[11px] text-gray-400 text-center pt-3 flex-shrink-0" data-i18n="emergency.sourceNote">행동요령 출처: 국민재난안전포털(safekorea.go.kr) · 확인일 2026.07 · 최신 내용은 공식 사이트에서 확인하세요.</p>
                 </div>
             </section>
 
