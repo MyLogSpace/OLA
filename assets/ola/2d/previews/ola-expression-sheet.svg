@@ -1,0 +1,348 @@
+<?xml version='1.0' encoding='utf-8'?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2048 2048" role="img" aria-label="OLA expression sheet">
+  <title>OLA expression sheet</title>
+  <g id="preview-idle" transform="translate(0 0) scale(.5)">
+    <g id="ola-root-idle" class="expression-idle">
+      <g>
+        <ellipse cx="1024" cy="1810" rx="510" ry="88" fill="#19263D" opacity="0.16" />
+      </g>
+      <g>
+        <rect x="760" y="1400" width="230" height="285" rx="110" fill="url(#ola-shell)" stroke="#C9D2DC" stroke-width="18" />
+      </g>
+      <g>
+        <ellipse cx="845" cy="1695" rx="210" ry="112" fill="url(#ola-shell)" stroke="#C9D2DC" stroke-width="18" />
+      </g>
+      <g>
+        <rect x="1058" y="1400" width="230" height="285" rx="110" fill="url(#ola-shell)" stroke="#C9D2DC" stroke-width="18" />
+      </g>
+      <g>
+        <ellipse cx="1203" cy="1695" rx="210" ry="112" fill="url(#ola-shell)" stroke="#C9D2DC" stroke-width="18" />
+      </g>
+      <g>
+        <rect x="650" y="990" width="748" height="550" rx="280" fill="url(#ola-shell)" stroke="#C9D2DC" stroke-width="20" />
+        <ellipse cx="1024" cy="1070" rx="250" ry="52" fill="#FFFFFF" opacity=".62" />
+      </g>
+      <g>
+        <path d="M 1024 1269.6 C 926.5 1215, 969.4 1137, 1024 1187.7 C 1078.6 1137, 1121.5 1215, 1024 1269.6 Z" fill="#45EAF2" stroke="#A8F7FA" stroke-width="12" />
+      </g>
+      <g>
+        <rect x="520" y="1050" width="260" height="410" rx="125" fill="url(#ola-shell)" stroke="#C9D2DC" stroke-width="18" />
+      </g>
+      <g>
+        <ellipse cx="565" cy="1430" rx="105" ry="92" fill="#FFFFFF" stroke="#C9D2DC" stroke-width="16" />
+      </g>
+      <g>
+        <rect x="1268" y="1050" width="260" height="410" rx="125" fill="url(#ola-shell)" stroke="#C9D2DC" stroke-width="18" />
+      </g>
+      <g>
+        <ellipse cx="1483" cy="1430" rx="105" ry="92" fill="#FFFFFF" stroke="#C9D2DC" stroke-width="16" />
+      </g>
+      <g>
+        <ellipse cx="424" cy="654" rx="100" ry="145" fill="#EDF1F5" stroke="#C9D2DC" stroke-width="20" />
+        <ellipse cx="424" cy="654" rx="48" ry="76" fill="#A8F7FA" opacity=".55" />
+      </g>
+      <g>
+        <ellipse cx="1624" cy="654" rx="100" ry="145" fill="#EDF1F5" stroke="#C9D2DC" stroke-width="20" />
+        <ellipse cx="1624" cy="654" rx="48" ry="76" fill="#A8F7FA" opacity=".55" />
+      </g>
+      <g>
+        <ellipse cx="1024" cy="650" rx="600" ry="448" fill="url(#ola-shell)" stroke="#C9D2DC" stroke-width="22" />
+        <ellipse cx="870" cy="350" rx="310" ry="76" fill="#FFFFFF" opacity=".72" transform="rotate(-8 870 350)" />
+        <g>
+          <rect x="560" y="390" width="928" height="540" rx="245" fill="url(#ola-glass)" />
+          <path d="M690 480 C900 400 1160 405 1370 490" fill="none" stroke="#FFFFFF" stroke-width="22" opacity=".09" stroke-linecap="round" />
+        </g>
+        <g>
+          <ellipse cx="686" cy="782" rx="74" ry="31" fill="#FF9FB2" opacity=".62" />
+        </g>
+        <g>
+          <ellipse class-="ola-eye-shape" cx="805" cy="635" rx="52" ry="82" fill="#45EAF2" />
+          <ellipse class-="ola-eye-glint" cx="790" cy="610" rx="13" ry="21" fill="#FFFFFF" opacity=".82" />
+        </g>
+        <g>
+          <path d="M736 597 l-34 -24 M732 630 l-38 -7" fill="none" stroke="#A8F7FA" stroke-width="13" stroke-linecap="round" />
+        </g>
+        <g>
+          <ellipse cx="1362" cy="782" rx="74" ry="31" fill="#FF9FB2" opacity=".62" />
+        </g>
+        <g>
+          <ellipse class-="ola-eye-shape" cx="1243" cy="635" rx="52" ry="82" fill="#45EAF2" />
+          <ellipse class-="ola-eye-glint" cx="1228" cy="610" rx="13" ry="21" fill="#FFFFFF" opacity=".82" />
+        </g>
+        <g>
+          <path d="M1312 597 l34 -24 M1316 630 l38 -7" fill="none" stroke="#A8F7FA" stroke-width="13" stroke-linecap="round" />
+        </g>
+        <g>
+          <path class-="ola-mouth-shape" d="M952 780 Q1024 844 1096 780" fill="none" stroke="#45EAF2" stroke-width="20" stroke-linecap="round" />
+        </g>
+        <g opacity="0" aria-hidden="true">
+          <path class-="ola-z ola-z-1" d="M1375 500 h54 l-54 62 h54" fill="none" stroke="#45EAF2" stroke-width="16" stroke-linecap="round" stroke-linejoin="round" />
+          <path class-="ola-z ola-z-2" d="M1480 405 h67.5 l-67.5 77.5 h67.5" fill="none" stroke="#45EAF2" stroke-width="16" stroke-linecap="round" stroke-linejoin="round" />
+          <path class-="ola-z ola-z-3" d="M1585 290 h83.7 l-83.7 96.10000000000001 h83.7" fill="none" stroke="#45EAF2" stroke-width="16" stroke-linecap="round" stroke-linejoin="round" />
+        </g>
+        <g opacity="0" aria-hidden="true">
+          <path d="M1510 330 L1560 180 L1610 330" fill="none" stroke="#FF7657" stroke-width="24" stroke-linecap="round" stroke-linejoin="round" />
+          <circle cx="1560" cy="380" r="15" fill="#FF7657" />
+        </g>
+      </g>
+    </g>
+  </g>
+  <g id="preview-happy" transform="translate(1024 0) scale(.5)">
+    <g id="ola-root-happy" class="expression-happy">
+      <g>
+        <ellipse cx="1024" cy="1810" rx="510" ry="88" fill="#19263D" opacity="0.16" />
+      </g>
+      <g>
+        <rect x="760" y="1400" width="230" height="285" rx="110" fill="url(#ola-shell)" stroke="#C9D2DC" stroke-width="18" />
+      </g>
+      <g>
+        <ellipse cx="845" cy="1695" rx="210" ry="112" fill="url(#ola-shell)" stroke="#C9D2DC" stroke-width="18" />
+      </g>
+      <g>
+        <rect x="1058" y="1400" width="230" height="285" rx="110" fill="url(#ola-shell)" stroke="#C9D2DC" stroke-width="18" />
+      </g>
+      <g>
+        <ellipse cx="1203" cy="1695" rx="210" ry="112" fill="url(#ola-shell)" stroke="#C9D2DC" stroke-width="18" />
+      </g>
+      <g>
+        <rect x="650" y="990" width="748" height="550" rx="280" fill="url(#ola-shell)" stroke="#C9D2DC" stroke-width="20" />
+        <ellipse cx="1024" cy="1070" rx="250" ry="52" fill="#FFFFFF" opacity=".62" />
+      </g>
+      <g>
+        <path d="M 1024 1269.6 C 926.5 1215, 969.4 1137, 1024 1187.7 C 1078.6 1137, 1121.5 1215, 1024 1269.6 Z" fill="#45EAF2" stroke="#A8F7FA" stroke-width="12" />
+      </g>
+      <g>
+        <rect x="520" y="1050" width="260" height="410" rx="125" fill="url(#ola-shell)" stroke="#C9D2DC" stroke-width="18" />
+      </g>
+      <g>
+        <ellipse cx="565" cy="1430" rx="105" ry="92" fill="#FFFFFF" stroke="#C9D2DC" stroke-width="16" />
+      </g>
+      <g>
+        <rect x="1268" y="1050" width="260" height="410" rx="125" fill="url(#ola-shell)" stroke="#C9D2DC" stroke-width="18" />
+      </g>
+      <g>
+        <ellipse cx="1483" cy="1430" rx="105" ry="92" fill="#FFFFFF" stroke="#C9D2DC" stroke-width="16" />
+      </g>
+      <g>
+        <ellipse cx="424" cy="654" rx="100" ry="145" fill="#EDF1F5" stroke="#C9D2DC" stroke-width="20" />
+        <ellipse cx="424" cy="654" rx="48" ry="76" fill="#A8F7FA" opacity=".55" />
+      </g>
+      <g>
+        <ellipse cx="1624" cy="654" rx="100" ry="145" fill="#EDF1F5" stroke="#C9D2DC" stroke-width="20" />
+        <ellipse cx="1624" cy="654" rx="48" ry="76" fill="#A8F7FA" opacity=".55" />
+      </g>
+      <g>
+        <ellipse cx="1024" cy="650" rx="600" ry="448" fill="url(#ola-shell)" stroke="#C9D2DC" stroke-width="22" />
+        <ellipse cx="870" cy="350" rx="310" ry="76" fill="#FFFFFF" opacity=".72" transform="rotate(-8 870 350)" />
+        <g>
+          <rect x="560" y="390" width="928" height="540" rx="245" fill="url(#ola-glass)" />
+          <path d="M690 480 C900 400 1160 405 1370 490" fill="none" stroke="#FFFFFF" stroke-width="22" opacity=".09" stroke-linecap="round" />
+        </g>
+        <g>
+          <ellipse cx="686" cy="782" rx="74" ry="31" fill="#FF9FB2" opacity=".62" />
+        </g>
+        <g>
+          <ellipse class-="ola-eye-shape" cx="805" cy="635" rx="52" ry="82" fill="#45EAF2" />
+          <ellipse class-="ola-eye-glint" cx="790" cy="610" rx="13" ry="21" fill="#FFFFFF" opacity=".82" />
+        </g>
+        <g>
+          <path d="M736 597 l-34 -24 M732 630 l-38 -7" fill="none" stroke="#A8F7FA" stroke-width="13" stroke-linecap="round" />
+        </g>
+        <g>
+          <ellipse cx="1362" cy="782" rx="74" ry="31" fill="#FF9FB2" opacity=".62" />
+        </g>
+        <g>
+          <ellipse class-="ola-eye-shape" cx="1243" cy="635" rx="52" ry="82" fill="#45EAF2" />
+          <ellipse class-="ola-eye-glint" cx="1228" cy="610" rx="13" ry="21" fill="#FFFFFF" opacity=".82" />
+        </g>
+        <g>
+          <path d="M1312 597 l34 -24 M1316 630 l38 -7" fill="none" stroke="#A8F7FA" stroke-width="13" stroke-linecap="round" />
+        </g>
+        <g>
+          <path class-="ola-mouth-shape" d="M952 780 Q1024 844 1096 780" fill="none" stroke="#45EAF2" stroke-width="20" stroke-linecap="round" />
+        </g>
+        <g opacity="0" aria-hidden="true">
+          <path class-="ola-z ola-z-1" d="M1375 500 h54 l-54 62 h54" fill="none" stroke="#45EAF2" stroke-width="16" stroke-linecap="round" stroke-linejoin="round" />
+          <path class-="ola-z ola-z-2" d="M1480 405 h67.5 l-67.5 77.5 h67.5" fill="none" stroke="#45EAF2" stroke-width="16" stroke-linecap="round" stroke-linejoin="round" />
+          <path class-="ola-z ola-z-3" d="M1585 290 h83.7 l-83.7 96.10000000000001 h83.7" fill="none" stroke="#45EAF2" stroke-width="16" stroke-linecap="round" stroke-linejoin="round" />
+        </g>
+        <g opacity="0" aria-hidden="true">
+          <path d="M1510 330 L1560 180 L1610 330" fill="none" stroke="#FF7657" stroke-width="24" stroke-linecap="round" stroke-linejoin="round" />
+          <circle cx="1560" cy="380" r="15" fill="#FF7657" />
+        </g>
+      </g>
+    </g>
+  </g>
+  <g id="preview-think" transform="translate(0 1024) scale(.5)">
+    <g id="ola-root-think" class="expression-think">
+      <g>
+        <ellipse cx="1024" cy="1810" rx="510" ry="88" fill="#19263D" opacity="0.16" />
+      </g>
+      <g>
+        <rect x="760" y="1400" width="230" height="285" rx="110" fill="url(#ola-shell)" stroke="#C9D2DC" stroke-width="18" />
+      </g>
+      <g>
+        <ellipse cx="845" cy="1695" rx="210" ry="112" fill="url(#ola-shell)" stroke="#C9D2DC" stroke-width="18" />
+      </g>
+      <g>
+        <rect x="1058" y="1400" width="230" height="285" rx="110" fill="url(#ola-shell)" stroke="#C9D2DC" stroke-width="18" />
+      </g>
+      <g>
+        <ellipse cx="1203" cy="1695" rx="210" ry="112" fill="url(#ola-shell)" stroke="#C9D2DC" stroke-width="18" />
+      </g>
+      <g>
+        <rect x="650" y="990" width="748" height="550" rx="280" fill="url(#ola-shell)" stroke="#C9D2DC" stroke-width="20" />
+        <ellipse cx="1024" cy="1070" rx="250" ry="52" fill="#FFFFFF" opacity=".62" />
+      </g>
+      <g>
+        <path d="M 1024 1269.6 C 926.5 1215, 969.4 1137, 1024 1187.7 C 1078.6 1137, 1121.5 1215, 1024 1269.6 Z" fill="#45EAF2" stroke="#A8F7FA" stroke-width="12" />
+      </g>
+      <g>
+        <rect x="520" y="1050" width="260" height="410" rx="125" fill="url(#ola-shell)" stroke="#C9D2DC" stroke-width="18" />
+      </g>
+      <g>
+        <ellipse cx="565" cy="1430" rx="105" ry="92" fill="#FFFFFF" stroke="#C9D2DC" stroke-width="16" />
+      </g>
+      <g>
+        <rect x="1268" y="1050" width="260" height="410" rx="125" fill="url(#ola-shell)" stroke="#C9D2DC" stroke-width="18" />
+      </g>
+      <g>
+        <ellipse cx="1483" cy="1430" rx="105" ry="92" fill="#FFFFFF" stroke="#C9D2DC" stroke-width="16" />
+      </g>
+      <g>
+        <ellipse cx="424" cy="654" rx="100" ry="145" fill="#EDF1F5" stroke="#C9D2DC" stroke-width="20" />
+        <ellipse cx="424" cy="654" rx="48" ry="76" fill="#A8F7FA" opacity=".55" />
+      </g>
+      <g>
+        <ellipse cx="1624" cy="654" rx="100" ry="145" fill="#EDF1F5" stroke="#C9D2DC" stroke-width="20" />
+        <ellipse cx="1624" cy="654" rx="48" ry="76" fill="#A8F7FA" opacity=".55" />
+      </g>
+      <g>
+        <ellipse cx="1024" cy="650" rx="600" ry="448" fill="url(#ola-shell)" stroke="#C9D2DC" stroke-width="22" />
+        <ellipse cx="870" cy="350" rx="310" ry="76" fill="#FFFFFF" opacity=".72" transform="rotate(-8 870 350)" />
+        <g>
+          <rect x="560" y="390" width="928" height="540" rx="245" fill="url(#ola-glass)" />
+          <path d="M690 480 C900 400 1160 405 1370 490" fill="none" stroke="#FFFFFF" stroke-width="22" opacity=".09" stroke-linecap="round" />
+        </g>
+        <g>
+          <ellipse cx="686" cy="782" rx="74" ry="31" fill="#FF9FB2" opacity=".62" />
+        </g>
+        <g>
+          <ellipse class-="ola-eye-shape" cx="805" cy="635" rx="52" ry="82" fill="#45EAF2" />
+          <ellipse class-="ola-eye-glint" cx="790" cy="610" rx="13" ry="21" fill="#FFFFFF" opacity=".82" />
+        </g>
+        <g>
+          <path d="M736 597 l-34 -24 M732 630 l-38 -7" fill="none" stroke="#A8F7FA" stroke-width="13" stroke-linecap="round" />
+        </g>
+        <g>
+          <ellipse cx="1362" cy="782" rx="74" ry="31" fill="#FF9FB2" opacity=".62" />
+        </g>
+        <g>
+          <ellipse class-="ola-eye-shape" cx="1243" cy="635" rx="52" ry="82" fill="#45EAF2" />
+          <ellipse class-="ola-eye-glint" cx="1228" cy="610" rx="13" ry="21" fill="#FFFFFF" opacity=".82" />
+        </g>
+        <g>
+          <path d="M1312 597 l34 -24 M1316 630 l38 -7" fill="none" stroke="#A8F7FA" stroke-width="13" stroke-linecap="round" />
+        </g>
+        <g>
+          <path class-="ola-mouth-shape" d="M952 780 Q1024 844 1096 780" fill="none" stroke="#45EAF2" stroke-width="20" stroke-linecap="round" />
+        </g>
+        <g opacity="0" aria-hidden="true">
+          <path class-="ola-z ola-z-1" d="M1375 500 h54 l-54 62 h54" fill="none" stroke="#45EAF2" stroke-width="16" stroke-linecap="round" stroke-linejoin="round" />
+          <path class-="ola-z ola-z-2" d="M1480 405 h67.5 l-67.5 77.5 h67.5" fill="none" stroke="#45EAF2" stroke-width="16" stroke-linecap="round" stroke-linejoin="round" />
+          <path class-="ola-z ola-z-3" d="M1585 290 h83.7 l-83.7 96.10000000000001 h83.7" fill="none" stroke="#45EAF2" stroke-width="16" stroke-linecap="round" stroke-linejoin="round" />
+        </g>
+        <g opacity="0" aria-hidden="true">
+          <path d="M1510 330 L1560 180 L1610 330" fill="none" stroke="#FF7657" stroke-width="24" stroke-linecap="round" stroke-linejoin="round" />
+          <circle cx="1560" cy="380" r="15" fill="#FF7657" />
+        </g>
+      </g>
+    </g>
+  </g>
+  <g id="preview-sleep" transform="translate(1024 1024) scale(.5)">
+    <g id="ola-root-sleep" class="expression-sleep">
+      <g>
+        <ellipse cx="1024" cy="1810" rx="510" ry="88" fill="#19263D" opacity="0.16" />
+      </g>
+      <g>
+        <rect x="760" y="1400" width="230" height="285" rx="110" fill="url(#ola-shell)" stroke="#C9D2DC" stroke-width="18" />
+      </g>
+      <g>
+        <ellipse cx="845" cy="1695" rx="210" ry="112" fill="url(#ola-shell)" stroke="#C9D2DC" stroke-width="18" />
+      </g>
+      <g>
+        <rect x="1058" y="1400" width="230" height="285" rx="110" fill="url(#ola-shell)" stroke="#C9D2DC" stroke-width="18" />
+      </g>
+      <g>
+        <ellipse cx="1203" cy="1695" rx="210" ry="112" fill="url(#ola-shell)" stroke="#C9D2DC" stroke-width="18" />
+      </g>
+      <g>
+        <rect x="650" y="990" width="748" height="550" rx="280" fill="url(#ola-shell)" stroke="#C9D2DC" stroke-width="20" />
+        <ellipse cx="1024" cy="1070" rx="250" ry="52" fill="#FFFFFF" opacity=".62" />
+      </g>
+      <g>
+        <path d="M 1024 1269.6 C 926.5 1215, 969.4 1137, 1024 1187.7 C 1078.6 1137, 1121.5 1215, 1024 1269.6 Z" fill="#45EAF2" stroke="#A8F7FA" stroke-width="12" />
+      </g>
+      <g>
+        <rect x="520" y="1050" width="260" height="410" rx="125" fill="url(#ola-shell)" stroke="#C9D2DC" stroke-width="18" />
+      </g>
+      <g>
+        <ellipse cx="565" cy="1430" rx="105" ry="92" fill="#FFFFFF" stroke="#C9D2DC" stroke-width="16" />
+      </g>
+      <g>
+        <rect x="1268" y="1050" width="260" height="410" rx="125" fill="url(#ola-shell)" stroke="#C9D2DC" stroke-width="18" />
+      </g>
+      <g>
+        <ellipse cx="1483" cy="1430" rx="105" ry="92" fill="#FFFFFF" stroke="#C9D2DC" stroke-width="16" />
+      </g>
+      <g>
+        <ellipse cx="424" cy="654" rx="100" ry="145" fill="#EDF1F5" stroke="#C9D2DC" stroke-width="20" />
+        <ellipse cx="424" cy="654" rx="48" ry="76" fill="#A8F7FA" opacity=".55" />
+      </g>
+      <g>
+        <ellipse cx="1624" cy="654" rx="100" ry="145" fill="#EDF1F5" stroke="#C9D2DC" stroke-width="20" />
+        <ellipse cx="1624" cy="654" rx="48" ry="76" fill="#A8F7FA" opacity=".55" />
+      </g>
+      <g>
+        <ellipse cx="1024" cy="650" rx="600" ry="448" fill="url(#ola-shell)" stroke="#C9D2DC" stroke-width="22" />
+        <ellipse cx="870" cy="350" rx="310" ry="76" fill="#FFFFFF" opacity=".72" transform="rotate(-8 870 350)" />
+        <g>
+          <rect x="560" y="390" width="928" height="540" rx="245" fill="url(#ola-glass)" />
+          <path d="M690 480 C900 400 1160 405 1370 490" fill="none" stroke="#FFFFFF" stroke-width="22" opacity=".09" stroke-linecap="round" />
+        </g>
+        <g>
+          <ellipse cx="686" cy="782" rx="74" ry="31" fill="#FF9FB2" opacity=".62" />
+        </g>
+        <g>
+          <ellipse class-="ola-eye-shape" cx="805" cy="635" rx="52" ry="82" fill="#45EAF2" />
+          <ellipse class-="ola-eye-glint" cx="790" cy="610" rx="13" ry="21" fill="#FFFFFF" opacity=".82" />
+        </g>
+        <g>
+          <path d="M736 597 l-34 -24 M732 630 l-38 -7" fill="none" stroke="#A8F7FA" stroke-width="13" stroke-linecap="round" />
+        </g>
+        <g>
+          <ellipse cx="1362" cy="782" rx="74" ry="31" fill="#FF9FB2" opacity=".62" />
+        </g>
+        <g>
+          <ellipse class-="ola-eye-shape" cx="1243" cy="635" rx="52" ry="82" fill="#45EAF2" />
+          <ellipse class-="ola-eye-glint" cx="1228" cy="610" rx="13" ry="21" fill="#FFFFFF" opacity=".82" />
+        </g>
+        <g>
+          <path d="M1312 597 l34 -24 M1316 630 l38 -7" fill="none" stroke="#A8F7FA" stroke-width="13" stroke-linecap="round" />
+        </g>
+        <g>
+          <path class-="ola-mouth-shape" d="M952 780 Q1024 844 1096 780" fill="none" stroke="#45EAF2" stroke-width="20" stroke-linecap="round" />
+        </g>
+        <g opacity="0" aria-hidden="true">
+          <path class-="ola-z ola-z-1" d="M1375 500 h54 l-54 62 h54" fill="none" stroke="#45EAF2" stroke-width="16" stroke-linecap="round" stroke-linejoin="round" />
+          <path class-="ola-z ola-z-2" d="M1480 405 h67.5 l-67.5 77.5 h67.5" fill="none" stroke="#45EAF2" stroke-width="16" stroke-linecap="round" stroke-linejoin="round" />
+          <path class-="ola-z ola-z-3" d="M1585 290 h83.7 l-83.7 96.10000000000001 h83.7" fill="none" stroke="#45EAF2" stroke-width="16" stroke-linecap="round" stroke-linejoin="round" />
+        </g>
+        <g opacity="0" aria-hidden="true">
+          <path d="M1510 330 L1560 180 L1610 330" fill="none" stroke="#FF7657" stroke-width="24" stroke-linecap="round" stroke-linejoin="round" />
+          <circle cx="1560" cy="380" r="15" fill="#FF7657" />
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

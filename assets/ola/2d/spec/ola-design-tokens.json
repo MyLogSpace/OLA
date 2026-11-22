@@ -1,0 +1,69 @@
+{
+  "canvas": {"viewBox": "0 0 2048 2048", "width": 2048, "height": 2048},
+  "colors": {
+    "bodyWhite": "#FFFFFF",
+    "bodySoftGray": "#EDF1F5",
+    "screenBlack": "#0B1020",
+    "cyanPrimary": "#45EAF2",
+    "cyanSoft": "#A8F7FA",
+    "cheekPink": "#FF9FB2",
+    "outlineSoft": "#C9D2DC",
+    "alertOrange": "#FF7657",
+    "shadowColor": "#19263D"
+  },
+  "characterBounds": {"x": 344, "y": 220, "width": 1360, "height": 1600},
+  "head": {"cx": 1024, "cy": 650, "rx": 600, "ry": 448, "neckY": 1010},
+  "face": {"x": 560, "y": 390, "width": 928, "height": 540, "radius": 245},
+  "eyes": {
+    "left": {"cx": 805, "cy": 635},
+    "right": {"cx": 1243, "cy": 635},
+    "rx": 52,
+    "ry": 82
+  },
+  "cheeks": {
+    "left": {"cx": 686, "cy": 782},
+    "right": {"cx": 1362, "cy": 782},
+    "rx": 74,
+    "ry": 31
+  },
+  "mouth": {"cx": 1024, "cy": 790, "width": 150, "height": 58},
+  "ears": {
+    "left": {"cx": 424, "cy": 654},
+    "right": {"cx": 1624, "cy": 654},
+    "rx": 100,
+    "ry": 145
+  },
+  "body": {"x": 650, "y": 990, "width": 748, "height": 550, "radius": 280},
+  "chestLed": {"cx": 1024, "cy": 1215, "size": 78},
+  "arms": {
+    "left": {"shoulderX": 720, "shoulderY": 1090, "x": 520, "y": 1050, "width": 260, "height": 410},
+    "right": {"shoulderX": 1328, "shoulderY": 1090, "x": 1268, "y": 1050, "width": 260, "height": 410}
+  },
+  "hands": {
+    "left": {"cx": 565, "cy": 1430, "rx": 105, "ry": 92},
+    "right": {"cx": 1483, "cy": 1430, "rx": 105, "ry": 92}
+  },
+  "legs": {
+    "left": {"hipX": 850, "hipY": 1450, "x": 760, "y": 1400, "width": 230, "height": 285},
+    "right": {"hipX": 1198, "hipY": 1450, "x": 1058, "y": 1400, "width": 230, "height": 285}
+  },
+  "feet": {
+    "left": {"cx": 845, "cy": 1695, "rx": 210, "ry": 112},
+    "right": {"cx": 1203, "cy": 1695, "rx": 210, "ry": 112}
+  },
+  "shadow": {"cx": 1024, "cy": 1810, "rx": 510, "ry": 88, "opacity": 0.16},
+  "animationOrigins": {
+    "olaRoot": "1024px 1024px",
+    "head": "1024px 1010px",
+    "armLeft": "720px 1090px",
+    "armRight": "1328px 1090px",
+    "handLeft": "565px 1370px",
+    "handRight": "1483px 1370px",
+    "legLeft": "850px 1450px",
+    "legRight": "1198px 1450px",
+    "footLeft": "845px 1600px",
+    "footRight": "1203px 1600px",
+    "eyeLeft": "805px 635px",
+    "eyeRight": "1243px 635px"
+  }
+}
