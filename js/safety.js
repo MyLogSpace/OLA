@@ -442,13 +442,10 @@
   }
 
 
-  // ⚠️ "월별" 범죄 추이 실제 데이터는 없음(경찰청 통계는 2024.12.31 기준 연간 누적 스냅샷 1개뿐 —
-  // data/안전_안심/경찰청_범죄 발생 지역별 통계_20241231.csv). 사용자 요청으로 실제 유형별 비중(breakdown)을
-  // 기준선 삼아 완만한 감소 추세를 가정한 예시 그래프를 보여준다. "오늘" 기준이 아니라 실제 통계 기준일인
-  // 2024.12.31로 끝나는 6개월(7~12월)로 라벨을 고정해, 실시간처럼 보이지 않게 한다.
-  // 실제 월별 시계열 데이터가 확보되면 이 함수는 실제 값으로 교체되어야 한다.
-  const CRIME_STATS_REF_YEAR = 2024;
-  const CRIME_STATS_REF_MONTH = 12; // 2024.12.31 기준
+  // 범죄 유형별 비중 막대그래프 — 경찰청 통계(2024.12.31 기준 연간 누적)의 실제 값만 사용한다.
+  // (이전에는 월별 추이 선그래프였지만, 경찰청 통계에는 월별 시계열이 없어서 감소 추세를 가정한
+  //  "예시" 값을 그렸다. 근거 없는 추세 해석이 되므로 실제 유형별 비중 표시로 교체했다.)
+  // regionData.crime.breakdown 의 값 단위(건수/비율)와 상관없이 "전체 합 대비 %"로 계산하므로 항상 올바른 비중이 나온다.
   const CRIME_TREND_CAT_DEFS = [
     { key: "강력범죄", labelKey: "safety.crimeCatViolent", color: "#dc2626", dash: false },
     { key: "절도범죄", labelKey: "safety.crimeCatTheft", color: "#6366f1", dash: false },
@@ -457,7 +454,6 @@
     { key: "교통범죄", labelKey: "safety.crimeCatTraffic", color: "#0ea5e9", dash: false },
     { key: "기타", labelKey: "safety.crimeCatOther", color: "#94a3b8", dash: true },
   ];
-  const CRIME_TREND_SHAPE = [1.68, 1.52, 1.36, 1.28, 1.16, 1.0]; // 6개월 전 → 기준월, 완만한 감소 추세
 
   // CRIME_TREND_CAT_DEFS.key는 regionData.crime.breakdown 조회용 키라 번역하면 안 되고,
   // label만 현재 언어로 계산해서 돌려준다.
@@ -466,105 +462,50 @@
     return CRIME_TREND_CAT_DEFS.map((c) => ({ ...c, label: t(c.labelKey) }));
   }
 
-  function crimeStatsMonthLabels() {
-    const t = window.olaI18n ? olaI18n.t : (k) => k;
-    const labels = [];
-    for (let i = 5; i >= 0; i--) {
-      const d = new Date(CRIME_STATS_REF_YEAR, CRIME_STATS_REF_MONTH - 1 - i, 1);
-      labels.push(t("safety.monthShort", { month: d.getMonth() + 1 }));
-    }
-    return labels;
-  }
-
+  // 함수 이름(renderCrimeTrend6mo)은 호출부 호환을 위해 그대로 둔다. 이제 6개월 추이가 아니라 유형별 비중을 그린다.
   function renderCrimeTrend6mo(regionData) {
     const chartEl = document.getElementById("crime-trend-chart");
     const insightEl = document.getElementById("crime-trend-insight");
     if (!chartEl) return;
 
     const t = window.olaI18n ? olaI18n.t : (k) => k;
-    const breakdown = regionData?.crime?.breakdown || {};
-    const cats = crimeTrendCats();
-    const maxReal = Math.max(1, ...cats.map((c) => breakdown[c.key] || 0));
-    const series = cats.map((c) => {
-      const baseline = Math.max(2, Math.round(((breakdown[c.key] || 0) / maxReal) * 26));
-      const values = CRIME_TREND_SHAPE.map((mult) => Math.max(1, Math.round(baseline * mult)));
-      return { ...c, values };
+    const breakdown = (regionData && regionData.crime && regionData.crime.breakdown) || {};
+    const rows = crimeTrendCats().map((c) => ({ ...c, value: Number(breakdown[c.key]) || 0 }));
+    const total = rows.reduce((sum, r) => sum + r.value, 0);
+
+    // 통계가 없으면 값을 지어내지 않고 안내만 보여준다.
+    if (!total) {
+      chartEl.innerHTML = `<p class="text-sm text-gray-400 py-10 text-center">${t("safety.crimeNoData")}</p>`;
+      if (insightEl) insightEl.innerHTML = "";
+      return;
+    }
+
+    rows.forEach((r) => {
+      r.pct = (r.value / total) * 100;
     });
-    const months = crimeStatsMonthLabels();
-
-    const w = 600;
-    const h = 380;
-    const padL = 32;
-    const padR = 12;
-    const padT = 14;
-    const padB = 28;
-    const plotW = w - padL - padR;
-    const plotH = h - padT - padB;
-    const maxVal = Math.max(...series.flatMap((s) => s.values));
-    const yMax = Math.max(60, Math.ceil((maxVal * 1.35) / 10) * 10); // 선이 그래프 상단에 너무 붙지 않도록 여유를 둠
-    const yStep = yMax / 5;
-    const xAt = (i) => padL + (i / (months.length - 1)) * plotW;
-    const yAt = (v) => padT + plotH - (v / yMax) * plotH;
-
-    const gridLines = [0, 1, 2, 3, 4, 5]
-      .map((i) => {
-        const y = padT + (plotH / 5) * i;
-        const val = Math.round(yMax - yStep * i);
-        return `<line x1="${padL}" y1="${y.toFixed(1)}" x2="${w - padR}" y2="${y.toFixed(1)}" stroke="#eef2f6" stroke-width="1"></line>
-          <text x="${padL - 8}" y="${(y + 3).toFixed(1)}" font-size="10" fill="#9aa5b1" text-anchor="end">${val}</text>`;
-      })
-      .join("");
-
-    // x/y축 선 - 각 격자선 텍스트만으로는 축 경계가 잘 안 보인다는 피드백을 반영해 왼쪽(y축)·아래쪽(x축)에
-    // 실제 축 선을 그린다.
-    const axisLines = `
-      <line x1="${padL}" y1="${padT}" x2="${padL}" y2="${h - padB}" stroke="#cbd5e1" stroke-width="1.5"></line>
-      <line x1="${padL}" y1="${h - padB}" x2="${w - padR}" y2="${h - padB}" stroke="#cbd5e1" stroke-width="1.5"></line>`;
-
-    const xLabels = months
-      .map((m, i) => `<text x="${xAt(i).toFixed(1)}" y="${h - 8}" font-size="10" fill="#9aa5b1" text-anchor="middle">${m}</text>`)
-      .join("");
-
-    const seriesSvg = series
-      .map((s) => {
-        const pts = s.values.map((v, i) => [xAt(i), yAt(v)]);
-        const d = pts.map((p, i) => `${i === 0 ? "M" : "L"}${p[0].toFixed(1)},${p[1].toFixed(1)}`).join(" ");
-        const dots = pts.map((p) => `<circle cx="${p[0].toFixed(1)}" cy="${p[1].toFixed(1)}" r="3.5" fill="${s.color}"></circle>`).join("");
-        return `<path d="${d}" fill="none" stroke="${s.color}" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"${
-          s.dash ? ' stroke-dasharray="5,4"' : ""
-        }></path>${dots}`;
-      })
-      .join("");
+    rows.sort((a, b) => b.pct - a.pct);
+    const maxPct = rows[0].pct || 1;
 
     chartEl.innerHTML = `
-      <div class="flex items-center gap-4 mb-3 flex-wrap">
-        ${series
+      <div class="space-y-3 mt-3 mb-4">
+        ${rows
           .map(
-            (s) => `
-          <span class="flex items-center gap-1.5 text-xs text-gray-600">
-            <svg width="16" height="8"><line x1="0" y1="4" x2="16" y2="4" stroke="${s.color}" stroke-width="2.5"${s.dash ? ' stroke-dasharray="4,3"' : ""}></line></svg>
-            ${s.label}
-          </span>`
+            (r) => `
+          <div class="flex items-center gap-3">
+            <span class="w-16 flex-shrink-0 text-xs text-gray-600">${r.label}</span>
+            <div class="flex-1 h-3 bg-bg rounded-full overflow-hidden">
+              <div class="h-full rounded-full" style="width:${((r.pct / maxPct) * 100).toFixed(1)}%;background:${r.color}"></div>
+            </div>
+            <span class="w-14 flex-shrink-0 text-right text-xs font-bold text-dark">${r.pct.toFixed(1)}%</span>
+          </div>`
           )
           .join("")}
-      </div>
-      <div class="flex items-start gap-1">
-        <span class="text-[10px] text-gray-400 mt-1">${t("safety.unitCases")}</span>
-        <svg viewBox="0 0 ${w} ${h}" class="w-full h-auto" preserveAspectRatio="xMidYMid meet">
-          ${gridLines}
-          ${axisLines}
-          ${xLabels}
-          ${seriesSvg}
-        </svg>
       </div>`;
 
     if (insightEl) {
-      const top = [...series].sort((a, b) => b.values[b.values.length - 1] - a.values[a.values.length - 1])[0];
-      const totalFirst = series.reduce((sum, s) => sum + s.values[0], 0);
-      const totalLast = series.reduce((sum, s) => sum + s.values[s.values.length - 1], 0);
-      const trendWord = totalLast < totalFirst ? t("safety.trendDecrease") : totalLast > totalFirst ? t("safety.trendIncrease") : t("safety.trendFlat");
+      const top = rows[0];
       insightEl.innerHTML = `<i data-lucide="info" class="w-4 h-4 text-primary flex-shrink-0 mt-0.5"></i>
-        <span><b class="text-dark">${t("safety.crimeInsightLabel")}</b> &nbsp; ${t("safety.crimeInsightSentence", { cat: top.label, trend: trendWord })}</span>`;
+        <span><b class="text-dark">${t("safety.crimeInsightLabel")}</b> &nbsp; ${t("safety.crimeInsightTop", { cat: top.label, pct: top.pct.toFixed(1) })}</span>`;
       if (window.lucide) lucide.createIcons();
     }
   }
