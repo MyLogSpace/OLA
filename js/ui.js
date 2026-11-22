@@ -177,13 +177,90 @@ window.olaToast = {
 window.olaNotif = {
   toggle: function () {
     const panel = document.getElementById("notif-panel");
-    if (panel) panel.classList.toggle("hidden");
+    if (!panel) return;
+    panel.classList.toggle("hidden");
+    // 열 때마다 현재 지역의 특보 현황을 확인한다 (API 캐시 10분이라 반복 호출 부담 없음)
+    if (!panel.classList.contains("hidden") && window.olaNotifFeed) olaNotifFeed.refresh();
   },
   close: function () {
     const panel = document.getElementById("notif-panel");
     if (panel) panel.classList.add("hidden");
   },
 };
+
+// 알림 벨 내용 — 고정 샘플 문구 대신 기상청 기상특보 현황(olaApi.getWeatherWarningStatus)을 그대로 보여준다.
+// - 발효 중인 특보가 있을 때만 벨의 주황 점을 켠다.
+// - 조회에 실패하면 "특보 없음"이라고 단정하지 않고 실패 사실과 공식 확인 안내를 보여준다.
+window.olaNotifFeed = (function () {
+  let seq = 0; // 늦게 도착한 이전 응답이 최신 결과를 덮어쓰지 않도록
+
+  function tr(key, vars) {
+    return window.olaI18n ? olaI18n.t(key, vars) : key;
+  }
+  function hhmm(d) {
+    return String(d.getHours()).padStart(2, "0") + ":" + String(d.getMinutes()).padStart(2, "0");
+  }
+  // 기상청 발표시각(YYYYMMDDHHmm) → "MM.DD HH:mm"
+  function fmtIssued(s) {
+    if (!/^\d{12}$/.test(s || "")) return "";
+    return s.slice(4, 6) + "." + s.slice(6, 8) + " " + s.slice(8, 10) + ":" + s.slice(10, 12);
+  }
+  function render(text, dotOn) {
+    const body = document.getElementById("notif-body");
+    const dot = document.getElementById("notif-dot");
+    if (body) body.textContent = text;
+    if (dot) dot.classList.toggle("hidden", !dotOn);
+  }
+
+  async function refresh() {
+    const body = document.getElementById("notif-body");
+    if (!body) return;
+    if (!window.olaApi || !window.olaLocation) {
+      render(tr("header.notifFailed", { reason: "api-not-loaded" }), false);
+      return;
+    }
+    const my = ++seq;
+    if (!body.dataset.loaded) render(tr("header.notifLoading"), false);
+
+    const { sido, gu } = olaLocation.getSidoGu();
+    const region = window.olaRegionLabel ? olaRegionLabel(sido, gu) : sido + " " + gu;
+    const sidoKey = window.olaSidoShort ? olaSidoShort(sido) : sido;
+
+    let w;
+    try {
+      w = await olaApi.getWeatherWarningStatus(sidoKey);
+    } catch (e) {
+      w = { ok: false, reason: (e && e.message) || "error" };
+    }
+    if (my !== seq) return;
+
+    body.dataset.loaded = "1";
+    const checked = tr("header.notifCheckedAt", { time: hhmm(new Date()) });
+    if (w.ok && w.active && w.lines && w.lines.length) {
+      const names = [];
+      w.lines.forEach((line) => {
+        const raw = line.split(":")[0].trim();
+        const label = window.olaI18n && olaI18n.translateWeatherWarning ? olaI18n.translateWeatherWarning(raw) : raw;
+        if (label && !names.includes(label)) names.push(label);
+      });
+      const issued = fmtIssued(w.tmFc);
+      const basis = issued ? tr("safety.issuedAt", { time: issued }) : checked;
+      render(tr("header.notifActive", { region, label: names.join(", "), basis }), true);
+    } else if (w.ok) {
+      render(tr("header.notifNone", { region, basis: checked }), false);
+    } else {
+      const reason = window.olaApi.reasonLabel ? olaApi.reasonLabel(w.reason) : String(w.reason || "");
+      render(tr("header.notifFailed", { reason }), false);
+    }
+  }
+
+  document.addEventListener("DOMContentLoaded", () => {
+    refresh();
+    if (window.olaI18n) olaI18n.onLocaleChange(refresh);
+  });
+
+  return { refresh };
+})();
 
 document.addEventListener("click", (e) => {
   const panel = document.getElementById("notif-panel");
@@ -230,11 +307,11 @@ window.olaTheme = {
 
     const bubble = document.getElementById("mascot-speech-bubble");
     if (mode === "night") {
-      if (bubble) bubble.textContent = '"어두운 밤길 보행을 안전하게 가이드하는 야간 집중 모드로 전환되었습니다."';
-      olaToast.show("야간 집중 수호 가동", "골목길 가로등 데이터 및 순찰 거점 위주 분석이 진행됩니다.");
+      if (bubble) bubble.textContent = '"밤길에는 안심 지도에서 가까운 파출소·AED를 확인해 보세요."';
+      olaToast.show("야간 모드", "밤길에는 안심 지도에서 가까운 파출소·AED를 확인해 보세요.");
     } else {
-      if (bubble) bubble.textContent = '"쾌적하고 맑은 날씨입니다! 안심 보행로를 따라 산책하기 무척 좋은 일상입니다."';
-      olaToast.show("주간 일상 수호 가동", "미세먼지 상태 및 보행장애물 분석 서비스가 작동 중입니다.");
+      if (bubble) bubble.textContent = '"외출 전 오늘의 브리핑에서 날씨와 미세먼지를 확인해 보세요."';
+      olaToast.show("주간 모드", "외출 전 오늘의 브리핑에서 날씨와 미세먼지를 확인해 보세요.");
     }
   },
 
