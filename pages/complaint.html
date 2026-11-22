@@ -222,7 +222,7 @@
                         <button id="notif-bell-btn" onclick="olaNotif.toggle()"
                             class="relative p-2 text-gray-500 hover:text-primary transition-colors">
                             <i data-lucide="bell" id="notif-bell-icon" class="w-6 h-6 bell-ring"></i>
-                            <span class="absolute top-1 right-1 w-2 h-2 bg-amber-500 rounded-full"></span>
+                            <span id="notif-dot" class="hidden absolute top-1 right-1 w-2 h-2 bg-amber-500 rounded-full"></span>
                         </button>
                         <div id="notif-panel"
                             class="hidden absolute -right-14 top-full mt-2 w-80 bg-white rounded-2xl shadow-xl border border-border overflow-hidden z-[9999] text-left">
@@ -236,8 +236,7 @@
                                 </button>
                             </div>
                             <div class="px-4 pb-4">
-                                <p class="text-xs text-gray-500 leading-relaxed" data-i18n="header.notifSample">오늘 저녁 퇴근길 폭우 주의보가 예정되어 있습니다.
-                                    우산을 챙기시고 하천 주변 도로로 우회해 주세요.</p>
+                                <p id="notif-body" class="text-xs text-gray-500 leading-relaxed">특보 현황을 확인하는 중이에요…</p>
                             </div>
                             <div class="flex border-t border-border">
                                 <button onclick="olaNotif.close()"
@@ -272,6 +271,7 @@
                 <div class="ola-card p-8 min-h-[620px] flex flex-col lg:flex-row gap-8">
                     <div class="flex-1 space-y-4">
                         <h3 class="text-lg font-bold" data-i18n="complaint.formTitle">어떤 민원을 접수할까요?</h3>
+                        <p class="text-xs text-gray-400 -mt-2" data-i18n="complaint.submitNote">작성한 초안은 기관 사이트에서 접수해 주세요.</p>
                         <textarea id="complaintInput"
                             class="w-full h-48 p-4 border border-border rounded-xl focus:outline-none focus:border-primary resize-none"
                             placeholder="예: 저희 동네 골목에 가로등이 고장나서 너무 어두워요. 처리해주세요." data-i18n-placeholder="complaint.placeholder"></textarea>
@@ -311,6 +311,7 @@
                             <div>
                                 <span class="text-xs text-gray-400" data-i18n="complaint.draft">민원 초안</span>
                                 <p class="text-sm bg-white p-3 border border-border rounded-lg min-h-[100px] whitespace-pre-line" id="resultDraft">-</p>
+                                <p class="text-[11px] text-gray-400 mt-1" data-i18n="complaint.submitNote">작성한 초안은 기관 사이트에서 접수해 주세요.</p>
                             </div>
                             <div>
                                 <span class="text-xs text-gray-400" data-i18n="complaint.similarCases">유사 민원 사례 (국민신문고 실시간 연동)</span>
